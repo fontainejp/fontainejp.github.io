@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Fontaine JP">
+    <title>BLOCKLINO</title>
+    <script src="start/js/jquery.min.2.1.3.js"></script>
+    <script src="start/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="start/img/icon.png">
+    <link rel="stylesheet" href="start/css/bootstrap.css">
+    <link rel="stylesheet" href="start/css/style.css">
+    <link rel="stylesheet" href="start/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://github.com/fontainejp/blocklino">BLOCKLINO</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-right">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html">ACCUEIL</a></li>
+			<li><a href="bloc.html">COMMENCER</a></li>
+            <li><a href="about.html">OUTILS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	<div id="headerwrap">
+	    <div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<h5>Blocklino est un mini environnement de développement pour langage graphique libre et open source. Les programmes sont créés par assemblage de blocs, ils sont ensuite compilés, puis envoyés dans la carte.</h5>
+				</div>
+				<div class="col-lg-8 col-lg-offset-2 himg">
+					<div data-ride="carousel" class="carousel slide" id="carousel-basic">
+					  <ol class="carousel-indicators">
+						<li data-slide-to="0" data-target="#carousel-basic" class="active"></li>
+						<li data-slide-to="1" data-target="#carousel-basic" class=""></li>
+						<li data-slide-to="2" data-target="#carousel-basic" class=""></li>
+						<li data-slide-to="3" data-target="#carousel-basic" class=""></li>
+						<li data-slide-to="4" data-target="#carousel-basic" class=""></li>
+						<li data-slide-to="5" data-target="#carousel-basic" class=""></li>
+					  </ol>
+					  <div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<img alt="" src="start/img/Capture.PNG">
+							<div class="carousel-caption"></div>
+						</div>
+						<div class="item">
+							<img alt="" src="start/img/code.PNG">
+							<div class="carousel-caption"></div>
+						</div>
+						<div class="item">
+							<img alt="" src="start/img/usine.PNG">
+							<div class="carousel-caption"></div>
+						</div>
+						<div class="item">
+							<img alt="" src="start/img/sombre.PNG">
+							<div class="carousel-caption"></div>
+						</div>
+						<div class="item">
+							<img alt="" src="start/img/web.PNG">
+							<div class="carousel-caption"></div>
+						</div>
+						<div class="item">
+							<img alt="" src="start/img/exemples.PNG">
+							<div class="carousel-caption"></div>
+						</div>
+					  </div>
+					  <a data-slide="prev" href="#carousel-basic" role="button" class="left carousel-control"></a>
+					  <a data-slide="next" href="#carousel-basic" role="button" class="right carousel-control"></a>
+					</div>
+					<br>
+				</div>
+			</div>
+	    </div> 
+	</div>
+	 <div id="service">
+	 	<div class="container">
+ 			<div class="row">
+ 				<div class="col-md-6">
+ 					<i class="fa fa-globe"></i>
+ 					<h4>Coder en ligne</h4>
+					<p>Vous pouvez tester la version en ligne <br /><a href="blocklino.html">ici</a></p>
+					<p>Si vous préfrez l'utiliser en local, il vous suffit de télécharger la version Zippée et d'ouvrir le fichier <kbd>index.html</kbd> dans votre navigateur.</p>
+					<p>Attention Le plugin Codebender étant de plus  en plus restrictif, certaines fonctionnaités ont disparu.</p>
+					<p>Vous pouvez aussi l'héberger sur un serveur, et ainsi y faire accéder de nombreux postes en pointant vers ce fichier <kbd>index.html</kbd>.</p>
+ 					<p><a href="http://lesormeaux.net/blocklino/www.zip" class="btn btn-theme">Télécharger</a></p>
+ 				</div>
+ 				<div class="col-md-6">
+ 					<i class="fa fa-laptop"></i>
+ 					<h4>Application de bureau</h4>
+ 					<p>BLOCKLINO ne fonctionne pour l'instant qu'avec Windows. Trois versions sont disponibles.</p>
+					<p>Une archive au format <kbd>zip</kbd> à décompresser dans le dossier de son choix.</p>
+					<p>Un <kbd>éxécutable</kbd> cliquer et c'est parti.</p>
+					<p>Un fichier <kbd>setup</kbd> installer en suivant les instructions :</p>
+					<p> - choix du dossier C:\Blocklino par défaut</p>
+					<p> - création des raccourcis</p>
+					<p> - association des fichiers .bloc</p>
+					<p>Blocklino est totalement autonome (pas besoin de l'EDI Arduino et aucun accès à Internet n'est requis).</p>
+ 					<a href="https://github.com/fontainejp/blocklino/releases" class="btn btn-theme">Télécharger</a>
+ 					<br/>
+ 				</div>
+	 		</div>
+	 	</div>
+	 </div>
+	 <div id="footerwrap">
+	 	<div class="container">
+		 	<div class="row">
+		 		<div class="col-lg-4">
+		 			<h4>à propos</h4>
+		 			<div class="hline-w"></div>
+		 			<p>2018 réalisé avec Bootstrap par JP.<br />Mentions légales</p>
+		 		</div>
+		 	</div>
+	 	</div>
+	 </div>
+</body>
+</html>

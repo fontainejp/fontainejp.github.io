@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>BLOCKLY-FACTORY</title>
+		<link rel="icon" type="image/png" href="media/industry.png">
+		<script src="js/factory/factory_generator.js"></script>
+		<script src="js/blockly.min.js"></script>
+		<script src="js/prettify.min.js"></script>
+		<script src="js/factory/factory_block.js"></script>
+		<link rel="stylesheet" href="css/bootstrap.min.3.3.6.css">
+		<link rel="stylesheet" href="css/factory.css">
+		<link rel="stylesheet" href="css/prettify.min.css">
+	</head>
+	<body>
+		<div id="divfenetre">
+			<div id="blockly_l" >
+				<div id="blockly" ></div>
+			</div>
+			<div id="blockly_r">
+				<div style="height:3%">
+					 Prévisualisation :
+					<select id="direction" style="display: none;">
+						<option value="ltr">LTR</option>
+						<option value="rtl">RTL</option>
+					</select>
+				</div>
+				<div style="height:30%">
+					<div id="preview" style="position:absolute"></div>
+				</div>
+				<div style="height:3%"> Aspect visuel :</div>
+				<div style="height:30%">
+					<pre id="languagePre" style="border:#ddd 1px solid; overflow:auto"></pre>
+				</div>
+				<div style="height:4%">
+					<select id="language_generator">
+						<option value="Arduino">Codes générés : Arduino</option>
+						<option value="Python">Codes générés : Python</option>
+					</select>
+				</div>
+				<div style="height:30%">
+					<pre id="generatorPre" style="border:#ddd 1px solid; overflow:auto"></pre>
+				</div>
+			</div>
+		</div>
+		<xml id="toolbox_factory" style="display:none">
+		<category name="Connexion" colour="#696969">
+			<block type="input_dummy"></block>
+			<block type="input_value"></block>
+			<block type="input_statement"></block>
+		</category>
+		<category name="Champ" colour="#00cc00">
+			<block type="field_static"></block>
+			<block type="field_input"></block>
+			<block type="field_math"></block>
+			<block type="field_image"></block>
+			<block type="field_dropdown"></block>
+			<block type="field_variable"></block>
+			<block type="field_checkbox"></block>
+			<block type="field_angle"></block>
+			<block type="field_colour"></block>
+		</category>
+		<category name="Type" colour="#ff0000">
+			<block type="type_boolean"></block>
+			<block type="type_number"></block>
+			<block type="type_string"></block>
+			<block type="type_other"></block>
+		</category>
+		<category name="Couleur" id="colourCategory" colour="#FD6C9E">
+			<block type="colour_hue"><mutation colour="360"></mutation><field name="HUE">0</field></block>
+			<block type="colour_hue"><mutation colour="60"></mutation><field name="HUE">60</field></block>
+			<block type="colour_hue"><mutation colour="120"></mutation><field name="HUE">120</field></block>
+			<block type="colour_hue"><mutation colour="180"></mutation><field name="HUE">180</field></block>
+			<block type="colour_hue"><mutation colour="240"></mutation><field name="HUE">240</field></block>
+			<block type="colour_hue"><mutation colour="300"></mutation><field name="HUE">300</field></block>
+		</category>
+	</xml>
+</body>
+</html>

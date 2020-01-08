@@ -1,0 +1,44 @@
+@CHARSET "UTF-8";
+#divfenetre {
+	background-color: white;
+    position: absolute;
+	height:100%;
+    width: 100%
+}
+#blockly_l{
+	background-color: white;
+	float:left;
+	height:100%;
+	width:55%
+}
+#blockly_r{
+	float:right;
+	height:100%;
+	width:45%
+}
+#generatorPre {
+	font-size: 14px;
+    position: absolute;
+	border: 1px solid gray;
+}
+.btn-minmaxred { 
+  color: #fff; 
+  width: 40px;
+  height: 40px;
+  background-color: #d9534f; 
+  border-color: #d9534f; 
+  line-height: 0px;
+  padding:0;
+}
+.btn-quitred { 
+  color: #fff; 
+  width: 40px;
+  height: 40px;
+  background-color: #d9534f; 
+  border-color: #d9534f; 
+  line-height: 0px;
+  padding:0;
+}
+.blocklyToolboxDiv {
+	opacity: 0.8 
+}

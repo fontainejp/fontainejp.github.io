@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Fontaine JP">
+    <title>BLOCKLINO</title>
+    <script src="start/js/jquery.min.2.1.3.js"></script>
+    <script src="start/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="start/img/icon.png">
+    <link rel="stylesheet" href="start/css/bootstrap.css">
+    <link rel="stylesheet" href="start/css/style.css">
+    <link rel="stylesheet" href="start/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">BLOCKLINO</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-right">
+          <ul class="nav navbar-nav">
+			<li><a href="start.html">ACCUEIL</a></li>
+			<li class="active"><a href="bloc.html">COMMENCER</a></li>
+            <li><a href="about.html">OUTILS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	 <div id="service">
+	 	<div class="container">
+ 			<div class="row">
+			<div class="col-md-2">
+			<li><a class="functions" href="#controle">Contrôle</a></li>
+			<li><a class="functions" href="#mathematiques">Mathématiques</a></li>
+			<li><a class="functions" href="#texte">Texte</a></li>
+			<li><a class="functions" href="#tableau">Tableau</a></li>
+			<li><a class="functions" href="#variable">Variable</a></li>
+			<li><a class="functions" href="#fonction">Fonction</a></li>
+			<li><a class="functions" href="#structure">Structure</a></li>
+			<li><a class="functions" href="#entreesortie">Entrées/Sorties</a></li>
+			<li><a class="functions" href="#capteur">Capteur</a></li>
+			<li><a class="functions" href="#stockage">Stockage</a></li>
+			<li><a class="functions" href="#temps">Temps</a></li>
+			<li><a class="functions" href="#actionneur">Actionneur</a></li>
+			<li><a class="functions" href="#communication">Communication</a></li>
+			</div>
+ 				<div class="col-md-5">
+ 					<div id="controle">
+						<h2>Contrôle</h2>
+						<p>Ces blocs servent à contrôler l'Arduino</p>
+						<div class="category">
+							<p><a href="led_bouton_si_sinon.html"><img src="start\blocs\img\si_sinon.png" /></a></p>
+							<p><img src="start\blocs\img\suivant_que.png" /></p>
+							<p><img src="start\blocs\img\repeter.png" /></p>
+							<p><img src="start\blocs\img\break.png" /></p>
+							<p><a href="led_bouton_0_1.html"><img src="start\blocs\img\0_1.png" /></a></p>
+							<p><img src="start\blocs\img\et.png" /></p>
+							<p><img src="start\blocs\img\for.png" /></p>
+							<p><img src="start\blocs\img\pas.png" /></p>
+							<p><img src="start\blocs\img\nulle.png" /></p>
+						</div> 
+						</div>
+					
+						<div id="mathematiques">
+						<h2>Mathématiques</h2>
+						<p>Ces blocs servent à faire des calculs avec l'Arduino ou d'inserer des nombres dans le programme.</p>
+						<div class="category">
+							<p><img src="start\blocs\img\angle.png" /></p>
+							<p><img src="start\blocs\img\egal.png" /></p>
+							<p><img src="start\blocs\img\plus.png" /></p>
+							<p><img src="start\blocs\img\compare.png" /></p>
+							<p><img src="start\blocs\img\pair.png" /></p>
+							<p><img src="start\blocs\img\random.png" /></p>
+						</div>
+						</div>
+						
+						<div id="texte">		
+						<h2>Texte</h2>
+						<p>Ces blocs servent à insérer du texte dans le programme.</p>
+						<div class="category">
+							<p><img src="start\blocs\img\texte1.png" /> </p>
+							<p><img src="start\blocs\img\texte2.png" /></p>
+							<p><img src="start\blocs\img\texte_concat.png" /></p>
+							<p><img src="start\blocs\img\texte_longueur.png" /> </p>
+							<p><img src="start\blocs\img\texte_vide.png" /></p>
+						</div>
+						</div>								  
+						
+						<div id="tableau">					  
+						<h2>Tableau</h2>
+						<p>Ces blocs servent à faire un tableau (non visuel) dans le programme.</p>
+						<div class="category"> 
+							<p><img src="start\blocs\img\tab_affecter.png" /></p>
+							<p><img src="start\blocs\img\tab_liste.png" /></p>
+							<p><img src="start\blocs\img\tab_definir.png" /></p>
+							<p><img src="start\blocs\img\tab_element.png" /></p>
+						</div>
+						</div>
+					
+						<div id="variable">						  
+						<h2>Variable</h2>
+						<p>Une variable est une valeur nommée qui peut être modifiée.</p>
+						<div class="category">
+							<p><img src="start\blocs\img\var_definir.png" /></p>
+							<p><img src="start\blocs\img\var_affecter.png" /></p>
+							<p><img src="start\blocs\img\var_incrementer.png" /></p>
+							<p><img src="start\blocs\img\var_constante.png" /></p>
+							<p><img src="start\blocs\img\var_define.png" /></p>
+							<p><img src="start\blocs\img\variable.png" /></p> 
+						</div>
+						</div>
+					
+						<div id="fonction">
+						<h2>Fonction</h2>
+						<p>Ces blocs servent à créer une procédure qui pourra être répétée.</p>
+						<div class="category">
+							<p><img src="start\blocs\img\fonction_sans_retour.png" /></p>
+							<p><img src="start\blocs\img\fonction_avec_retour.png" /></p>
+						</div>
+						</div>	
+					
+						<div class="structure">
+						<h2>Structure</h2>
+						<p>Ces blocs servent à démarrer ou arrêter le programme.</p>
+						<div class="category">
+							<p><a href="rs040_moteur_debut.html"><img src="start\blocs\img\debut.png" /></a></p>
+							<p><img src="start\blocs\img\boucle.png" /></p>
+							<p><img src="start\blocs\img\def.png" /></p>
+							<p> <img src="start\blocs\img\setup_loop.png" /></p>
+							<p><a href="rs040_moteur_fin.html"><img src="start\blocs\img\fin.png" /></a></p>
+						</div>
+						</div>                          
+					
+						<div id="entreesortie">
+						<h2>Entrées/Sorties</h2>
+						<p>Ces blocs servent à démarrer ou arrêter le programme.</p>
+						<div class="category">
+							<p><img src="start\blocs\img\digital_read.png" /></p>
+							<p><img src="start\blocs\img\analog_read.png" /></p>
+							<p><img src="start\blocs\img\interrupt.png" /></p>
+							<p><img src="start\blocs\img\detach_interrupt.png" /></p>
+							<p><a href="led_bouton_broche_num.html"><img src="start\blocs\img\digital_write.png" /></a></p>
+							<p><img src="start\blocs\img\analog_write.png" /></p>
+						</div>
+						</div>
+						<div id="capteur">
+									<h1>Capteur</h1>
+									<p>Ces blocs servent à donner une instruction à l'Arduino ce qu'il va se passer lorsqu'il va détecter quelque chose .</p>
+									<div class="category">
+										<h2>&emsp;Binaire</h2>
+										<p><a href="led_bouton_bouton.html"><img src="start\blocs\img\bouton_presse.png" /></a></p>
+										<p><img src="start\blocs\img\appui_digital.png" /></p>
+										<p><img src="start\blocs\img\obstacle.png" /></p>
+										<p><img src="start\blocs\img\ligne_noire_detectee.png" /></p>
+										<p><img src="start\blocs\img\mouvement.png" /></p>
+										</p><img src="start\blocs\img\flamme.png" /></p>
+									</div>
+								</div>
+									<h2>&emsp;Autre</h2><div id="structure">
+									<p><img src="start\blocs\img\lm35.png" /></p>
+									<p><img src="start\blocs\img\dht11.png" /></p>
+									<p><img src="start\blocs\img\humidite_sol.png" /></p>
+									<p><img src="start\blocs\img\luminosite.png" /></p>
+									<p><img src="start\blocs\img\ultrason_init.png" /></p>
+									<p><img src="start\blocs\img\ultrason_distance.png" /></p>
+									<p><img src="start\blocs\img\impulsion.png" /></p>
+									<p><img src="start\blocs\img\potentiometre.png" /></p>
+								</div>
+									<div id="stockage">
+										<h2>Stockage</h2>
+										<p>Ces blocs servent à stcker des données.</p>
+										<div class="category">
+											<p><img src="start\blocs\img\stockee.png" /></p>
+											<p><img src="start\blocs\img\stocker.png" /></p>	
+										</div>
+									</div>
+ 				</div>
+ 				<div class="col-md-5">
+ 					<div id="temps">
+								<h2>Temps</h2>
+								<p>Ces blocs servent à délimiter le programme dans le temps.</p>
+								<div class="category">
+									<p> <img src="start\blocs\img\millis.png" /></p>
+									<p><img src="start\blocs\img\pulse_in.png" /></p>
+									<p><a href="led_bouton_attendre.html"><img src="start\blocs\img\attendre.png" /></a></p>
+									<p><img src="start\blocs\img\tempo.png" /></p>
+								</div>
+								</div>
+							
+								<div id="actionneur">
+								<h1>Actionneur</h1>
+								<p>Cette catégorie regroupe tout les actionneur.</p>
+							
+								<h2>&emsp;DEL</h2>
+								<p>&emsp;Ces blocs permettent d'allumer ou d'éteidre les DELs et le bargraphe.</p>
+								<div class="category">
+								
+									<p><img src="start\blocs\img\del_carte.png" /></p>
+									<p><img src="start\blocs\img\blink.png" /></p>
+									<p><img src="start\blocs\img\del.png" /></p>
+									<p><img src="start\blocs\img\bargraphe_init.png" /></p>
+									<p><img src="start\blocs\img\bargraphe_allume.png" /></p>
+								</div>
+															  
+								<h2>&emsp;Matrice</h2>
+								<p>&emsp;Ces blocs permettent d'allumer ou d'éteindre les DELs présentent sur la matrice.</p>
+								<div class="category">
+									<p><img src="start\blocs\img\matrice_init.png" /></p>
+									<p><img src="start\blocs\img\matrice_def.png" /></p>
+									<p><img src="start\blocs\img\matrice_afficher.png" /></p>
+									<p><img src="start\blocs\img\matrice_efface.png" /></p>
+									<p><img src="start\blocs\img\matrice_del.png" /></p>
+									<p><img src="start\blocs\img\matrice_binaire.png" /></p>
+								</div>
+								
+								<h2>&emsp;Écran LCD</h2>
+								<p>&emsp;Ces blocs permettent d'afficher ce que l'on veut sur le LCD.</p>
+								<div class="category">                            
+									<p><img src="start\blocs\img\lcd_i2c_init.png" /></p>
+									<p><img src="start\blocs\img\lcd_car.png" /></p>
+									<p><img src="start\blocs\img\lcd_aff_car.png" /></p>
+									<p><img src="start\blocs\img\aff_lcd.png" /></p>
+									<p><img src="start\blocs\img\lcd_l_c.png" /></p>
+									<p><img src="start\blocs\img\lcd_effacer.png" /></p>
+									<p><img src="start\blocs\img\lcd_init.png" /></p>
+								</div>
+							
+								<h2>&emsp;Moteur</h2>
+								<p>&emsp;Ces blocs permettent d'actionner le moteur.</p>
+								<div class="category">
+									<p><a href="rs040_moteur_moteur_go.html"><img src="start\blocs\img\dagu_avancer.png" /></a><p>
+									<p><a href="rs040_moteur_stop.html"><img src="start\blocs\img\dagu_arreter.png" /></a></p>
+									<p><img src="start\blocs\img\moteur_pap.png" /></p>
+									<p><img src="start\blocs\img\moteur_pap_avancer.png" /></p>
+									<p><img src="start\blocs\img\shield_av.png" /></p>
+									<p><img src="start\blocs\img\shield_stop.png" /></p>
+									<p><img src="start\blocs\img\dagu_rs027.png" /></p>
+								</div>
+																  
+								<h2>&emsp;Servo-moteur</h2>
+								<p>&emsp;Ces blocs permettent d'actionner le servo-moteur.</p>
+								<div class="category">
+									<p><img src="start\blocs\img\servo.png" /></p>
+									<p><img src="start\blocs\img\servo_continue.png" /></p>
+								</div>
+											
+								 <h2>&emsp;Audio</h2>
+								<p>&emsp;Ces blocs permettent d'émettre un son (avec un lecteur mp3 ou un buzzer-piezo).</p>
+								<div class="category">
+									<p><img src="start\blocs\img\mp3_init.png" /></p>
+									<p><img src="start\blocs\img\mp3_volume.png" /></p>
+									<p><img src="start\blocs\img\mp3_suivant.png" /></p>
+									<p><img src="start\blocs\img\mp3_pre.png" /></p>
+									<p><img src="start\blocs\img\mp3_pause.png" /></p>
+									<p><img src="start\blocs\img\mp3_play.png" /></p>
+									<p><img src="start\blocs\img\beep.png" /></p>
+									<p><img src="start\blocs\img\tone.png" /></p>
+								</div>
+								</div>
+							   <div id="communication">
+									<h2>Communication</h2>
+									<p>Ces blocs permettent de faire communiquer l'Arduino et certain module (comme le Wifi et le Bluetooth).</p>
+									<div class="category">
+									
+									<h2>&emsp;Série</h2>
+									<p><img src="start\blocs\img\serial_init.png" /></p>
+									<p><img src="start\blocs\img\serial_print.png" /></p>
+									<p><img src="start\blocs\img\serial_available.png" /></p>
+									<p><img src="start\blocs\img\serial_read.png" /></p>
+									<p><img src="start\blocs\img\saut_de_ligne.png" /></p>
+									</div>
+										
+									<div class="category">
+										<h2>&emsp;Logicielle</h2>
+										<p><img src="start\blocs\img\soft_init.png" /></p>
+										<p><img src="start\blocs\img\soft_print.png" /></p>
+										<p><img src="start\blocs\img\soft_available.png" /></p>
+										<p><img src="start\blocs\img\soft_read.png" /></p>
+										<p><img src="start\blocs\img\saut_de_ligne.png" /></p>
+									</div>
+							
+								<div class="category">
+									<h2>&emsp;Bluetooth</h2>
+									<p><img src="start\blocs\img\bluetooth_envoyer.png" /></p>
+									<p><img src="start\blocs\img\bluetooth_recevoir.png" /></p>
+								</div>
+								</div>
+ 				</div>
+	 		</div>
+	 	</div>
+	 </div>
+	 <div id="footerwrap">
+	 	<div class="container">
+		 	<div class="row">
+		 		<div class="col-lg-4">
+		 			<h4>à propos</h4>
+		 			<div class="hline-w"></div>
+		 			<p>2018 réalisé avec Bootstrap par JP et Maximilien.<br />Mentions légales</p>
+		 		</div>
+		 		<div class="col-lg-4">
+				
+		 		</div>
+		 		<div class="col-lg-4">
+		 			
+		 		</div>
+		 	</div>
+	 	</div>
+	 </div>
+    <script src="start/js/jquery.min.2.1.3.js"></script>
+    <script src="start/js/bootstrap.min.js"></script>
+	<script src="start/js/retina-1.1.0.js"></script>
+	<script src="start/js/jquery.hoverdir.js"></script>
+	<script src="start/js/jquery.hoverex.min.js"></script>
+	<script src="start/js/jquery.prettyPhoto.js"></script>
+  	<script src="start/js/jquery.isotope.min.js"></script>
+  	<script src="start/js/custom.js"></script>
+	<script>
+		(function($) {
+			"use strict";
+			var $container = $('.portfolio'),
+				$items = $container.find('.portfolio-item'),
+				portfolioLayout = 'fitRows';
+				if( $container.hasClass('portfolio-centered') ) {
+					portfolioLayout = 'masonry';
+				}
+				$container.isotope({
+					filter: '*',
+					animationEngine: 'best-available',
+					layoutMode: portfolioLayout,
+					animationOptions: {
+					duration: 750,
+					easing: 'linear',
+					queue: false
+				},
+				masonry: {
+				}
+				}, refreshWaypoints());
+				function refreshWaypoints() {
+					setTimeout(function() {
+					}, 1000);   
+				}
+				$('nav.portfolio-filter ul a').on('click', function() {
+						var selector = $(this).attr('data-filter');
+						$container.isotope({ filter: selector }, refreshWaypoints());
+						$('nav.portfolio-filter ul a').removeClass('active');
+						$(this).addClass('active');
+						return false;
+				});
+				function getColumnNumber() { 
+					var winWidth = $(window).width(), 
+					columnNumber = 1;
+					if (winWidth > 1200) {
+						columnNumber = 5;
+					} else if (winWidth > 950) {
+						columnNumber = 4;
+					} else if (winWidth > 600) {
+						columnNumber = 3;
+					} else if (winWidth > 400) {
+						columnNumber = 2;
+					} else if (winWidth > 250) {
+						columnNumber = 1;
+					}
+						return columnNumber;
+					}
+					function setColumns() {
+						var winWidth = $(window).width(), 
+						columnNumber = getColumnNumber(), 
+						itemWidth = Math.floor(winWidth / columnNumber);
+						
+						$container.find('.portfolio-item').each(function() { 
+							$(this).css( { 
+							width : itemWidth + 'px' 
+						});
+					});
+				}
+				function setPortfolio() { 
+					setColumns();
+					$container.isotope('reLayout');
+				}
+				$container.imagesLoaded(function () { 
+					setPortfolio();
+				});
+				$(window).on('resize', function () { 
+				setPortfolio();          
+			});
+		})(jQuery);
+	</script>
+</body>
+</html>
