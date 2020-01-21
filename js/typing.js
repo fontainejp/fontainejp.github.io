@@ -106,9 +106,6 @@ Blockly.Blocks.inout_analog_write.getBlockType = function() {
 	return Blockly.Types.NUMBER;
 };
 // DEL 
-Blockly.Blocks.inout_buildin_led.getBlockType = function() {
-	return Blockly.Types.BOOLEAN;
-};
 Blockly.Blocks.blink.getBlockType = function() {
 	return Blockly.Types.BOOLEAN;
 };
