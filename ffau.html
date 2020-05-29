@@ -52,13 +52,11 @@
 					<button id="btn_save" class="btn btn-default"><i class="fa fa-cloud-download fa-1_5x btn_color"></i></button>
 				</div>
 				<div class="btn-group">
-					<button id="btn_config" class="btn btn-default" data-toggle="modal" data-target="#configModal">
-						<i class="fa fa-cog fa-1_5x btn_color"></i>
-					</button>
 					<button id="btn_tint" class="btn btn-default" data-toggle="modal" data-target="#colorModal">
 						<i class="fa fa-tint fa-1_5x btn_color"></i>
 					</button>
 					<button id="btn_factory" class="btn btn-default"><i class="fa fa-industry fa-1_5x btn_color"></i></button>
+					<button id="btn_games" class="btn btn-default"><i class="fa fa-gamepad fa-1_5x btn_color"></i></button>
 				</div>
 				<div class="btn-group">
 					<button id="btn_undo" class="btn btn-default"><i class="fa fa-undo fa-1_5x btn_color"></i></button>
@@ -333,51 +331,8 @@
 			</div>
 		  </div>
 		</div>
-		<div class="modal fade" id="configModal" tabindex="-1" role="dialog" aria-labelledby="configModalLabel" aria-hidden="true">
-		  <div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&#215;</span></button>
-					<span class="fa fa-cog fa-2x" class="modal-title"> Connexion au serveur ftp</span>
-				</div>
-				<div class="modal-body">
-					<form class="form-horizontal">
-					  <div class="form-group">
-						<label for="inputHost" class="col-sm-3 control-label">Nom hôte</label>
-						<div class="col-sm-6">
-						  <input type="text" class="form-control" id="inputHost" placeholder="lesormeaux.dx.am">
-						</div>
-					  </div>
-					  <div class="form-group">
-						<label for="inputPort" class="col-sm-3 control-label">Port</label>
-						<div class="col-sm-6">
-						  <input type="text" class="form-control" id="inputPort" placeholder="21">
-						</div>
-					  </div>
-					  <div class="form-group">
-						<label for="inputId" class="col-sm-3 control-label">Identifiant</label>
-						<div class="col-sm-6">
-						  <input type="text" class="form-control" id="inputId" placeholder="3268550_2025000948">
-						</div>
-					  </div>
-					  <div class="form-group">
-						<label for="inputPwd" class="col-sm-3 control-label">Mot de passe</label>
-						<div class="col-sm-6">
-						  <input type="password" class="form-control" id="inputPwd" placeholder="">
-						</div>
-					  </div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button id="btn_ftp" class="btn btn-danger"><i class="fa fa-arrow-right fa-1_5x"></i> Transférer</button>
-					<button id="btn_valid_config_ffau" type="button" class="btn btn-primary">OK</button>
-				</div>
-			</div>
-		  </div>
-		</div>
 		<xml id="toolbox" style="display:none">
 			<category colour="#4a235a" name="Structure">
-				<block type="html"></block>
 				<block type="head"></block>
 				<block type="title"></block>
 				<block type="bootstrap"></block>
@@ -386,19 +341,18 @@
 				<block type="divider"></block>
 				<block type="linebreak"></block>
 				<block type="hline"></block>
+				<block type="balise"></block>
+				<block type="balise_orph"></block>
 			</category>
 			<category colour="65" name="Texte">
 				<block type="emptytext"></block>
+				<block type="emptytext">
+					<field name='content'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</field>
+				</block>
 				<category colour="65" name="en-bloc">
 					<block type="paragraph"></block>
-					<block type="paragraph">
-						<value name='content'>
-							<block type="emptytext">
-								<field name='content'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</field>
-							</block>
-						</value>
-					</block>
 					<block type="header"></block>
+					<block type="divider"></block>
 				</category>
 				<category colour="65" name="en-ligne">
 					<block type="span"></block>
@@ -427,18 +381,20 @@
 				<block type="label"></block>
 			</category>
 			<category colour="330" name="Media">
-				<block type="image"></block>
 				<block type="img"></block>
+				<block type="image"></block>
 				<block type="audio"></block>
+				<block type="audios"></block>
 				<block type="video"></block>
+				<block type="videos"></block>
 			</category>
 			<category colour="120" name="Modification">
 				<block type="args"></block>
+				<block type="stylearg"></block>
 				<block type="class"></block>
 				<block type="id"></block>
 				<block type="emptyarg"></block>
 				<block type="style"></block>
-				<block type="stylearg"></block>
 				<block type="cssitem"></block>
 				<block type="othercss"></block>
 			</category>
@@ -446,6 +402,7 @@
 			<category colour="290" name="Texte">
 				<block type="fontsize"></block>
 				<block type="fontweight"></block>
+				<block type="textdecoration"></block>
 				<block type="texttransform"></block>
 				<block type="textalign"></block>
 			</category>
