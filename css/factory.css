@@ -17,9 +17,30 @@
 	width:45%
 }
 #generatorPre {
-	font-size: 14px;
+	font-size: 15px;
     position: absolute;
-	border: 1px solid gray;
+	border: 1px solid #d9534f;
+}
+#btn_group {
+	background: #fff;
+	position: absolute;
+	left: 5px;
+	top: 5px;
+}
+pre {
+	font-size: 15px;
+	border: 1px solid #d9534f;
+	overflow:auto
+}
+.my_select{
+	height: 22px;  
+	border-top-right-radius: 3px; 
+	border-bottom-right-radius: 3px;
+	border-left-width: 0px;
+	color: gray
+}
+.btn_color {
+	color: gray;
 }
 .btn-minmaxred { 
   color: #fff; 
@@ -41,4 +62,20 @@
 }
 .blocklyToolboxDiv {
 	opacity: 0.8 
+}
+.blocklyTreeRow {
+	height: 30px !important;
+	line-height: 30px !important
+}
+.blocklyScrollbarHandle {
+	fill: #d9534f;
+}
+.blocklyScrollbarBackground:hover+.blocklyScrollbarHandle, .blocklyScrollbarHandle:hover {
+	fill: #d9534f;
+}
+.blocklyFlyout .blocklyScrollbarHandle {
+	fill: #d9534f;
+}
+.blocklyFlyout .blocklyScrollbarBackground:hover+.blocklyScrollbarHandle, .blocklyFlyout .blocklyScrollbarHandle:hover {
+	fill: #d9534f;
 }

@@ -4,8 +4,32 @@ goog.provide('Blockly.Arduino');
 goog.require('Blockly.Generator');
 
 var profile = {
+	micro_bit: {
+	    description: "micro:bit",
+	    BUILTIN_LED: 2,
+		picture : "media/microbit.jpg",
+		dropdownPWM: [["P0", "pin0"],["P1", "pin1"],["P2", "pin2"],["P3", "pin3"],["P4", "pin4"],["P5", "pin5"],["P6", "pin6"],["P7", "pin7"],["P8", "pin8"],["P9", "pin9"],["P10", "pin10"],["P11", "pin11"],["P12", "pin12"],["P13", "pin13"],["P14", "pin14"],["P15", "pin15"],["P16", "pin16"],["P19", "pin19"],["P20", "pin20"]],
+		dropdownAnalog: [["P0", "pin0"],["P1", "pin1"],["P2", "pin2"],["P3", "pin3"],["P4", "pin4"],["P10", "pin10"]],
+		interrupt: [["2", "2"], ["3", "3"]],
+		serial: [['300', '300'], ['600', '600'], ['1200', '1200'],
+                ['2400', '2400'], ['4800', '4800'], ['9600', '9600'],
+                ['14400', '14400'], ['19200', '19200'], ['28800', '28800'],
+                ['31250', '31250'], ['38400', '38400'], ['57600', '57600'],
+                ['115200', '115200']],
+		serialPin: [["Rx/Tx", "0"]],
+		build: "",
+		cpu: "cortexM0",
+		speed: "115200",
+		prog: "arduino",
+		usb: "micro USB",
+		voltage: "3,3V",
+		inout: "20",
+		in_anal: "",
+		out_anal: "",
+		eeprom: ""
+	},
 	microbit: {
-	    description: "micro:bit ",
+	    description: "micro:bit",
 	    BUILTIN_LED: 2,
 		picture : "media/microbit.jpg",
 		dropdownPWM: [["P0", "pin0"],["P1", "pin1"],["P2", "pin2"],["P3", "pin3"],["P4", "pin4"],["P5", "pin5"],["P6", "pin6"],["P7", "pin7"],["P8", "pin8"],["P9", "pin9"],["P10", "pin10"],["P11", "pin11"],["P12", "pin12"],["P13", "pin13"],["P14", "pin14"],["P15", "pin15"],["P16", "pin16"],["P19", "pin19"],["P20", "pin20"]],
@@ -23,10 +47,13 @@ var profile = {
 		prog: "python",
 		usb: "micro USB",
 		voltage: "3,3V",
-		inout: "20"
+		inout: "20",
+		in_anal: "6",
+		out_anal: "18",
+		eeprom: ""
 	},
 	esp32: {
-	    description: "ESP 32 ",
+	    description: "ESP32",
 	    BUILTIN_LED: 2,
 		picture : "media/esp32.jpg",
 		dropdownPWM: [["0", "0"], ["2", "2"], ["4", "4"], ["5", "5"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"]],
@@ -44,10 +71,13 @@ var profile = {
 		prog: "python",
 		usb: "micro USB",
 		voltage: "3,3V",
-		inout: "34"
+		inout: "34",
+		in_anal: "1",
+		out_anal: "8",
+		eeprom: ""
 	},
 	esp8266: {
-	    description: "ESP 8266 ",
+	    description: "ESP8266",
 	    BUILTIN_LED: 2,
 		picture : "media/esp8266.jpg",
 		dropdownPWM: [["0", "0"], ["2", "2"], ["4", "4"], ["5", "5"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"]],
@@ -65,10 +95,13 @@ var profile = {
 		prog: "python",
 		usb: "micro USB",
 		voltage: "3,3V",
-		inout: "11"
+		inout: "11",
+		in_anal: "1",
+		out_anal: "8",
+		eeprom: "512 octets"
 	},
 	pyboard: {
-	    description: "pyBoard ",
+	    description: "pyBoard",
 	    BUILTIN_LED: 2,
 		picture : "media/pyboard.jpg",
 		dropdownPWM: [["0", "0"], ["2", "2"], ["4", "4"], ["5", "5"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"]],
@@ -86,14 +119,18 @@ var profile = {
 		prog: "python",
 		usb: "micro USB",
 		voltage: "3,3V",
-		inout: "29"
+		inout: "29",
+		in_anal: "1",
+		out_anal: "8",
+		eeprom: ""
 	},
 	pro8: {
-	    description: "Arduino Pro / Pro Mini 3.3V ",
+	    description: "Arduino Pro Mini 3.3V atMega328",
 	    BUILTIN_LED: 13,
 		picture : "media/pro.jpg",
 		dropdownPWM: [["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"]],
 		dropdownAnalog: [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"]],
+		dropdownDigitalPort: [["D", "D"]],
 		interrupt: [["2", "2"], ["3", "3"]],
 		serial: [['300', '300'], ['600', '600'], ['1200', '1200'],
                 ['2400', '2400'], ['4800', '4800'], ['9600', '9600'],
@@ -105,16 +142,20 @@ var profile = {
 		cpu: "atmega328p",
 		speed: "57600",
 		prog: "arduino",
-		usb: "",
+		usb: "\u00D8",
 		voltage: "3,3V",
-		inout: "20"
+		inout: "20",
+		in_anal: "6",
+		out_anal: "6",
+		eeprom: "1024 octets"
 	},
 	pro16: {
-	    description: "Dagu RS040 ",
+	    description: "Dagu RS040 / Pro ou Pro Mini",
 	    BUILTIN_LED: 13,
 		picture : "media/rs040.jpg",
 		dropdownPWM: [["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"]],
 		dropdownAnalog: [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"]],
+		dropdownDigitalPort: [["D", "D"]],
 		interrupt: [["2", "2"], ["3", "3"]],
 		serial: [['300', '300'], ['600', '600'], ['1200', '1200'],
                 ['2400', '2400'], ['4800', '4800'], ['9600', '9600'],
@@ -129,12 +170,12 @@ var profile = {
 		usb: "mini USB",
 		voltage: "5V",
 		inout: "20",
-		usb: "mini USB",
-		voltage: "5V",
-		inout: "20"
+		in_anal: "6",
+		out_anal: "6",
+		eeprom: "1024 octets"
 	},
 	atmegang: {
-	    description: "Dagu RS027 ",
+	    description: "Dagu rs027",
 	    BUILTIN_LED: 13,
 		picture : "media/rs027.png",
 		dropdownPWM: [["9", "9"], ["10", "10"], ["11", "11"]],
@@ -152,14 +193,18 @@ var profile = {
 		prog: "arduino",
 		usb: "mini USB",
 		voltage: "5V",
-		inout: "20"
+		inout: "20",
+		in_anal: "3",
+		out_anal: "6",
+		eeprom: "512 octets"
 	},
 	nano: {
-	    description: "Arduino Nano ",
+	    description: "Arduino Nano",
 	    BUILTIN_LED: 13,
 		picture : "media/nano.jpg",
 		dropdownPWM: [["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"]],
 		dropdownAnalog: [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"]],
+		dropdownDigitalPort: [["D", "D"]],
 		interrupt: [["2", "2"], ["3", "3"]],
 		serial: [['300', '300'], ['600', '600'], ['1200', '1200'],
                 ['2400', '2400'], ['4800', '4800'], ['9600', '9600'],
@@ -173,14 +218,18 @@ var profile = {
 		prog: "arduino",
 		usb: "mini USB",
 		voltage: "5V",
-		inout: "20"
+		inout: "20",
+		in_anal: "8",
+		out_anal: "6",
+		eeprom: "1024 octets"
 	},
 	mini: {
-	    description: "Arduino Mini ",
+	    description: "Arduino Mini",
 	    BUILTIN_LED: 13,
 		picture : "media/mini.jpg",
 		dropdownPWM: [["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"]],
 		dropdownAnalog: [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"]],
+		dropdownDigitalPort: [["D", "D"]],
 		interrupt: [["2", "2"], ["3", "3"]],
 		serial: [['300', '300'], ['600', '600'], ['1200', '1200'],
                 ['2400', '2400'], ['4800', '4800'], ['9600', '9600'],
@@ -192,12 +241,15 @@ var profile = {
 		cpu: "atmega328p",
 		speed: "115200",
 		prog: "arduino",
-		usb: "",
+		usb: "\u00D8",
 		voltage: "5V",
-		inout: "20"
+		inout: "20",
+		in_anal: "6",
+		out_anal: "6",
+		eeprom: "1024 octets"
 	},
 	micro: {
-	    description: "Arduino Micro ",
+	    description: "Arduino Micro",
 	    BUILTIN_LED: 13,
 		picture : "media/micro.jpg",
 		dropdownPWM: [["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"], ["13", "13"]],
@@ -214,10 +266,13 @@ var profile = {
 		prog: "avr109",
 		usb: "micro USB",
 		voltage: "5V",
-		inout: "20"
+		inout: "20",
+		in_anal: "12",
+		out_anal: "7",
+		eeprom: "1024 octets"
 	},
 	yun: {
-	    description: "Arduino Yun ",
+	    description: "Arduino Yun",
 	    BUILTIN_LED: 13,
 		picture : "media/yun.jpg",
 		dropdownPWM: [["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"], ["13", "13"]],
@@ -235,10 +290,13 @@ var profile = {
 		prog: "avr109",
 		usb: "micro USB",
 		voltage: "5V",
-		inout: "20"
+		inout: "20",
+		in_anal: "12",
+		out_anal: "7",
+		eeprom: "1024 octets"
 	},
 	leonardo: {
-	    description: "Arduino Léonardo ",
+	    description: "Arduino Léonardo",
 	    BUILTIN_LED: 13,
 		picture : "media/leonardo.jpg",
 		dropdownPWM: [["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"], ["13", "13"]],
@@ -256,14 +314,18 @@ var profile = {
 		prog: "avr109",
 		usb: "micro USB",
 		voltage: "5V",
-		inout: "20"
+		inout: "20",
+		in_anal: "12",
+		out_anal: "7",
+		eeprom: "1024 octets"
 	},
 	uno: {
-	    description: "Arduino Uno ",
+	    description: "Arduino Uno",
 	    BUILTIN_LED: 13,
 		picture : "media/uno.jpg",
 		dropdownPWM: [["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"]],
 		dropdownAnalog: [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"]],
+		dropdownDigitalPort: [["D", "D"]],
 		interrupt: [["2", "2"], ["3", "3"]],
 		serial: [['300', '300'], ['600', '600'], ['1200', '1200'],
                 ['2400', '2400'], ['4800', '4800'], ['9600', '9600'],
@@ -277,14 +339,18 @@ var profile = {
 		prog: "arduino",
 		usb: "USB B",
 		voltage: "5V",
-		inout: "20"
+		inout: "20",
+		in_anal: "6",
+		out_anal: "6",
+		eeprom: "1024 octets"
 	},
 	mega:{
-		description: "Arduino Méga 2560 ",
+		description: "Arduino Méga 2560 / ADK",
 	    BUILTIN_LED: 13,
 		picture : "media/mega.jpg",
 		dropdownPWM: [["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"], ["44", "44"], ["45", "45"], ["46", "46"]],
 		dropdownAnalog: [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"], ["A8", "A8"], ["A9", "A9"], ["A10", "A10"], ["A11", "A11"], ["A12", "A12"], ["A13", "A13"], ["A14", "A14"], ["A15", "A15"]],
+		dropdownDigitalPort: [["A", "A"], ["C", "C"], ["L", "L"]],
 		interrupt: [["21", "21"], ["20", "20"], ["19", "19"], ["18", "18"], ["6", "6"], ["7", "7"]],
 		serial: [['300', '300'], ['600', '600'], ['1200', '1200'],
                 ['2400', '2400'], ['4800', '4800'], ['9600', '9600'],
@@ -298,6 +364,9 @@ var profile = {
 		prog: "wiring",
 		usb: "USB B",
 		voltage: "5V",
-		inout: "70"
+		inout: "70",
+		in_anal: "16",
+		out_anal: "15",
+		eeprom: "4096 octets"
 	}
 };

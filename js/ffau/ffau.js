@@ -5,52 +5,6 @@ window.addEventListener('load', function load(event) {
 	$('#btn_search').addClass("hidden")
 	ffau.renderBlockly(document.getElementById('blocklyDiv'),document.getElementById('toolbox'))
 	ffau.addEvent()
-	/*var messageDiv = document.getElementById('messageDIV')
-	var quitDiv = '<button type="button" class="close" data-dismiss="modal" aria-label="Close">&#215;</button>'
-	function ftp_ok() {
-		$("#configHTMLModal").modal("hide")
-	}
-	function ftp_put() {
-		messageDiv.style.color = '#009000'
-		messageDiv.innerHTML = 'Téléchargement : OK ' + quitDiv
-	}
-	$('#btn_valid_config_ffau').on('click', function(){
-		localStorage.setItem('host',$('#inputHost').val())
-		localStorage.setItem('portFtp',$('#inputPort').val())
-		localStorage.setItem('id',$('#inputId').val())
-		localStorage.setItem('pwd',$('#inputPwd').val())
-		ftp_connect.innerHTML = 'accès au serveur <i class="fa fa-spinner fa-pulse fa-1_5x fa-fw"></i>'
-		Ftp.auth(localStorage.getItem('id'), localStorage.getItem('pwd'), function (err) {
-			if (err) {
-				ftp_connect.innerHTML = '<i class="fa fa-chain-broken fa-1_5x" style="color: red"></i> déconnecté'
-				return console.log(err)
-			}
-			ftp_connect.innerHTML = '<i class="fa fa-link fa-1_5x" style="color: green"></i> connecté<br>'+Ftp.features
-			setTimeout(ftp_ok, 3000)
-		})	
-	})
-	$('#btn_ftp').on('click', function(){
-		$("#message").modal("show")
-		messageDiv.style.color = '#000000'
-		messageDiv.innerHTML = 'Téléchargement <i class="fa fa-spinner fa-pulse fa-1_5x fa-fw"></i>'
-		var data = '<!DOCTYPE HTML>\n<html lang="fr">\n  <head>\n    <meta charset="utf-8">\n    <title> </title>\n    <link rel="stylesheet" href="css/bootstrap.min.3.3.6.css">\n    <link rel="stylesheet" href="css/fontawesome.css">\n  </head>\n  <body>\n'+document.getElementById('blockly_r').innerHTML+'  </body>\n</html>'
-		fs.writeFile('./compilation/html/page.html', data, function(err){
-			if (err) return console.log(err)
-			Ftp.auth(localStorage.getItem('id'), localStorage.getItem('pwd'), function (err) {
-				if (err) {
-					messageDiv.style.color = '#ff0000'
-					messageDiv.innerHTML = err.toString() + quitDiv
-				}
-				console.log(Ftp.features)
-				messageDiv.style.color = '#000000'
-				messageDiv.innerHTML = 'Connecté<br>Téléchargement <i class="fa fa-spinner fa-pulse fa-1_5x fa-fw"></i>'
-				Ftp.put('./compilation/html/page.html', "page.html", function(err){
-					if (err) return console.log(err)
-					ftp_put()
-				})
-			})
-		})
-	})*/
 	$('#btn_redo').on('click', function(){
 		if (window.localStorage.contentHTML=="on") {
 			ffau.redo()
@@ -87,6 +41,9 @@ window.addEventListener('load', function load(event) {
 	})
 	$('#btn_factory').on('click', function(){
 		window.open("factory.html","_blank", null)
+	})
+	$('#btn_games').on('click', function(){
+		window.open("games/index.html","_blank", null)
 	})
 	$('#btn_open').on('click', function(){
 		$('#loadText').click()

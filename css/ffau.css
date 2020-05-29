@@ -39,7 +39,7 @@ body {
 	height: 100%
 }
 #blockly_r{
-	border-left: gray 1px solid;
+	border: none;
     position: relative;
     float: left;
 	height: 100%;
@@ -66,7 +66,6 @@ body {
     z-index: 9999;
     background: url(../media/ajax-loading.gif) center no-repeat #fff;
 }
-
 .blocklyTreeRow {
 	height: 30px !important;
 	line-height: 30px !important
