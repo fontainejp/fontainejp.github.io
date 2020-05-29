@@ -66,3 +66,20 @@ body {
     z-index: 9999;
     background: url(../media/ajax-loading.gif) center no-repeat #fff;
 }
+
+.blocklyTreeRow {
+	height: 30px !important;
+	line-height: 30px !important
+}
+.blocklyScrollbarHandle {
+	fill: #5cb85c;
+}
+.blocklyScrollbarBackground:hover+.blocklyScrollbarHandle, .blocklyScrollbarHandle:hover {
+	fill: #5cb85c;
+}
+.blocklyFlyout .blocklyScrollbarHandle {
+	fill: #5cb85c;
+}
+.blocklyFlyout .blocklyScrollbarBackground:hover+.blocklyScrollbarHandle, .blocklyFlyout .blocklyScrollbarHandle:hover {
+	fill: #5cb85c;
+}
