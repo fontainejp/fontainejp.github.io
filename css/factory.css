@@ -2,19 +2,27 @@
 #divfenetre {
 	background-color: white;
     position: absolute;
+    top: 0px;
+    bottom: 0px;
 	height:100%;
     width: 100%
 }
 #blockly_l{
 	background-color: white;
 	float:left;
-	height:100%;
 	width:55%
 }
 #blockly_r{
 	float:right;
 	height:100%;
 	width:45%
+}
+#blockly{
+	background: #fff;
+	position: absolute;
+    top: 42px;
+    bottom: 0px;
+	padding: 5px;
 }
 #generatorPre {
 	font-size: 15px;

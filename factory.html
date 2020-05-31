@@ -5,10 +5,15 @@
 		<title>BLOCKLY-FACTORY</title>
 		<link rel="icon" type="image/png" href="media/industry.png">
 		<script src="js/factory/factory_generator.js"></script>
+		<script src="js/jquery.min.2.1.3.js"></script>
 		<script src="js/blockly.min.js"></script>
+		<script src="js/bootstrap.min.3.3.6.js"></script>
 		<script src="js/prettify.min.js"></script>
 		<script src="js/factory/factory_block.js"></script>
 		<script src="lang/context_menu.js"></script>
+		<script src="js/ace/ace.js"></script>
+		<script src="js/ace/ext-language_tools.js"></script>
+		<script src="js/factory/factory.js"></script>
 		<link rel="stylesheet" href="css/bootstrap.min.3.3.6.css">
 		<link rel="stylesheet" href="css/fontawesome.css">
 		<link rel="stylesheet" href="css/factory.css">
@@ -18,6 +23,7 @@
 		<div id="divfenetre">
 			<div id="blockly_l" >
 				<div id="btn_group" class="btn-toolbar">
+					<input type="file" id="load" accept=".bf" style="display:none">
 					<div class="btn-group">
 						<button id="btn_new" class="btn btn-default"><i class="fa fa-file fa-1_5x btn_color"></i></button>
 						<button id="btn_example" class="btn btn-default" data-toggle="modal" data-target="#exampleModal">
@@ -26,23 +32,26 @@
 						<button id="btn_open" class="btn btn-default"><i class="fa fa-folder-open fa-1_5x btn_color"></i></button>
 						<button id="btn_save" class="btn btn-default"><i class="fa fa-cloud-download fa-1_5x btn_color"></i></button>
 					</div>
+				<div class="btn-group">
+					<button id="btn_html" class="btn btn-default"><i class="fa fa-globe fa-1_5x btn_color"></i></button>
+					<button id="btn_games" class="btn btn-default"><i class="fa fa-gamepad fa-1_5x btn_color"></i></button>
+				</div>
 					<div class="btn-group">
 						<button id="btn_undo" class="btn btn-default"><i class="fa fa-undo fa-1_5x btn_color"></i></button>
 						<button id="btn_redo" class="btn btn-default"><i class="fa fa-repeat fa-1_5x btn_color"></i></button>
 						<button id="btn_print" class="btn btn-default"><i class="fa fa-camera fa-1_5x btn_color"></i></button>
 					</div>
 				</div>	
-				<div id="blockly" ></div>
+				<div id="blockly"></div>
 			</div>
 			<div id="blockly_r">
-				<div style="height:3%">
-					 Prévisualisation :
+				<div style="height:3%">	Prévisualisation :
 					<select id="direction" style="display: none;">
 						<option value="ltr">LTR</option>
 						<option value="rtl">RTL</option>
 					</select>
 				</div>
-				<div style="height:30%">
+				<div style="height:25%">
 					<div id="preview" style="position:absolute"></div>
 				</div>
 				<div style="height:3%"> Aspect visuel :</div>
@@ -50,12 +59,18 @@
 					<pre id="languagePre"></pre>
 				</div>
 				<div style="height:4%">
-					<select id="language_generator">
-						<option value="Arduino">Codes générés : C/C++</option>
-						<option value="Python">Codes générés : Python</option>
-					</select>
+					<div class="btn-group">
+						<button id="btn_open_code" class="btn btn-xs btn-default">
+							<i class="fa fa-refresh btn_color"></i>
+						</button>
+						<select class="my_select" id="language_generator">
+							<option value="Arduino">Codes générés : C/C++</option>
+							<option value="Python">Codes générés : Python</option>
+							<!-- <option value="html">Codes générés : HTML/CSS</option> -->
+						</select>
+					</div>
 				</div>
-				<div style="height:30%">
+				<div style="height:35%">
 					<pre id="generatorPre"></pre>
 				</div>
 			</div>
@@ -120,12 +135,23 @@
 		</category>
 		<category name="Couleur" id="colourCategory" colour="#FD6C9E">
 			<block type="colour_hue"><mutation colour="360"></mutation><field name="HUE">0</field></block>
-			<block type="colour_hue"><mutation colour="60"></mutation><field name="HUE">60</field></block>
-			<block type="colour_hue"><mutation colour="120"></mutation><field name="HUE">120</field></block>
-			<block type="colour_hue"><mutation colour="180"></mutation><field name="HUE">180</field></block>
-			<block type="colour_hue"><mutation colour="240"></mutation><field name="HUE">240</field></block>
-			<block type="colour_hue"><mutation colour="300"></mutation><field name="HUE">300</field></block>
+			<block type="colour_choice"></block>
+			<block type="colour_rrggbb"><mutation colour="#4488FF"></mutation><field name="HUE">#4488FF</field></block>
 		</category>
 	</xml>
+	<script>
+		ace.require("ace/ext/language_tools");
+		var editor = ace.edit("generatorPre");
+		editor.setOptions({
+			showGutter: false,
+			enableBasicAutocompletion: true,
+			enableSnippets: true,
+			enableLiveAutocompletion: true
+		});
+		editor.setTheme("ace/theme/sqlserver");
+		editor.session.setTabSize(2);
+		editor.session.setMode("ace/mode/javascript");
+		editor.setShowPrintMargin(false);
+	</script>
 </body>
 </html>

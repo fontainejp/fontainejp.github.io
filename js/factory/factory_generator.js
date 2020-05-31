@@ -74,13 +74,16 @@ function formatJavaScript(code, rootBlock) {
   }
   var colourBlock = rootBlock.getInputTargetBlock('COLOUR');
   if (colourBlock && !colourBlock.disabled) {
-    var hue = parseInt(colourBlock.getFieldValue('HUE'), 10);
-    code.push('    this.setColour(' + hue + ');');
+    var hue = colourBlock.getFieldValue('HUE');
+	if (hue[0]=="#") {
+	code.push("    this.setColour('" + hue + "');");
+	} else {
+	code.push("    this.setColour(" + hue + ");");
+	}
   } else {
 	  code.push('    this.setColour("#00929f");');
   }
-  code.push("    this.setTooltip('ce bloc sert à...');");
-  code.push("    this.setHelpUrl('https://tinyurl.com/ychsbjt7')}");
+  code.push("  }");
   code.push("};");
 }
 function connectionLineJs_(functionName, typeName) {

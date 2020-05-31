@@ -1,8 +1,10 @@
 'use strict';
 
+var dropdown_colour = [["gris foncé", "#727272"],["vert clair", "#00CC00"],["rose", "#FD6C9E"],["marron", "#804000"],["orange", "#FFA500"],["rouge", "#FF0000"],["violet", "#4a235a"],["vert olive", "#787746"],["gris clair", "#bbbbbb"],["vert foncé", "#006000"],["bleu marine", "#154360"]];
 var ALIGNMENT_OPTIONS = [['à gauche', 'LEFT'], ['à droite', 'RIGHT'], ['au centre', 'CENTRE']];
+
 Blockly.Blocks['factory_base'] = { init: function() {
-    this.setColour("#00929f");
+    this.setColour("#154360");
     this.appendDummyInput()
         .appendField(new Blockly.FieldTextInput('mon_bloc'), 'NAME');
     this.appendStatementInput('INPUTS').setCheck('Input');
@@ -11,9 +13,9 @@ Blockly.Blocks['factory_base'] = { init: function() {
         ['bloc interne', 'INT']]);
     this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(dropdown, 'INLINE');
     dropdown = new Blockly.FieldDropdown([
+        ["pas d'accroches", 'NONE'],
         ['↕ accroches haut&bas', 'BOTH'],
         ['← accroche à gauche', 'LEFT'],
-        ["pas d'accroches", 'NONE'],
         ['↑ accroche en haut', 'TOP'],
         ['↓ accroche en bas', 'BOTTOM']],
         function(option) {
@@ -469,6 +471,43 @@ Blockly.Blocks['colour_hue'] = { init: function() {
     this.setOutput(true, 'Colour');
     this.setTooltip('Paint the block with this colour.');
     this.setHelpUrl('https://www.youtube.com/watch?v=s2_xaEvcVI0#t=55');
+  },
+  validator: function(text) {
+    // Update the current block's colour to match.
+    this.sourceBlock_.setColour(text);
+  },
+  mutationToDom: function(workspace) {
+    var container = document.createElement('mutation');
+    container.setAttribute('colour', this.getColour());
+    return container;
+  },
+  domToMutation: function(container) {
+    this.setColour(container.getAttribute('colour'));
+  }
+};
+Blockly.Blocks['colour_rrggbb'] = { init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldTextInput('#FFA500', this.validator), 'HUE');
+    this.setOutput(true, 'Colour')
+  },
+  validator: function(text) {
+    // Update the current block's colour to match.
+    this.sourceBlock_.setColour(text);
+  },
+  mutationToDom: function(workspace) {
+    var container = document.createElement('mutation');
+    container.setAttribute('colour', this.getColour());
+    return container;
+  },
+  domToMutation: function(container) {
+    this.setColour(container.getAttribute('colour'));
+  }
+};
+Blockly.Blocks['colour_choice'] = { init: function() {
+    this.setColour("#727272");
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown(dropdown_colour, this.validator), 'HUE');
+    this.setOutput(true, 'Colour')
   },
   validator: function(text) {
     // Update the current block's colour to match.

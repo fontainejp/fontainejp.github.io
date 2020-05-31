@@ -131,13 +131,11 @@ window.addEventListener('load', function load(event) {
 			$('a[href="#content_code"]').tab('show')
 			$('#btn_print').addClass("hidden")
 			$('#btn_search').removeClass("hidden")
-			document.getElementById('blockly_r').style.borderLeft = "0px"
 			window.localStorage.contentHTML="off"
 		} else {
 			$('a[href="#blocklyDiv"]').tab('show')
 			$('#btn_print').removeClass("hidden")
 			$('#btn_search').addClass("hidden")
-			document.getElementById('blockly_r').style.borderLeft = "gray 1px solid"
 			window.localStorage.contentHTML="on"
 		}
 	})
