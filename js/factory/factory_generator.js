@@ -271,7 +271,7 @@ function updateGenerator() {
     }
   }
   code.push("};");
-  injectCode(code, 'generatorPre');
+  editor.setValue(code.join('\n'),1);
 }
 var oldDir = null;
 function updatePreview() {

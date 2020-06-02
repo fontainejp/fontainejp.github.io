@@ -71,7 +71,7 @@
 					</div>
 				</div>
 				<div style="height:35%">
-					<pre id="generatorPre"></pre>
+					<div id="generatorPre"></div>
 				</div>
 			</div>
 		</div>
@@ -139,19 +139,19 @@
 				<block type="colour_rrggbb"><mutation colour="#4488FF"></mutation><field name="HUE">#4488FF</field></block>
 			</category>
 		</xml>
-		<script>
-			ace.require("ace/ext/language_tools");
-			var editor = ace.edit("generatorPre");
-			editor.setOptions({
-				showGutter: false,
-				enableBasicAutocompletion: true,
-				enableSnippets: true,
-				enableLiveAutocompletion: true
-			});
-			editor.setTheme("ace/theme/sqlserver");
-			editor.session.setTabSize(2);
-			editor.session.setMode("ace/mode/javascript");
-			editor.setShowPrintMargin(false);
-		</script>
 	</body>
+	<script>
+		ace.require("ace/ext/language_tools");
+		var editor = ace.edit("generatorPre");
+		editor.setOptions({
+			showGutter: false,
+			enableBasicAutocompletion: true,
+			enableSnippets: true,
+			enableLiveAutocompletion: true
+		});
+		editor.setTheme("ace/theme/sqlserver");
+		editor.session.setTabSize(2);
+		editor.session.setMode("ace/mode/javascript");
+		editor.setShowPrintMargin(false);
+	</script>
 </html>
