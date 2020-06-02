@@ -46,7 +46,7 @@
 			</div>
 			<div id="blockly_r">
 				<div style="height:3%">	Prévisualisation :
-					<select id="direction" style="display: none;">
+					<select id="direction" style="display:none">
 						<option value="ltr">LTR</option>
 						<option value="rtl">RTL</option>
 					</select>
@@ -111,47 +111,47 @@
 		  </div>
 		</div>		
 		<xml id="toolbox_factory" style="display:none">
-		<category name="Connexion" colour="#696969">
-			<block type="input_dummy"></block>
-			<block type="input_value"></block>
-			<block type="input_statement"></block>
-		</category>
-		<category name="Champ" colour="#00cc00">
-			<block type="field_static"></block>
-			<block type="field_input"></block>
-			<block type="field_math"></block>
-			<block type="field_image"></block>
-			<block type="field_dropdown"></block>
-			<block type="field_variable"></block>
-			<block type="field_checkbox"></block>
-			<block type="field_angle"></block>
-			<block type="field_colour"></block>
-		</category>
-		<category name="Type" colour="#ff0000">
-			<block type="type_boolean"></block>
-			<block type="type_number"></block>
-			<block type="type_string"></block>
-			<block type="type_other"></block>
-		</category>
-		<category name="Couleur" id="colourCategory" colour="#FD6C9E">
-			<block type="colour_hue"><mutation colour="360"></mutation><field name="HUE">0</field></block>
-			<block type="colour_choice"></block>
-			<block type="colour_rrggbb"><mutation colour="#4488FF"></mutation><field name="HUE">#4488FF</field></block>
-		</category>
-	</xml>
-	<script>
-		ace.require("ace/ext/language_tools");
-		var editor = ace.edit("generatorPre");
-		editor.setOptions({
-			showGutter: false,
-			enableBasicAutocompletion: true,
-			enableSnippets: true,
-			enableLiveAutocompletion: true
-		});
-		editor.setTheme("ace/theme/sqlserver");
-		editor.session.setTabSize(2);
-		editor.session.setMode("ace/mode/javascript");
-		editor.setShowPrintMargin(false);
-	</script>
-</body>
+			<category name="Connexion" colour="#696969">
+				<block type="input_dummy"></block>
+				<block type="input_value"></block>
+				<block type="input_statement"></block>
+			</category>
+			<category name="Champ" colour="#00cc00">
+				<block type="field_static"></block>
+				<block type="field_input"></block>
+				<block type="field_math"></block>
+				<block type="field_image"></block>
+				<block type="field_dropdown"></block>
+				<block type="field_variable"></block>
+				<block type="field_checkbox"></block>
+				<block type="field_angle"></block>
+				<block type="field_colour"></block>
+			</category>
+			<category name="Type" colour="#ff0000">
+				<block type="type_boolean"></block>
+				<block type="type_number"></block>
+				<block type="type_string"></block>
+				<block type="type_other"></block>
+			</category>
+			<category name="Couleur" id="colourCategory" colour="#FD6C9E">
+				<block type="colour_hue"><mutation colour="360"></mutation><field name="HUE">0</field></block>
+				<block type="colour_choice"></block>
+				<block type="colour_rrggbb"><mutation colour="#4488FF"></mutation><field name="HUE">#4488FF</field></block>
+			</category>
+		</xml>
+		<script>
+			ace.require("ace/ext/language_tools");
+			var editor = ace.edit("generatorPre");
+			editor.setOptions({
+				showGutter: false,
+				enableBasicAutocompletion: true,
+				enableSnippets: true,
+				enableLiveAutocompletion: true
+			});
+			editor.setTheme("ace/theme/sqlserver");
+			editor.session.setTabSize(2);
+			editor.session.setMode("ace/mode/javascript");
+			editor.setShowPrintMargin(false);
+		</script>
+	</body>
 </html>

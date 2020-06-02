@@ -17,7 +17,7 @@
         <field name="ALIGN">LEFT</field>
         <statement name="FIELDS">
           <block type="field_image" id="JjX^HkDRcWzFVpWT+m+H">
-            <field name="SRC">gamepad.png</field>
+            <field name="SRC">media/factory/gamepad.png</field>
             <field name="WIDTH">28</field>
             <field name="HEIGHT">28</field>
             <field name="ALT">*</field>
