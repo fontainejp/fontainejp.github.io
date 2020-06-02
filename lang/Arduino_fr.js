@@ -221,6 +221,8 @@ Blockly.Msg.matrice16x8_del_tooltip= "Allume (éteint) une DEL de la matrice en 
 Blockly.Msg.matrice16x8_aff_tooltip= "Affiche le symbole qui aura été préalablement défini";
 Blockly.Msg.matrice16x8_efface_tooltip= "Eteint toutes les DEL de la matrice";
 Blockly.Msg.matrice16x8_helpurl="http://";
+Blockly.Msg.matrice8x8_scroll_tooltip="fait défiler le texte indiqué sur les matrices";
+Blockly.Msg.matrice8x8_scroll="faire défiler";
 //temps
 Blockly.Msg.millis ="temps écoulé en";
 Blockly.Msg.millis_start="commencer un chronométrage en";

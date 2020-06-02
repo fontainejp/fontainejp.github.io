@@ -4,48 +4,13 @@ goog.require("Blockly.Blocks");
   /////////////
  /*  audio  */
 /////////////
-Blockly.Blocks["lp2i_mp3_play_track"]={init:function(){
-    this.appendValueInput("num", "Number").appendField(new Blockly.FieldImage("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABAhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ1dWlkOjY1RTYzOTA2ODZDRjExREJBNkUyRDg4N0NFQUNCNDA3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYzRkRFQjcxODUzNTExRTU4RTQwRkQwODFEOUZEMEE3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYzRkRFQjcwODUzNTExRTU4RTQwRkQwODFEOUZEMEE3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MTk5NzA1OGEtZDI3OC00NDZkLWE4ODgtNGM4MGQ4YWI1NzNmIiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6YzRkZmQxMGMtY2NlNS0xMTc4LWE5OGQtY2NkZmM5ODk5YWYwIi8+IDxkYzp0aXRsZT4gPHJkZjpBbHQ+IDxyZGY6bGkgeG1sOmxhbmc9IngtZGVmYXVsdCI+Z2x5cGhpY29uczwvcmRmOmxpPiA8L3JkZjpBbHQ+IDwvZGM6dGl0bGU+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+5iogFwAAAGhJREFUeNpiYGBgKABigf///zOQg0EARH4A4gZyDIIZ8B/JoAJKDIDhB0CcQIkBRBtEyABkgxwoMQCGD6AbRKoBGAYxQgXIBRuZGKgAKPIC3QLxArnRSHZCIjspk52ZKMrOFBUoAAEGAKnq593MQAZtAAAAAElFTkSuQmCC", 11, 15))
-		.appendField(Blockly.Msg.lp2i_mp3_play+" n°");
-    this.setInputsInline(false);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour("#00929F");
-    this.setTooltip(Blockly.Msg.lp2i_mp3_play_track_tooltip);
-    this.setHelpUrl(Blockly.Msg.lp2i_mp3_helpurl)}
-};
-Blockly.Arduino["lp2i_mp3_play_track"]=function(block){
-	var piste=Blockly.Arduino.valueToCode(block, "num", Blockly.Arduino.ORDER_ATOMIC);
-    return "exe_cmd(0x03,0,"+piste+");\ndelay(500);\n"
-};
-Blockly.Python["lp2i_mp3_play_track"]=function(block){
-	var piste=Blockly.Python.valueToCode(block, "num", Blockly.Python.ORDER_ATOMIC);
-    return "mp3.PlaySpecific("+piste+")\n"
-};
-//////////////
-Blockly.Blocks["lp2i_mp3_play"]={init:function(){
-    this.appendDummyInput().appendField(new Blockly.FieldImage("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABAhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ1dWlkOjY1RTYzOTA2ODZDRjExREJBNkUyRDg4N0NFQUNCNDA3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYzRkRFQjcxODUzNTExRTU4RTQwRkQwODFEOUZEMEE3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYzRkRFQjcwODUzNTExRTU4RTQwRkQwODFEOUZEMEE3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MTk5NzA1OGEtZDI3OC00NDZkLWE4ODgtNGM4MGQ4YWI1NzNmIiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6YzRkZmQxMGMtY2NlNS0xMTc4LWE5OGQtY2NkZmM5ODk5YWYwIi8+IDxkYzp0aXRsZT4gPHJkZjpBbHQ+IDxyZGY6bGkgeG1sOmxhbmc9IngtZGVmYXVsdCI+Z2x5cGhpY29uczwvcmRmOmxpPiA8L3JkZjpBbHQ+IDwvZGM6dGl0bGU+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+5iogFwAAAGhJREFUeNpiYGBgKABigf///zOQg0EARH4A4gZyDIIZ8B/JoAJKDIDhB0CcQIkBRBtEyABkgxwoMQCGD6AbRKoBGAYxQgXIBRuZGKgAKPIC3QLxArnRSHZCIjspk52ZKMrOFBUoAAEGAKnq593MQAZtAAAAAElFTkSuQmCC", 11, 15))
-		.appendField(Blockly.Msg.lp2i_mp3_play);
-    this.setInputsInline(false);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour("#00929F");
-    this.setTooltip(Blockly.Msg.lp2i_mp3_play_tooltip);
-    this.setHelpUrl(Blockly.Msg.lp2i_mp3_helpurl)}
-};
-Blockly.Arduino["lp2i_mp3_play"]=function(block){
-    return "exe_cmd(0x0D,0,1);\ndelay(500);\n"
-};
-Blockly.Python["lp2i_mp3_play"]=function(block){
-    return "mp3.Play()\n"
-};
-//////////////
 Blockly.Blocks["play"]={init:function(){
-    this.appendValueInput("PIN", "Number")
-		.appendField(Blockly.Msg.play)
-		.appendField(new Blockly.FieldDropdown(Blockly.Msg.tempo), "tempo")
+    this.appendValueInput("PIN").setCheck("Number")
+		.appendField(Blockly.Msg.MICROBIT_PLAYS1)
 		.appendField(new Blockly.FieldDropdown(Blockly.Msg.note), "note")
-		.appendField(Blockly.Msg.pin);
+		.appendField(Blockly.Msg.MICROBIT_PLAYS2)
+		.appendField(new Blockly.FieldDropdown(Blockly.Msg.tempo), "tempo")
+		.appendField(Blockly.Msg.MICROBIT_PLAYS3 + " " + Blockly.Msg.pin);
     this.setInputsInline(false);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -73,9 +38,9 @@ Blockly.Python["play"]=function(block){
 Blockly.Blocks["tone"]={init:function(){
         this.setColour("#00929F");
         this.setHelpUrl(Blockly.Msg.HELPURL);
-        this.appendValueInput("PIN", "Number").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.ARDUINO_TONE_INPUT1);
-        this.appendValueInput("NUM").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.ARDUINO_TONE_INPUT2).setCheck("Number");
-        this.appendValueInput("TPS").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.ARDUINO_TONE_INPUT3).setCheck("Number");
+        this.appendValueInput("PIN").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.ARDUINO_TONE_INPUT1);
+        this.appendValueInput("NUM").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.ARDUINO_TONE_INPUT2);
+        this.appendValueInput("TPS").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.ARDUINO_TONE_INPUT3);
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -99,7 +64,7 @@ Blockly.Python["tone"]=function(block){
 };
 //////////////
 Blockly.Blocks["beep"]={init:function(){
-    this.appendValueInput("PIN", "Number").appendField(Blockly.Msg.beep);
+    this.appendValueInput("PIN").setCheck("Number").appendField(Blockly.Msg.beep);
     this.setColour("#00929F");
     this.setPreviousStatement(true, null);this.setNextStatement(true, null);
     this.setHelpUrl(Blockly.Msg.HELPURL);this.setTooltip(Blockly.Msg.beep_TOOLTIP)}
@@ -118,7 +83,7 @@ Blockly.Python["beep"]=function(block){
 Blockly.Blocks["notone"]={init:function(){
         this.setColour("#00929F");
         this.setHelpUrl(Blockly.Msg.HELPURL);
-        this.appendValueInput("PIN", "Number").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.ARDUINO_NOTONE_INPUT);
+        this.appendValueInput("PIN").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.ARDUINO_NOTONE_INPUT);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg.ARDUINO_NOTONE_TOOLTIP)}
@@ -137,7 +102,7 @@ Blockly.Python["notone"]=function(block){
 Blockly.Blocks["lp2i_mp3_init"]={init:function(){
         this.appendDummyInput().appendField(new Blockly.FieldImage("data:image/jpeg;base64,/9j/4RDcRXhpZgAATU0AKgAAAAgABAE7AAIAAAAGAAAISodpAAQAAAABAAAIUJydAAEAAAAMAAAQyOocAAcAAAgMAAAAPgAAAAAc6gAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGJhYmFzAAAFkAMAAgAAABQAABCekAQAAgAAABQAABCykpEAAgAAAAM0NAAAkpIAAgAAAAM0NAAA6hwABwAACAwAAAiSAAAAABzqAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjAxNjowMjoxNCAxNzozMDozMQAyMDE2OjAyOjE0IDE3OjMwOjMxAAAAYgBhAGIAYQBzAAAA/9sAQwABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB/9sAQwEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB/8AAEQgANQAyAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A/J//AIKSfFr9onQ/jX+3b8QNB/bo/ac8P61oX7T37RkGheAtA/aE+Jejad4d0vRPG2vXOj2um+HrHWbfw7Y+FLTyo/B9jptq8eoWk1uQIottsp/M7Tv+Ch/xCXWHbWP2zf24pNBE3iPCaV+0D8bo9S8t/ga6+FmVr74hGLy4vj01vPqylvtMnhZblUaTTTDpo+0/+Cnd58Of+Fjf8FCrN/CesN4nH7WP7Ttxd6j9mkk0i5dviX4gto7xNIW28972PxeP7afxgtxJp8mnhXBjFq5b4j/Ym8F/tMfCLQ7zxTp/7CfxU+PWgfFeb4Q+L/BMr+DjN4N8U6RF4i8beEfDllfDUfh54tufEnhPxf4x1qGbR18Lat4XvJvH/gLw1nVL+3srrTJeadKVaNWEquJpc3tYRlCcKU4xnFJTpSpXa5N6U5/vFK8mtjeFX2Ti1To1Nac2qkPaK8G3ytStpK9pxWkkl2Pd/wDglj/wXG/bZ/Yx/a/8FfEvxf8AFrxn+0h4F8UWNz8MvG3w0/aH+P3jOy8BS6B4s1PR5T4hh8YeIp/FumfDvWvDuq6Xp2ow+NJ/DmsQ2OkJrGn3ljLp+qXRT9Af+C8v/BwD+0z+018Tfh18Evgl4l8L/s9fDv4SXV14o1fxj+yd+1jffGNfihr3iOzh05Rq/wAWvhvpHw90dtE8Nadb3qWHhHTNOunF9q0+r6nqt1O2lWml/G3h/wASftKePrXQfD/xq/4JL678VNCudC0LT/Ds+j/C3xJY6wvjbxvqXxB0iz8axzvoVzq/iGDWL8axb+F/BFv4m0C1utV8H3kl14gv9ZlvdXt+bm0Lx6PFvwr1L4Uf8EYfEelaBoep61a6tZTeF/Gut6v8YfBnxP8Ah78XfC/gXQtTvtU8N+IBoOo6j4L1bVfFqaxox1C91PxR4R/t/Sp7aPw1oR0fe0ueL5lyKE1KHLq5uVNwnzXulCMakeW1pc6bfuq+B8+W3/BRD4njxXetrX7ZP7YTeDD8Qfj0bVPCPx//AGi4dY/4Qt/AMA+BEcD+J/iROg0q1+ITCTUEvJZvGf8AYx1MeK9T1mF9Kt4fQP2af2gf2qfix8LfiN4x8Y/t9/tX6XrnhuO/TRdKH7SfxXsn1SSC0stlppsUGvzwvqKDUJ9WkOsSRWLWOlyQ26vKZlb5W/aY/bA+Gvxz8O+KNF0D9kX4d/BnxXr2peF538WeE79V1Kxi8OS3qaropsLbwvotrNpmo2sPh6ytLNFtV0P+wLieL7TPrepMew/Y1u/AEHwU+MsHiLwzq+pa5dQanBYX1hC6WgcaTBN5WpQm3lPie1GkJrtmug2ciXVpd6nb3TxyJdosmNSEoynVhOu5TWHp8kHCUYxhWm5ShTq/u4yqRquNep8cqVOny+/SgaKScYwcYWjKcuZ3jJ80YLllNauMeS8I7KUp30kz/Y9/ZJu77Vf2VP2ZdU1jV77xHq+pfs+fBi/1XxDqt09/qmu6lefDjw3cX2s6lfSPJJeX+qXUkt7eXTySPcXE8kzOxcsSqP7GJtT+x7+yibKFrayP7NfwKNpbvE0DW9qfhf4WNvC0D/PC0UWxDE3zRlSjcg0V0GZ/mE/8FO7v4kr4q/4KAqPDeinwgf2sv2oY7PXXhRJ5bn/hLtdgntH15bc3xvovB7RawfC/z6XHqJjkS7RrmarHwV8SeFdC+AHwRXW76ys3079njwh4vvftFrJL9m8OaRpWnWup6wxitZv3Npd3lukqJuunklDxQyBZJF5//gp7Y6Uvj/8A4KCXY+I8y6g/7Uv7TsEvhUSus1pAnxA8Q3Ubi7dDo5s5r138FjSvLbxHHAGhe5BmhauM8FWDX/wM8EoEZ9v7A9jajgkmTUAZlRQB94jSVKgZYhQcdaxo2/e2UVetNvlpTp3emsuf+JLbmqx9yb+HRFS+zv8ACt2n91tl5PXufaixISoSNAzFQuFReScJg7RjlvlOeCzEEbia5rRvFHhfXn09dGv7W9fVfDsXizTxFbTRG68Ozai+kQ6ohmtogITqKyWixuVuUYl/JWFw7b9rNm0tLnkBrO1uT25NrHNyeM/5HrXhPwssjZ3HwpJQqX/Zys7ZiVOA8XijwpflTn7rZ1V22tg4LEgDNbEnvttp2my6jpU0unadJLbahbSW0stjZySW7zyJbzNbu8G6F5beSSCVo2BeF3ifcjsp/MP4Ry+P4I/234/C/hvRtR8Ox/FP4uJq97PaxXEulWZ8WP5MzztA7+GLdtai0TT4dV0oSXVxBeXlnJaGBE832f8AaR1/9pnRNa8S+Ivgx438I+HPB3w5+Hmk+K/E2m65p+k3ur3epPqOv3st1pq6hoGq+cj6Tov2eKCa9sLdrxFRBvkkmj+aPgSbXXNA/at1nV/iI+g6rcfEL4l6kujjei6veX2oFrqK0W0QWukStHdXOuvPrgl0eX+xIYrWATwS+ZjXSdOzUWvaUfipTrL+NCz9nD3m09Yy+GnK1Sd4Qkio6S67PZpdH1lp8t5bLVo/13P2OXuH/ZE/ZXe8jjivH/Zw+B7XUUDPLDHct8MvDBnSGVgGkiSUssbsMugDHk0VxP7IH/CIL+yX+y6s7pfzr+zr8ExNfS219PJeyj4a+GRJdyTW8H2eZ7h8zPLB+5kZy8XyFaK2JP8AMR/4Kf6l4KPxH/4KDWB8C6m3iNP2q/2nLi41oQPJaXUTfEnxBZw3i6F5QjKxeJFfxMfGgnMktiS7RqLVSfWf2fAP+GffgKcA5+DPw8Bzjkf2Bb5XpyOehypzyCTzyn/BUF/igvib9v8A/wBA0T/hCP8AhrX9qFbK9aOIA348W62t3A9+sZ1j+2F8EtDdHTCT4eGpGN4XV2uGPQ/ATU9NsP2ffgEL/UdOsDL8Gvh/5X27ULOxMvl6Bah/K+1Tw+bsLrv2bthZd2CwrKk0/aWadqs07VnWs9NHf+E0rXorSHTcqX2f8Mfs8v8A+1/i+1ue0ADIG3b/APW9BwAPTjAx0IpuFGMIBgYBAxxnoMAEYwMgfLwMDgYzf+Eh8Ojp4h8Pj/uO6R/8m/5/CnJr2gyyJDFruhzTSukccMWtaXLLLI7BUSONLxnlkdsKiKrO7EIqksAdST4O/aN8F+J/E3xR+J9nYWF9d6T4s/Y58R6PZtp63V15ninwh4/s/FenWFxb2kbeXe3ccjR6TDNm41IPexWccgWdG+evgLfeErPw3+1Haa94H1bVtaufG/xBgsNSihkto7a5juJp5LeazML/APCUummxappUnh24MH2C41eC4G5rpkP693/iPRPC8EOs+Itb0/w9otnqGnNd6prF/DpmmWhe8hSKS5vLqSK1tizkJHLPIi7yF3bmXd+ZnwZvfH2o6b+21qPgdfD2teDL34m/FW81PVozaajDJo954r8/TtQlv2Ez22lXetNoH2LU/Dckt9c21xeCYPZvCZMq7Sp6tJe0oq8qzw61rQVvaxTabvZQ2qtqk9JsqPxbX0f2ebo+nlu39le90P8AWo/YyMD/ALH37KLW1s9nbt+zX8C2gtHjNu9rCfhf4WMVs8AOIWgQrE0I/wBWVKfw0VL+xublv2Q/2VmvBCt2f2b/AIHG6W3LNbrcn4Y+FzOIGcBzCJdwiLgMU2lhnNFakn8gX7X/APwbPfED4+fHv9pbxhF/wUe1Xwf4N+M/xk+Jvj9vh/8A8MtaVr7eG9P8feK9R8Tt4UTxV/wvbRb7VbPSl1M6Ul6NP0s3lnDsNlawStar8n+KP+DRXxJ40s/C2neKv+Cm+u65YeCdAtfC3hOzvv2U7d7fQdAs8fZtM0+JP2kESKCPCgsQ00gSMSyOI0ClFAHH/wDEGtY/9JFLv/xE2H/6JKpYP+DN63tJobq2/wCCjWoW9zbzRT29xB+yikM8E8Tq8U0Msf7SayRSxSBZI5EZXR1VlYMAQUUAfYz/APBvP46f4b6/8IfiV+3PpPxbi8W6TruinxX4s/Zbuo9csD4nt30/StSaOz/aRWz1LUPB+qMNe0Oe9iZjdw2sVwXS0gkT598If8Gnfjv4f6Hq2geEv+CnWpaVo+qfa5L6xX9kPS7lHlubP7HPLBJdftFTS2kksKxb2t3TMkFvL/rYY3UooA/vO+B3gJvhN8Ffg/8ACt9bm8St8M/hd8P/AIft4jns106fxA3gzwnpPhw63Np4ub/7DLqp0038ln9vvfszzmD7Xc7POcoooA//2Q==", 40, 42)).appendField(Blockly.Msg.lp2i_mp3);
 		this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.lp2i_mp3_autoplay).appendField(new Blockly.FieldCheckbox("FALSE"), "play");
-        this.appendValueInput("Volume", "Number").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.lp2i_mp3_Volume);
+        this.appendValueInput("Volume").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.lp2i_mp3_Volume);
         this.setInputsInline(false);
         this.setColour("#00929F");
         this.setTooltip(Blockly.Msg.lp2i_mp3_tooltip);
@@ -153,13 +118,17 @@ Blockly.Arduino["lp2i_mp3_init"]=function(block){
 	}else{
 		volume_hex="0x"+volume.toString(16);
 	}
-    Blockly.Arduino.codeFunctions_["fonction_mp3"]="void exe_cmd(byte CMD, byte Par1, byte Par2) {\n  word check=-(0xFF + 0x06 + CMD + 0x00 + Par1 + Par2);\n  byte Command[10]={0x7E,0xFF,0x06,CMD,0x00,Par1,Par2,highByte(check),lowByte(check),0xEF};\n  for (int i=0; i<10; i++) {\n    Serial.write( Command[i]);\n  };\n}";
+    Blockly.Arduino.includes_["extension"]="#include <extension.h>";
+	Blockly.Arduino.definitions_["extension"]="Extension module;";
+    //Blockly.Arduino.codeFunctions_["fonction_mp3"]="void exe_cmd(byte CMD, byte Par1, byte Par2) {\n  word check=-(0xFF + 0x06 + CMD + 0x00 + Par1 + Par2);\n  byte Command[10]={0x7E,0xFF,0x06,CMD,0x00,Par1,Par2,highByte(check),lowByte(check),0xEF};\n  for (int i=0; i<10; i++) {\n    Serial.write( Command[i]);\n  };\n}";
     if (autoplay){
-		Blockly.Arduino.setups_["setup_mp3"]="Serial.begin(9600);\n  delay(1000);\n  exe_cmd(0x3F,0,0);\n  delay(500);\n  exe_cmd(0x06,0," + volume_hex + ");\n  delay(500);\n  exe_cmd(0x11,0,1);\n  delay(500);";
+		Blockly.Arduino.setups_["mp3"]="module.mp3_lecture_auto("+ volume_hex +");";
+		//Blockly.Arduino.setups_["setup_mp3"]="Serial.begin(9600);\n  delay(1000);\n  exe_cmd(0x3F,0,0);\n  delay(500);\n  exe_cmd(0x06,0," + volume_hex + ");\n  delay(500);\n  exe_cmd(0x11,0,1);\n  delay(500);";
 	}else{
-		Blockly.Arduino.setups_["setup_mp3"]="Serial.begin(9600);\n  delay(1000);\n  exe_cmd(0x3F,0,0);\n  delay(500);\n  exe_cmd(0x06,0," + volume_hex + ");\n  delay(500);";
+		Blockly.Arduino.setups_["mp3"]="module.mp3("+ volume_hex +");";
+		//Blockly.Arduino.setups_["setup_mp3"]="Serial.begin(9600);\n  delay(1000);\n  exe_cmd(0x3F,0,0);\n  delay(500);\n  exe_cmd(0x06,0," + volume_hex + ");\n  delay(500);";
 	};
-    return ""
+	return ""
 };
 Blockly.Python["lp2i_mp3_init"]=function(block){
     var autoplay=block.getFieldValue('play') == 'TRUE';
@@ -180,7 +149,7 @@ Blockly.Python["lp2i_mp3_init"]=function(block){
 };
 //////////////
 Blockly.Blocks["lp2i_mp3_volume"]={init:function(){
-        this.appendValueInput("Volume", "Number").appendField(new Blockly.FieldImage("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABAhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ1dWlkOjY1RTYzOTA2ODZDRjExREJBNkUyRDg4N0NFQUNCNDA3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjBBNkM4Q0REODUzNjExRTU4RTQwRkQwODFEOUZEMEE3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjBBNkM4Q0RDODUzNjExRTU4RTQwRkQwODFEOUZEMEE3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MTk5NzA1OGEtZDI3OC00NDZkLWE4ODgtNGM4MGQ4YWI1NzNmIiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6YzRkZmQxMGMtY2NlNS0xMTc4LWE5OGQtY2NkZmM5ODk5YWYwIi8+IDxkYzp0aXRsZT4gPHJkZjpBbHQ+IDxyZGY6bGkgeG1sOmxhbmc9IngtZGVmYXVsdCI+Z2x5cGhpY29uczwvcmRmOmxpPiA8L3JkZjpBbHQ+IDwvZGM6dGl0bGU+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+ZCM1gAAAAJ1JREFUeNpi+P//PwM+DAQGQPwBTUwBziZGMwNYGUQjEF+AYgG8BiBrRjIgAMYH4gacBqBrhhkAlVsAFQPJC6BrFADiAmSNWAxQQBJPYEC3CRdGs+gCVHwBE5DgZyAdbIDSCkwMFAKqGPCRIgOAgQJKEIwgDOQLAnEhEYYGQOkH5KQD1GgkJSUSTEhE5AUDopIyvtwIBBOQMxNAgAEAuSU2gW6bTpkAAAAASUVORK5CYII=", 16, 15, "+/-"))
+        this.appendValueInput("Volume").setCheck("Number").appendField(new Blockly.FieldImage("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABAhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ1dWlkOjY1RTYzOTA2ODZDRjExREJBNkUyRDg4N0NFQUNCNDA3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjBBNkM4Q0REODUzNjExRTU4RTQwRkQwODFEOUZEMEE3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjBBNkM4Q0RDODUzNjExRTU4RTQwRkQwODFEOUZEMEE3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MTk5NzA1OGEtZDI3OC00NDZkLWE4ODgtNGM4MGQ4YWI1NzNmIiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6YzRkZmQxMGMtY2NlNS0xMTc4LWE5OGQtY2NkZmM5ODk5YWYwIi8+IDxkYzp0aXRsZT4gPHJkZjpBbHQ+IDxyZGY6bGkgeG1sOmxhbmc9IngtZGVmYXVsdCI+Z2x5cGhpY29uczwvcmRmOmxpPiA8L3JkZjpBbHQ+IDwvZGM6dGl0bGU+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+ZCM1gAAAAJ1JREFUeNpi+P//PwM+DAQGQPwBTUwBziZGMwNYGUQjEF+AYgG8BiBrRjIgAMYH4gacBqBrhhkAlVsAFQPJC6BrFADiAmSNWAxQQBJPYEC3CRdGs+gCVHwBE5DgZyAdbIDSCkwMFAKqGPCRIgOAgQJKEIwgDOQLAnEhEYYGQOkH5KQD1GgkJSUSTEhE5AUDopIyvtwIBBOQMxNAgAEAuSU2gW6bTpkAAAAASUVORK5CYII=", 16, 15, "+/-"))
 			.setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.lp2i_mp3_vol);
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
@@ -198,7 +167,7 @@ Blockly.Arduino["lp2i_mp3_volume"]=function(block){
 	}else{
 		volume_hex="0x"+volume.toString(16);
 	}
-	return "exe_cmd(0x06,0," + volume_hex + ");\ndelay(500);\n"
+	return "module.mp3_volume(" + volume_hex + ");\n"
 };
 Blockly.Python["lp2i_mp3_volume"]=function(block){
     var vol=Blockly.Python.valueToCode(block, "Volume", Blockly.Python.ORDER_ATOMIC);
@@ -221,7 +190,7 @@ Blockly.Blocks["lp2i_mp3_next"]={init:function(){
         this.setHelpUrl(Blockly.Msg.lp2i_mp3_helpurl)}
 };
 Blockly.Arduino["lp2i_mp3_next"]=function(block){
-    return "exe_cmd(0x01,0,1);\ndelay(500);\n"
+    return "module.mp3_suivant();\n"
 };
 Blockly.Python["lp2i_mp3_next"]=function(block){
     return "mp3.PlayNext()\n"
@@ -237,7 +206,7 @@ Blockly.Blocks["lp2i_mp3_prev"]={init:function(){
         this.setHelpUrl(Blockly.Msg.lp2i_mp3_helpurl)}
 };
 Blockly.Arduino["lp2i_mp3_prev"]=function(block){
-    return "exe_cmd(0x02,0,1);\ndelay(500);\n"
+    return "module.mp3_precedent();\n"
 };
 Blockly.Python["lp2i_mp3_prev"]=function(block){
     return "mp3.PlayPrevious()\n"
@@ -253,10 +222,46 @@ Blockly.Blocks["lp2i_mp3_pause"]={init:function(){
         this.setHelpUrl(Blockly.Msg.lp2i_mp3_helpurl)}
 };
 Blockly.Arduino["lp2i_mp3_pause"]=function(block){
-    return "exe_cmd(0x0E,0,0);\ndelay(500);\n"
+    return "module.mp3_pause();\n"
 };
 Blockly.Python["lp2i_mp3_pause"]=function(block){
     return "mp3.Pause()\n"
+};
+//////////////
+Blockly.Blocks["lp2i_mp3_play_track"]={init:function(){
+    this.appendValueInput("num").setCheck("Number").appendField(new Blockly.FieldImage("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABAhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ1dWlkOjY1RTYzOTA2ODZDRjExREJBNkUyRDg4N0NFQUNCNDA3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYzRkRFQjcxODUzNTExRTU4RTQwRkQwODFEOUZEMEE3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYzRkRFQjcwODUzNTExRTU4RTQwRkQwODFEOUZEMEE3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MTk5NzA1OGEtZDI3OC00NDZkLWE4ODgtNGM4MGQ4YWI1NzNmIiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6YzRkZmQxMGMtY2NlNS0xMTc4LWE5OGQtY2NkZmM5ODk5YWYwIi8+IDxkYzp0aXRsZT4gPHJkZjpBbHQ+IDxyZGY6bGkgeG1sOmxhbmc9IngtZGVmYXVsdCI+Z2x5cGhpY29uczwvcmRmOmxpPiA8L3JkZjpBbHQ+IDwvZGM6dGl0bGU+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+5iogFwAAAGhJREFUeNpiYGBgKABigf///zOQg0EARH4A4gZyDIIZ8B/JoAJKDIDhB0CcQIkBRBtEyABkgxwoMQCGD6AbRKoBGAYxQgXIBRuZGKgAKPIC3QLxArnRSHZCIjspk52ZKMrOFBUoAAEGAKnq593MQAZtAAAAAElFTkSuQmCC", 11, 15))
+		.appendField(Blockly.Msg.lp2i_mp3_play+" n°");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#00929F");
+    this.setTooltip(Blockly.Msg.lp2i_mp3_play_track_tooltip);
+    this.setHelpUrl(Blockly.Msg.lp2i_mp3_helpurl)}
+};
+Blockly.Arduino["lp2i_mp3_play_track"]=function(block){
+	var piste=Blockly.Arduino.valueToCode(block, "num", Blockly.Arduino.ORDER_ATOMIC);
+    return "module.mp3_lecture_piste("+piste+");\n"
+};
+Blockly.Python["lp2i_mp3_play_track"]=function(block){
+	var piste=Blockly.Python.valueToCode(block, "num", Blockly.Python.ORDER_ATOMIC);
+    return "mp3.PlaySpecific("+piste+")\n"
+};
+//////////////
+Blockly.Blocks["lp2i_mp3_play"]={init:function(){
+    this.appendDummyInput().appendField(new Blockly.FieldImage("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABAhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ1dWlkOjY1RTYzOTA2ODZDRjExREJBNkUyRDg4N0NFQUNCNDA3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYzRkRFQjcxODUzNTExRTU4RTQwRkQwODFEOUZEMEE3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYzRkRFQjcwODUzNTExRTU4RTQwRkQwODFEOUZEMEE3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MTk5NzA1OGEtZDI3OC00NDZkLWE4ODgtNGM4MGQ4YWI1NzNmIiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6YzRkZmQxMGMtY2NlNS0xMTc4LWE5OGQtY2NkZmM5ODk5YWYwIi8+IDxkYzp0aXRsZT4gPHJkZjpBbHQ+IDxyZGY6bGkgeG1sOmxhbmc9IngtZGVmYXVsdCI+Z2x5cGhpY29uczwvcmRmOmxpPiA8L3JkZjpBbHQ+IDwvZGM6dGl0bGU+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+5iogFwAAAGhJREFUeNpiYGBgKABigf///zOQg0EARH4A4gZyDIIZ8B/JoAJKDIDhB0CcQIkBRBtEyABkgxwoMQCGD6AbRKoBGAYxQgXIBRuZGKgAKPIC3QLxArnRSHZCIjspk52ZKMrOFBUoAAEGAKnq593MQAZtAAAAAElFTkSuQmCC", 11, 15))
+		.appendField(Blockly.Msg.lp2i_mp3_play);
+    this.setInputsInline(false);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#00929F");
+    this.setTooltip(Blockly.Msg.lp2i_mp3_play_tooltip);
+    this.setHelpUrl(Blockly.Msg.lp2i_mp3_helpurl)}
+};
+Blockly.Arduino["lp2i_mp3_play"]=function(block){
+    return "module.mp3_lecture();\n"
+};
+Blockly.Python["lp2i_mp3_play"]=function(block){
+    return "mp3.Play()\n"
 };
   ///////////
  /*	 lcd  */
@@ -487,7 +492,7 @@ Blockly.Python["LCD_Keypad_Shield_DFR_09_RAZ"]=function(block){
 Blockly.Blocks["digital_write"]={init:function(){
     this.setColour("#00929F");
     this.setHelpUrl(Blockly.Msg.HELPURL);
-    this.appendValueInput("PIN", "Number").setCheck("Number").appendField(new Blockly.FieldDropdown(Blockly.Msg.FIELDDROPDOWN_ONOFF), "STAT").appendField(Blockly.Msg.del);
+    this.appendValueInput("PIN").setCheck("Number").appendField(new Blockly.FieldDropdown(Blockly.Msg.FIELDDROPDOWN_ONOFF), "STAT").appendField(Blockly.Msg.del);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.Msg.del_tooltip)}
@@ -499,11 +504,17 @@ Blockly.Arduino["digital_write"]=function(block){
     return "digitalWrite(" + dropdown_pin + ", " + dropdown_stat + ");\n";
 };
 Blockly.Python["digital_write"]=function(block){
+	var carte = localStorage.getItem('card')
+	var cpu = profile[carte].cpu
 	var dropdown_pin=Blockly.Python.valueToCode(block, "PIN", Blockly.Python.ORDER_ATOMIC);
     var dropdown_stat=block.getFieldValue("STAT") == "HIGH" ? "1" : "0";
-    Blockly.Python.imports_["pin"]="from machine import Pin";
-	Blockly.Python.definitions_["pin_"+dropdown_pin]="BROCHE_"+dropdown_pin+" = Pin("+dropdown_pin+", Pin.OUT)";
-    return "BROCHE_"+dropdown_pin+".value("+dropdown_stat+")\n"
+	if ( cpu == "cortexM0" ) {
+		return "pin"+dropdown_pin+".write_digital("+dropdown_stat+")\n"
+	} else {
+		Blockly.Python.imports_["pin"]="from machine import Pin";
+		Blockly.Python.definitions_["pin_"+dropdown_pin]="BROCHE_"+dropdown_pin+" = Pin("+dropdown_pin+", Pin.OUT)";
+		return "BROCHE_"+dropdown_pin+".value("+dropdown_stat+")\n"
+	}
 };
 //////////////
 Blockly.Blocks["inout_buildin_led"]={init:function(){
@@ -549,13 +560,16 @@ Blockly.Blocks['rvb_init']={init:function() {
     this.setHelpUrl('http://www.mon-club-elec.fr/pmwiki_reference_arduino/pmwiki.php?n=Main.ReferenceMaxi')}
 };
 Blockly.Arduino['rvb_init'] = function(block) {
-  var value_rouge = block.getFieldValue('rouge');
-  var value_vert = block.getFieldValue('vert');
-  var value_bleu = block.getFieldValue('bleu');
-  Blockly.Arduino.variables_['rvb_'+value_rouge] = '#define redPin '+value_rouge+'\n#define greenPin '+value_vert+'\n#define bluePin '+value_bleu;
-  Blockly.Arduino.userFunctions_['rvb_'+value_rouge] = 'void setColor(int redValue, int greenValue, int blueValue) {\n  analogWrite(redPin, redValue);\n  analogWrite(greenPin, greenValue);\n  analogWrite(bluePin, blueValue);\n}';
-  Blockly.Arduino.setups_['rvb_'+value_rouge]='pinMode(greenPin, OUTPUT);\n  pinMode(redPin, OUTPUT);\n  pinMode(bluePin, OUTPUT);';
-  return '';
+	var value_rouge = block.getFieldValue('rouge');
+	var value_vert = block.getFieldValue('vert');
+	var value_bleu = block.getFieldValue('bleu');
+	Blockly.Arduino.includes_["extension"]="#include <extension.h>";
+	Blockly.Arduino.definitions_["extension"]="Extension module;";
+	Blockly.Arduino.setups_["rvb"]="module.rvb("+value_rouge+","+value_vert+","+value_bleu+");"
+	//Blockly.Arduino.variables_['rvb_'+value_rouge] = '#define redPin '+value_rouge+'\n#define greenPin '+value_vert+'\n#define bluePin '+value_bleu;
+	//Blockly.Arduino.userFunctions_['rvb_'+value_rouge] = 'void setColor(int redValue, int greenValue, int blueValue) {\n  analogWrite(redPin, redValue);\n  analogWrite(greenPin, greenValue);\n  analogWrite(bluePin, blueValue);\n}';
+	//Blockly.Arduino.setups_['rvb_'+value_rouge]='pinMode(greenPin, OUTPUT);\n  pinMode(redPin, OUTPUT);\n  pinMode(bluePin, OUTPUT);';
+	return '';
 };
 Blockly.Python['rvb_init'] = function(block) {
 	var value_rouge = block.getFieldValue('rouge');
@@ -571,16 +585,13 @@ Blockly.Python['rvb_init'] = function(block) {
 Blockly.Blocks['rvb_set']={init:function() {
     this.appendDummyInput()
         .appendField(Blockly.Msg.rvb_set);
-    this.appendValueInput("r")
-        .setCheck("Number")
+    this.appendValueInput("r").setCheck("Number")
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField("R");
-    this.appendValueInput("v")
-        .setCheck("Number")
+    this.appendValueInput("v").setCheck("Number")
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField("V");
-    this.appendValueInput("b")
-        .setCheck("Number")
+    this.appendValueInput("b").setCheck("Number")
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField("B");
     this.setInputsInline(true);
@@ -594,7 +605,8 @@ Blockly.Arduino['rvb_set'] = function(block) {
   var value_r = Blockly.Arduino.valueToCode(block, 'r', Blockly.Arduino.ORDER_ATOMIC);
   var value_v = Blockly.Arduino.valueToCode(block, 'v', Blockly.Arduino.ORDER_ATOMIC);
   var value_b = Blockly.Arduino.valueToCode(block, 'b', Blockly.Arduino.ORDER_ATOMIC);
-  var code = 'setColor('+value_r+','+value_v+','+value_b+');\n';
+  var code = 'module.rvb_afficher_couleur('+value_r+','+value_v+','+value_b+');\n';
+  //var code = 'setColor('+value_r+','+value_v+','+value_b+');\n';
   return code;
 };
 Blockly.Python['rvb_set'] = function(block) {
@@ -631,8 +643,8 @@ Blockly.Python["blink"]=function(block){
 Blockly.Blocks["bargraphe"]={init:function(){
         this.appendDummyInput().appendField(new Blockly.FieldImage("data:image/png;base64,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", 55, 30))
 			.appendField(Blockly.Msg.bargraphe);
-        this.appendValueInput("clk", "Number").setAlign(Blockly.ALIGN_RIGHT).appendField("DCKI");
-        this.appendValueInput("data", "Number").setAlign(Blockly.ALIGN_RIGHT).appendField("DI");
+        this.appendValueInput("clk").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField("DCKI");
+        this.appendValueInput("data").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField("DI");
         this.setColour("#00929F");
         this.setTooltip(Blockly.Msg.bargraphe_tooltip);
         this.setHelpUrl("http://wiki.seeed.cc/Grove-LED_Bar/")}
@@ -640,9 +652,12 @@ Blockly.Blocks["bargraphe"]={init:function(){
 Blockly.Arduino["bargraphe"]=function(block){
     var _clock=Blockly.Arduino.valueToCode(block, 'clk', Blockly.Arduino.ORDER_ATOMIC);
     var _data=Blockly.Arduino.valueToCode(block, 'data', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.definitions_["ledbar"]="unsigned char _state[]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};";
-    Blockly.Arduino.codeFunctions_["ledbar"]="void sendData(unsigned int data) {\n  for (unsigned char i=0; i < 16; i++){\n    unsigned int state=(data&0x8000) ? HIGH : LOW;\n    digitalWrite(" + _data + ", state);\n    state=digitalRead(" + _clock + ") ? LOW : HIGH;\n    digitalWrite(" + _clock + ", state);\n    data <<= 1;\n  }\n}\nvoid setData(unsigned char _state[]) {\n  sendData(0x00);\n  for (unsigned char i=0; i<10; i++) sendData(_state[10-i-1]);\n  sendData(0x00);\n  sendData(0x00);\n  digitalWrite(" + _data + ", LOW);\n  delayMicroseconds(10);\n  for (unsigned char i=0; i<4; i++){\n    digitalWrite(" + _data + ", HIGH);\n    digitalWrite(" + _data + ", LOW);\n  }\n}\nvoid SetLevel(float level) {\n  level=max(0, min(10, level));\n  level *= 8;\n  for (byte i=0; i<10; i++) {\n    _state[i]=(level>8) ? ~0 : (level>0) ? ~(~0 << byte(level)) : 0;\n    level -= 8;\n  };\n  setData(_state);\n}";
-    Blockly.Arduino.setups_["ledbar"]="pinMode(" + _clock + ", OUTPUT);\n  pinMode(" + _data + ", OUTPUT);";
+    Blockly.Arduino.includes_["extension"]="#include <extension.h>";
+	Blockly.Arduino.definitions_["extension"]="Extension module;";
+	Blockly.Arduino.setups_["ledbar"]="module.bargraphe(" + _clock + "," + _data + ");";
+    //Blockly.Arduino.definitions_["ledbar"]="unsigned char _state[]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};";
+    //Blockly.Arduino.codeFunctions_["ledbar"]="void sendData(unsigned int data) {\n  for (unsigned char i=0; i < 16; i++){\n    unsigned int state=(data&0x8000) ? HIGH : LOW;\n    digitalWrite(" + _data + ", state);\n    state=digitalRead(" + _clock + ") ? LOW : HIGH;\n    digitalWrite(" + _clock + ", state);\n    data <<= 1;\n  }\n}\nvoid setData(unsigned char _state[]) {\n  sendData(0x00);\n  for (unsigned char i=0; i<10; i++) sendData(_state[10-i-1]);\n  sendData(0x00);\n  sendData(0x00);\n  digitalWrite(" + _data + ", LOW);\n  delayMicroseconds(10);\n  for (unsigned char i=0; i<4; i++){\n    digitalWrite(" + _data + ", HIGH);\n    digitalWrite(" + _data + ", LOW);\n  }\n}\nvoid SetLevel(float level) {\n  level=max(0, min(10, level));\n  level *= 8;\n  for (byte i=0; i<10; i++) {\n    _state[i]=(level>8) ? ~0 : (level>0) ? ~(~0 << byte(level)) : 0;\n    level -= 8;\n  };\n  setData(_state);\n}";
+    //Blockly.Arduino.setups_["ledbar"]="pinMode(" + _clock + ", OUTPUT);\n  pinMode(" + _data + ", OUTPUT);";
     return ""
 };
 Blockly.Python["bargraphe"]=function(block){
@@ -655,7 +670,7 @@ Blockly.Python["bargraphe"]=function(block){
 };
 //////////////
 Blockly.Blocks["bargraphe_allume"]={init:function(){
-        this.appendValueInput("del", "Number").appendField(Blockly.Msg.bargraphe_allume);
+        this.appendValueInput("del").setCheck("Number").appendField(Blockly.Msg.bargraphe_allume);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour("#00929F");
@@ -665,7 +680,8 @@ Blockly.Blocks["bargraphe_allume"]={init:function(){
 };
 Blockly.Arduino["bargraphe_allume"]=function(block){
     var level=Blockly.Arduino.valueToCode(block, 'del', Blockly.Arduino.ORDER_ATOMI);
-    return "SetLevel(" + level + ");\n"
+    //return "SetLevel(" + level + ");\n"
+    return "module.bargraphe_allumer(" + level + ");\n"
 };
 Blockly.Python["bargraphe_allume"]=function(block){
     var level=Blockly.Python.valueToCode(block, 'del', Blockly.Python.ORDER_ATOMI);
@@ -676,8 +692,8 @@ Blockly.Blocks["pixel_init"]={init:function(){
 	this.appendDummyInput()
 		.appendField(new Blockly.FieldImage("data:image/jpeg;base64,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", 32, 32))
 		.appendField(Blockly.Msg.pixel1);
-	this.appendValueInput("broche", "Number").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.pin);
-	this.appendValueInput("num", "Number").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.pixel4);
+	this.appendValueInput("broche").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.pin);
+	this.appendValueInput("num").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.pixel4);
     this.setColour("#00929F");
     this.setTooltip(Blockly.Msg.pixel1_tooltip);
     this.setHelpUrl("http://")}
@@ -691,16 +707,22 @@ Blockly.Arduino["pixel_init"]=function(block){
     return ""
 };
 Blockly.Python["pixel_init"]=function(block){
+	var carte = localStorage.getItem('card')
+	var cpu = profile[carte].cpu
     var pin=Blockly.Python.valueToCode(block, "broche", Blockly.Python.ORDER_ASSIGNMENT);
 	var number=Blockly.Python.valueToCode(block, "num", Blockly.Python.ORDER_ASSIGNMENT);
     Blockly.Python.imports_["neopixel"]="from neopixel import NeoPixel";
-	Blockly.Python.imports_["pin"]="from machine import Pin";
-    Blockly.Python.definitions_["pin_"+pin]="BROCHE_" + pin + " = Pin(" + pin + ", Pin.OUT)\nnp = NeoPixel(BROCHE_" + pin + ", " + number + ")";
-    return ""
+	if ( cpu == "cortexM0" ) {
+		Blockly.Python.definitions_["pin_"+pin]="np = NeoPixel(pin" + pin + ", " + number + ")"
+	} else {
+		Blockly.Python.imports_["pin"]="from machine import Pin";
+		Blockly.Python.definitions_["pin_"+pin]="BROCHE_" + pin + " = Pin(" + pin + ", Pin.OUT)\nnp = NeoPixel(BROCHE_" + pin + ", " + number + ")";
+	}
+	return ""
 };
 //////////////
 Blockly.Blocks["pixel_setcolor"]={init:function(){
-	this.appendValueInput("broche", "Number").appendField(Blockly.Msg.pixel6);
+	this.appendValueInput("broche").setCheck("Number").appendField(Blockly.Msg.pixel6);
 	this.appendDummyInput().appendField(Blockly.Msg.pixel3).appendField(new Blockly.FieldColour("#ff0000"), "color");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
@@ -736,11 +758,40 @@ Blockly.Arduino["pixel_show"]=function(block){
     return "pixel.show();\n"
 };
 Blockly.Python["pixel_show"]=function(block){
-    return "np.write()\n"
+	var carte = localStorage.getItem('card')
+	var cpu = profile[carte].cpu
+	if ( cpu == "cortexM0" ) {
+		return "np.show()\n"
+	} else {
+		return "np.write()\n"
+	}
+    
+};
+//////////////
+Blockly.Blocks["pixel_clear"]={init:function(){
+	this.appendDummyInput().appendField(Blockly.Msg.pixel7);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#00929F");
+    this.setTooltip(Blockly.Msg.pixel4_tooltip);
+    this.setHelpUrl("http://")}
+};
+Blockly.Arduino["pixel_clear"]=function(block){
+    return "pixel.show();\n"
+};
+Blockly.Python["pixel_clear"]=function(block){
+	var carte = localStorage.getItem('card')
+	var cpu = profile[carte].cpu
+	if ( cpu == "cortexM0" ) {
+		return "np.clear()\n"
+	} else {
+		return "np.clear()\n"
+	}
+    
 };
 //////////////
 Blockly.Blocks["pixel_setbrightness"]={init:function(){
-	this.appendValueInput("val").appendField(Blockly.Msg.pixel5);
+	this.appendValueInput("val").setCheck("Number").appendField(Blockly.Msg.pixel5);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#00929F");
@@ -1148,7 +1199,7 @@ Blockly.Python["matrice8x8_init"]=function(block){
 };
 /////////////
 Blockly.Blocks["matrice8x8_efface"]={init:function(){
-    this.appendDummyInput().appendField(Blockly.Msg.matrice8x8_efface);
+    this.appendValueInput("mat").setCheck("Number").appendField(Blockly.Msg.matrice8x8_efface);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#00929F");
@@ -1156,14 +1207,37 @@ Blockly.Blocks["matrice8x8_efface"]={init:function(){
     this.setHelpUrl(Blockly.Msg.matrice8x8_helpurl)}
 };
 Blockly.Arduino["matrice8x8_efface"]=function(block){
-    return "effacer();\n"
+	var num_mat=Blockly.Arduino.valueToCode(block, "mat", Blockly.Arduino.ORDER_ASSIGNMENT)||0;
+    return "matrice.effacer("+num_mat+");\n"
 };
 Blockly.Python["matrice8x8_efface"]=function(block){
     return "effacer();\n"
 };
 ////////////
+Blockly.Blocks["matrice8x8_aff_mat"]={init:function(){
+    this.appendValueInput("VAR").appendField(Blockly.Msg.matrice8x8_aff);
+    this.appendValueInput("mat").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.matrice);
+	this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#00929F");
+    this.setTooltip(Blockly.Msg.matrice8x8_aff_mat_tooltip);
+	this.setHelpUrl(Blockly.Msg.matrice8x8_helpurl)}
+};
+Blockly.Arduino["matrice8x8_aff_mat"]=function(block){
+	var varname=Blockly.Arduino.valueToCode(block, "VAR", Blockly.Arduino.ORDER_ASSIGNMENT);
+	var num_mat=Blockly.Arduino.valueToCode(block, "mat", Blockly.Arduino.ORDER_ASSIGNMENT);
+    return "afficher(" + varname + ", "+num_mat+");\n"
+};
+Blockly.Python["matrice8x8_aff_mat"]=function(block){
+	var varname=Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    return "afficher(" + varname + ");\n"
+};
+////////////
 Blockly.Blocks["matrice8x8_aff"]={init:function(){
-    this.appendDummyInput().appendField(Blockly.Msg.matrice8x8_aff).appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_GET_ITEM), "VAR");
+    this.appendValueInput("mat").setCheck("Number")
+		.appendField(Blockly.Msg.matrice8x8_aff)
+		.appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_GET_ITEM), "VAR")
+		.appendField("sur la matrice");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#00929F");
@@ -1176,7 +1250,8 @@ Blockly.Blocks["matrice8x8_aff"]={init:function(){
 };
 Blockly.Arduino["matrice8x8_aff"]=function(block){
 	var varname=Blockly.Arduino.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-    return "afficher(" + varname + ");\n"
+	var num_mat=Blockly.Arduino.valueToCode(block, "mat", Blockly.Arduino.ORDER_ASSIGNMENT)||0;
+    return "matrice.afficher(" + varname + ", " + num_mat +");\n"
 };
 Blockly.Python["matrice8x8_aff"]=function(block){
 	var varname=Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
@@ -1184,9 +1259,10 @@ Blockly.Python["matrice8x8_aff"]=function(block){
 };
 //////////
 Blockly.Blocks["matrice8x8_del"]={init:function(){
-    this.appendValueInput("line").appendField(Blockly.Msg.matriceLC);
-	this.appendValueInput("col").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.LCD_col);
-    this.appendValueInput("STATE").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg._AT);
+    this.appendValueInput("mat").setCheck("Number").appendField(Blockly.Msg.matriceLC);
+	this.appendValueInput("col").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.LCD_col);
+    this.appendValueInput("line").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.LCD_line);
+    this.appendValueInput("STATE").setCheck("Boolean").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg._AT);
 	this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#00929F");
@@ -1197,7 +1273,8 @@ Blockly.Arduino["matrice8x8_del"]=function(block){
 	var etat=Blockly.Arduino.valueToCode(block, "STATE", Blockly.Arduino.ORDER_ASSIGNMENT) == "HIGH" ? "true" : "false";
 	var ligne=Blockly.Arduino.valueToCode(block, "line", Blockly.Arduino.ORDER_ASSIGNMENT);
 	var colonne=Blockly.Arduino.valueToCode(block, "col", Blockly.Arduino.ORDER_ASSIGNMENT);
-    return "lc.setLed(0,"+ligne+","+colonne+","+etat+");\n"
+	var mat=Blockly.Arduino.valueToCode(block, "mat", Blockly.Arduino.ORDER_ASSIGNMENT)||0;
+    return "matrice.mettre_del(" + mat + ", "+ligne+", "+colonne+", "+etat+");\n"
 };
 Blockly.Python["matrice8x8_del"]=function(block){
 	var etat=Blockly.Python.valueToCode(block, "STATE", Blockly.Python.ORDER_ASSIGNMENT);
@@ -1291,24 +1368,39 @@ Blockly.Python["matrice_symbole"]=function(block){
 ///////////
 Blockly.Blocks["matrice_init"]={init:function(){
     this.appendDummyInput().appendField(Blockly.Msg.matrice)
-		.appendField(new Blockly.FieldDropdown([["8x8","8"],["16x8","16"]],function(option){this.sourceBlock_.updateShape(option)}), "matrix");
-    this.appendDummyInput("img16").appendField(new Blockly.FieldImage("data:image/png;base64,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", 60, 28))
+		.appendField(new Blockly.FieldDropdown([["8x8","8"],["16x8","16"],["32x8","32"]],function(option){this.sourceBlock_.updateShape(option)}), "matrix");
+    this.appendDummyInput("img").appendField(new Blockly.FieldImage("data:image/png;base64,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", 48, 40))
+	this.appendValueInput("DIN").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField("DIN");
+	this.appendValueInput("CLK").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField("CLK");
+	this.appendValueInput("CS").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField("CS");
 	this.setInputsInline(false);
     this.setColour("#00929F");
     this.setTooltip(Blockly.Msg.matrice16x8_tooltip);
     this.setHelpUrl(Blockly.Msg.matrice16x8_helpurl)},
     updateShape:function(option){
-		var inputExists = this.getInput("DIN");
-		if (inputExists) {
-			this.removeInput("img8");
-			this.appendDummyInput("img16").appendField(new Blockly.FieldImage("data:image/png;base64,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", 60, 28))
+		if (option=="16") {
 			this.removeInput("DIN");
 			this.removeInput("CS");
 			this.removeInput("CLK");
+			this.removeInput("img");
+			this.appendDummyInput("img").appendField(new Blockly.FieldImage("data:image/png;base64,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", 60, 28))
 		}
 		if (option=="8"){
-			this.removeInput("img16");
-			this.appendDummyInput("img8").appendField(new Blockly.FieldImage("data:image/png;base64,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", 50, 50))
+			this.removeInput("img");
+			this.removeInput("DIN");
+			this.removeInput("CS");
+			this.removeInput("CLK");
+			this.appendDummyInput("img").appendField(new Blockly.FieldImage("data:image/png;base64,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", 48, 40))
+		    this.appendValueInput("DIN").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField("DIN");
+			this.appendValueInput("CLK").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField("CLK");
+			this.appendValueInput("CS").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField("CS");
+		}
+		if (option=="32"){
+			this.removeInput("img");
+			this.removeInput("DIN");
+			this.removeInput("CS");
+			this.removeInput("CLK");
+			this.appendDummyInput("img").appendField(new Blockly.FieldImage("data:image/png;base64,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", 50, 34))
 		    this.appendValueInput("DIN").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField("DIN");
 			this.appendValueInput("CLK").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField("CLK");
 			this.appendValueInput("CS").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField("CS");
@@ -1325,18 +1417,31 @@ Blockly.Blocks["matrice_init"]={init:function(){
 };
 Blockly.Arduino["matrice_init"]=function(block){
 	var type_matrix=block.getFieldValue("matrix");
-	if (type_matrix=="16"){
-		Blockly.Arduino.variables_["matrice16init"]="#define IIC_SCL A5\n#define IIC_SDA A4";
-		Blockly.Arduino.codeFunctions_["matrice16init"]="void IIC_start() {\n  digitalWrite(IIC_SCL,LOW);\n  delayMicroseconds(3);\n  digitalWrite(IIC_SDA,HIGH);\n  delayMicroseconds(3);\n  digitalWrite(IIC_SCL,HIGH);\n  delayMicroseconds(3);\n  digitalWrite(IIC_SDA,LOW);\n  delayMicroseconds(3);\n}\nvoid IIC_end() {\n  digitalWrite(IIC_SCL,LOW);\n  delayMicroseconds(3);\n  digitalWrite(IIC_SDA,LOW);\n  delayMicroseconds(3);\n  digitalWrite(IIC_SCL,HIGH);\n  delayMicroseconds(3);\n  digitalWrite(IIC_SDA,HIGH);\n  delayMicroseconds(3);\n}\nvoid IIC_send(unsigned char send_data) {\n  for(char i = 0;i < 8;i++) {\n    digitalWrite(IIC_SCL,LOW);\n    delayMicroseconds(3);\n    if(send_data & 0x01) {\n      digitalWrite(IIC_SDA,HIGH);\n    } else {\n      digitalWrite(IIC_SDA,LOW);\n    }\n    delayMicroseconds(3);\n    digitalWrite(IIC_SCL,HIGH);\n    delayMicroseconds(3);\n    send_data = send_data >> 1;\n  }\n}\nvoid afficher (byte s[]) {\n  IIC_start();\n  IIC_send(0x40);\n  IIC_end();\n  IIC_start();\n  IIC_send(0xC0);\n  for(char i=0; i<16; i++) {\n    IIC_send(s[i]);\n  }\n  IIC_end();\n  IIC_start();\n  IIC_send(0x8F);\n  IIC_end();\n}\nvoid effacer () {\n  byte t[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};\n  afficher (t);\n}";
-		Blockly.Arduino.setups_["matrice16init"]="pinMode(IIC_SCL,OUTPUT);\n  pinMode(IIC_SDA,OUTPUT);\n  digitalWrite(IIC_SCL,LOW);\n  digitalWrite(IIC_SDA,LOW);";
-	} else {
-		var din=Blockly.Arduino.valueToCode(block, "DIN", Blockly.Arduino.ORDER_ASSIGNMENT);
-		var clk=Blockly.Arduino.valueToCode(block, "CLK", Blockly.Arduino.ORDER_ASSIGNMENT);
-		var cs=Blockly.Arduino.valueToCode(block, "CS", Blockly.Arduino.ORDER_ASSIGNMENT);
-		Blockly.Arduino.includes_["matrice8init"]='#include <LedControl.h>';
-		Blockly.Arduino.definitions_["matrice8init"]="LedControl lc=LedControl(" + din + "," + clk + "," + cs + ",1);";
-		Blockly.Arduino.codeFunctions_["matrice8init"]="void afficher(byte s[]) {\n  for (char i=0; i<8; i++) {\n    lc.setRow(0,i,s[i]);\n  }\n}\nvoid effacer () {\n  lc.clearDisplay(0);\n}";
-		Blockly.Arduino.setups_["matrice8init"]="lc.shutdown(0,false);\n  lc.setIntensity(0,1);\n  lc.clearDisplay(0);";
+	Blockly.Arduino.includes_["matrX"]='#include <matrX.h>';
+	switch (type_matrix) {
+        case "16":
+			Blockly.Arduino.definitions_["mat16"]="Matrice_I2C matrice;";
+			Blockly.Arduino.setups_["matrice16init"]="matrice.initialisation();";
+			//Blockly.Arduino.variables_["matrice16init"]="#define IIC_SCL A5\n#define IIC_SDA A4";
+			//Blockly.Arduino.codeFunctions_["matrice16init"]="void IIC_start() {\n  digitalWrite(IIC_SCL,LOW);\n  delayMicroseconds(3);\n  digitalWrite(IIC_SDA,HIGH);\n  delayMicroseconds(3);\n  digitalWrite(IIC_SCL,HIGH);\n  delayMicroseconds(3);\n  digitalWrite(IIC_SDA,LOW);\n  delayMicroseconds(3);\n}\nvoid IIC_end() {\n  digitalWrite(IIC_SCL,LOW);\n  delayMicroseconds(3);\n  digitalWrite(IIC_SDA,LOW);\n  delayMicroseconds(3);\n  digitalWrite(IIC_SCL,HIGH);\n  delayMicroseconds(3);\n  digitalWrite(IIC_SDA,HIGH);\n  delayMicroseconds(3);\n}\nvoid IIC_send(unsigned char send_data) {\n  for(char i = 0;i < 8;i++) {\n    digitalWrite(IIC_SCL,LOW);\n    delayMicroseconds(3);\n    if(send_data & 0x01) {\n      digitalWrite(IIC_SDA,HIGH);\n    } else {\n      digitalWrite(IIC_SDA,LOW);\n    }\n    delayMicroseconds(3);\n    digitalWrite(IIC_SCL,HIGH);\n    delayMicroseconds(3);\n    send_data = send_data >> 1;\n  }\n}\nvoid afficher (byte s[]) {\n  IIC_start();\n  IIC_send(0x40);\n  IIC_end();\n  IIC_start();\n  IIC_send(0xC0);\n  for(char i=0; i<16; i++) {\n    IIC_send(s[i]);\n  }\n  IIC_end();\n  IIC_start();\n  IIC_send(0x8F);\n  IIC_end();\n}\nvoid effacer () {\n  byte t[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};\n  afficher (t);\n}";
+			//Blockly.Arduino.setups_["matrice16init"]="pinMode(IIC_SCL,OUTPUT);\n  pinMode(IIC_SDA,OUTPUT);\n  digitalWrite(IIC_SCL,LOW);\n  digitalWrite(IIC_SDA,LOW);";
+			break;
+		case "8":
+			var din=Blockly.Arduino.valueToCode(block, "DIN", Blockly.Arduino.ORDER_ASSIGNMENT);
+			var clk=Blockly.Arduino.valueToCode(block, "CLK", Blockly.Arduino.ORDER_ASSIGNMENT);
+			var cs=Blockly.Arduino.valueToCode(block, "CS", Blockly.Arduino.ORDER_ASSIGNMENT);
+			Blockly.Arduino.definitions_["mat8"]="Matrice_SPI matrice;";
+			Blockly.Arduino.setups_["matrice8init"]="matrice.initialisation(" + din + ", " + clk + ", " + cs + ", 1);";
+			//Blockly.Arduino.codeFunctions_["matrice8init"]="void afficher(byte s[]) {\n  for (char i=0; i<8; i++) {\n    lc.setRow(0,i,s[i]);\n  }\n}\nvoid effacer () {\n  lc.clearDisplay(0);\n}";
+			//Blockly.Arduino.setups_["matrice8init"]="lc.shutdown(0,false);\n  lc.setIntensity(0,1);\n  lc.clearDisplay(0);";
+			break;
+		case "32":
+			var din=Blockly.Arduino.valueToCode(block, "DIN", Blockly.Arduino.ORDER_ASSIGNMENT);
+			var clk=Blockly.Arduino.valueToCode(block, "CLK", Blockly.Arduino.ORDER_ASSIGNMENT);
+			var cs=Blockly.Arduino.valueToCode(block, "CS", Blockly.Arduino.ORDER_ASSIGNMENT);
+			Blockly.Arduino.definitions_["mat32"]="Matrice_SPI matrice;";
+			Blockly.Arduino.setups_["matrice32init"]="matrice.initialisation(" + din + ", " + clk + ", " + cs + ", 4);";
+			break;
 	}
 	return ""
 };
@@ -1356,4 +1461,21 @@ Blockly.Python["matrice_init"]=function(block){
 		Blockly.Python.definitions_["spi"]="spi = SPI(-1, baudrate=10000000, miso=Pin(" + cs + "), mosi=Pin(" + din + "), sck=Pin(" + clk + "))\ndisplay = max7219.Matrix8x8(spi, 1)";
 	}
 	return ""
+};
+///////////
+Blockly.Blocks["matrice_scroll"]={init:function(){
+    this.appendValueInput("text").setCheck("String").appendField(Blockly.Msg.matrice8x8_scroll);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#00929F");
+    this.setTooltip(Blockly.Msg.matrice8x8_scroll_tooltip);
+	this.setHelpUrl(Blockly.Msg.matrice8x8_helpurl)}
+};
+Blockly.Arduino["matrice_scroll"]=function(block){
+	var texte=Blockly.Arduino.valueToCode(block, "text", Blockly.Arduino.ORDER_ASSIGNMENT);
+	return "matrice.faire_defiler({" + texte + "});\n"
+};
+Blockly.Python["matrice_scroll"]=function(block){
+	var texte=Blockly.Arduino.valueToCode(block, "text", Blockly.Arduino.ORDER_ASSIGNMENT);
+	return "faire_defiler({" + texte + "})\n"
 };

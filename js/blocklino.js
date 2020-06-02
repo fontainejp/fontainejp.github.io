@@ -252,8 +252,13 @@ BlocklyDuino.loadConfig = function () {
 };
 BlocklyDuino.discard = function () {
   if (window.localStorage.content == "on") {
-    BlocklyDuino.workspace.clear();
-    BlocklyDuino.workspace.render();
+	if (window.location.search!="") {
+		BlocklyDuino.workspace.clear();
+		window.location.search = "";
+	} else {
+		BlocklyDuino.workspace.clear();
+		BlocklyDuino.workspace.render();
+	}
   } else if (window.localStorage.prog == "arduino"){
 	editor.setValue(BlocklyDuino.prog_ino,1)
   } else {

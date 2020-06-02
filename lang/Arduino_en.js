@@ -221,6 +221,8 @@ Blockly.Msg.matrice16x8_del_tooltip = "Turns on (off) an LED in the matrix indic
 Blockly.Msg.matrice16x8_aff_tooltip = "Display the symbol that has been previously defined";
 Blockly.Msg.matrice16x8_efface_tooltip = "Turn off all LEDs in the matrix";
 Blockly.Msg.matrice16x8_helpurl = "";
+Blockly.Msg.matrice8x8_scroll_tooltip="scroll the text on the matrix";
+Blockly.Msg.matrice8x8_scroll="scroll the text";
 //time
 Blockly.Msg.millis ="time elapsed in";
 Blockly.Msg.millis_start="start a timekeeping in";
