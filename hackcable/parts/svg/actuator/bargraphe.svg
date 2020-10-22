@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<svg xmlns="http://www.w3.org/2000/svg" gorn="0"  id="svg2" width="153" version="1.1" height="81">
+    <desc >
+        <referenceFile >bargraph_2.svg</referenceFile>
+    </desc>
+    <defs  id="defs140"/>
+    <metadata  id="metadata2991">
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+            <cc:Work xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#" rdf:about="">
+                <dc:format xmlns:dc="http://purl.org/dc/elements/1.1/">image/svg+xml</dc:format>
+                <dc:type xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/"/>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g  transform="matrix(1.25,0,0,-1.25,-9.8515875,90.601297)">
+        <g >
+            <g >
+                <g gorn="0.3.0.0.0"  id="breadboard">
+                    <path gorn="0.3.0.0.0.0"  d="m 10.15627,66.168538 c 0,1.256312 0.99369,2.25 2.25,2.25 l 21.6,0 c 0,2.479728 1.99528,4.5 4.475,4.5 2.479728,0 4.5,-2.020272 4.5,-4.5 l 9.675,0 11.925,0 4.5,0 9.075,0 12.525,0 c 0,-2.479728 2.02032,-4.475 4.5,-4.475 2.47976,0 4.475,1.995272 4.475,4.475 l 21.6,0 c 1.25632,0 2.25,-0.993685 2.25,-2.25 l 0,-21.6 c 2.47968,0 4.5,-2.020273 4.5,-4.5 0,-2.479728 -2.02032,-4.475 -4.5,-4.475 l 0,-21.6 c 0,-1.256316 -0.99368,-2.25 -2.25,-2.25 l -21.6,0 c 0,2.479727 -1.99524,4.475 -4.475,4.475 -2.47968,0 -4.5,-1.995273 -4.5,-4.475 l -9.675,0 -11.925,0 -4.5,0 -14.75,0 -6.85,0 c 0,-2.4796804 -2.020272,-4.5000004 -4.5,-4.5000004 -2.47972,0 -4.475,2.02032 -4.475,4.5000004 l -21.6,0 c -1.25631,0 -2.25,0.99368 -2.25,2.25 l 0,21.6 c 2.47973,0 4.475,1.99524 4.475,4.475 0,2.47968 -1.99527,4.5 -4.475,4.5 l 0,21.6 z m 25.725,2.25 c 0,-1.435632 1.16438,-2.6 2.6,-2.6 1.435632,0 2.6,1.164368 2.6,2.6 0,1.435632 -1.164368,2.6 -2.6,2.6 -1.43562,0 -2.6,-1.164368 -2.6,-2.6 z m 0,-56.675 c 0,-1.4356 1.16438,-2.6000004 2.6,-2.6000004 1.435632,0 2.6,1.1644004 2.6,2.6000004 0,1.43568 -1.164368,2.575 -2.6,2.575 -1.43562,0 -2.6,-1.13932 -2.6,-2.575 z m 85.05,28.325 c 0,-1.435632 1.13932,-2.6 2.575,-2.6 1.4356,0 2.6,1.164368 2.6,2.6 0,1.435631 -1.1644,2.6 -2.6,2.6 -1.43568,0 -2.575,-1.164369 -2.575,-2.6 z" style="fill:#274a88" id="rect2992"/>
+                    <path gorn="0.3.0.0.0.1"  d="m 94.295676,10.366268 0,-0.007 -31.112302,0 0,0.007 31.112302,0 z" style="fill:#5c4500" id="path3013"/>
+                    <path gorn="0.3.0.0.0.2"  d="m 16.385207,24.688912 0,28.346457 70.866142,0 0,-28.346457 -70.866142,0 z" style="fill:#242424" id="path3035"/>
+                    <g  transform="scale(1,-1)">
+                        <g >
+                            <g >
+                                <text gorn="0.3.0.0.0.3.0.0.0"  font-size="3.2" style="font-size:3.20000005px;font-family:OCRA;fill:#ffffff" x="112.58347" id="tspan11445" y="-21.899578">GND</text>
+                            </g>
+                        </g>
+                    </g>
+                    <g  transform="scale(1,-1)">
+                        <g >
+                            <g >
+                                <text gorn="0.3.0.0.0.4.0.0.0"  font-size="3.2" style="font-size:3.20000005px;font-family:OCRA;fill:#ffffff" x="112.73816" id="tspan11445-6" y="-26.151546">VCC</text>
+                            </g>
+                        </g>
+                    </g>
+                    <g  transform="scale(1,-1)">
+                        <g >
+                            <g >
+                                <text gorn="0.3.0.0.0.5.0.0.0"  font-size="3.2" style="font-size:3.20000005px;font-family:OCRA;fill:#ffffff" x="112.4491" id="tspan11445-1" y="-51.663357">DCKI</text>
+                            </g>
+                        </g>
+                    </g>
+                    <g  transform="scale(1,-1)">
+                        <g >
+                            <g >
+                                <text gorn="0.3.0.0.0.6.0.0.0"  font-size="3.2" style="font-size:3.20000005px;font-family:OCRA;fill:#ffffff" x="112.4491" id="tspan11445-7" y="-55.870014">DI</text>
+                            </g>
+                        </g>
+                    </g>
+                    <g  transform="matrix(0.99999808,0,0,-0.99999808,97.100207,1077.2098)">
+                        <g >
+                            <g >
+                                <g gorn="0.3.0.0.0.7.0.0.0"  id="g102">
+                                    <path gorn="0.3.0.0.0.7.0.0.0.0"  d="m 15.662983,1029.8187 0,-2.2677 2.267515,0 0,2.2677 -2.267515,0 z" style="fill:#ffe500" id="connector0pin"/>
+                                    <path gorn="0.3.0.0.0.7.0.0.0.1"  d="m 17.930539,1033.1832 0,2.2677 -2.267556,0 0,-2.2677 2.267556,0 z" style="fill:#ffe500" id="connector1pin"/>
+                                    <path gorn="0.3.0.0.0.7.0.0.0.2"  d="m 15.662983,1038.9076 2.267515,0 0,2.2677 -2.267515,0 0,-2.2677 z" style="fill:#ffe500" id="connector2pin"/>
+                                    <path gorn="0.3.0.0.0.7.0.0.0.3"  d="m 15.662983,1044.5859 2.267515,0 0,2.2677 -2.267515,0 0,-2.2677 z" style="fill:#ffe500" id="connector3pin"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                    <g  transform="scale(1,-1)">
+                        <g >
+                            <g >
+                                <rect gorn="0.3.0.0.0.8.0.0.0"  style="fill:#ffffff;fill-opacity:1" id="rect4201" x="19.219852" width="3.968504" y="-47.366077" height="17.007874"/>
+                            </g>
+                        </g>
+                    </g>
+                    <g  transform="scale(1,-1)">
+                        <g >
+                            <g >
+                                <rect gorn="0.3.0.0.0.9.0.0.0"  style="fill:#ffffff;fill-opacity:1" id="rect4201-3" x="26.023003" width="3.968504" y="-47.366077" height="17.007874"/>
+                            </g>
+                        </g>
+                    </g>
+                    <g  transform="scale(1,-1)">
+                        <g >
+                            <g >
+                                <rect gorn="0.3.0.0.0.10.0.0.0"  style="fill:#ffffff;fill-opacity:1" id="rect4201-3-2" x="32.826153" width="3.968504" y="-47.366077" height="17.007874"/>
+                            </g>
+                        </g>
+                    </g>
+                    <g  transform="scale(1,-1)">
+                        <g >
+                            <g >
+                                <rect gorn="0.3.0.0.0.11.0.0.0"  style="fill:#ffffff;fill-opacity:1" id="rect4201-3-6" x="39.629303" width="3.968504" y="-47.366077" height="17.007874"/>
+                            </g>
+                        </g>
+                    </g>
+                    <g  transform="scale(1,-1)">
+                        <g >
+                            <g >
+                                <rect gorn="0.3.0.0.0.12.0.0.0"  style="fill:#ffffff;fill-opacity:1" id="rect4201-3-1" x="46.432449" width="3.968504" y="-47.366077" height="17.007874"/>
+                            </g>
+                        </g>
+                    </g>
+                    <g  transform="scale(1,-1)">
+                        <g >
+                            <g >
+                                <rect gorn="0.3.0.0.0.13.0.0.0"  style="fill:#ffffff;fill-opacity:1" id="rect4201-3-0" x="53.2356" width="3.968504" y="-47.366077" height="17.007874"/>
+                            </g>
+                        </g>
+                    </g>
+                    <g  transform="scale(1,-1)">
+                        <g >
+                            <g >
+                                <rect gorn="0.3.0.0.0.14.0.0.0"  style="fill:#ffffff;fill-opacity:1" id="rect4201-3-9" x="60.03875" width="3.968504" y="-47.366077" height="17.007874"/>
+                            </g>
+                        </g>
+                    </g>
+                    <g  transform="scale(1,-1)">
+                        <g >
+                            <g >
+                                <rect gorn="0.3.0.0.0.15.0.0.0"  style="fill:#ffffff;fill-opacity:1" id="rect4201-3-63" x="66.841904" width="3.968504" y="-47.366077" height="17.007874"/>
+                            </g>
+                        </g>
+                    </g>
+                    <g  transform="scale(1,-1)">
+                        <g >
+                            <g >
+                                <rect gorn="0.3.0.0.0.16.0.0.0"  style="fill:#ffffff;fill-opacity:1" id="rect4201-3-7" x="73.64505" width="3.968504" y="-47.366077" height="17.007874"/>
+                            </g>
+                        </g>
+                    </g>
+                    <g  transform="scale(1,-1)">
+                        <g >
+                            <g >
+                                <rect gorn="0.3.0.0.0.17.0.0.0"  style="fill:#ffffff;fill-opacity:1" id="rect4201-3-8" x="80.448196" width="3.968504" y="-47.366077" height="17.007874"/>
+                            </g>
+                        </g>
+                    </g>
+                    <g  transform="matrix(0,1,1,0,0,0)">
+                        <g >
+                            <g >
+                                <text gorn="0.3.0.0.0.18.0.0.0"  font-size="3.2" style="font-size:3.20000005px;font-family:OCRA;fill:#ffffff" x="31.942131" id="tspan11445-1-8" y="106.69048">LED bar</text>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
