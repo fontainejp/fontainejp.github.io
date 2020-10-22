@@ -21,6 +21,8 @@ var MSG = {
   btn_search: " Search ",
   btn_card: " Available cards ",
   btn_tint: " Colors ",
+  btn_games:" BLOCKLY-GAMES ",
+  btn_cable:" HackCable ",
   span_fontsize: "Font size : ",
   span_theme: "Theme : ",
   span_card_connect: "Connector :",

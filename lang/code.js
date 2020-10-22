@@ -107,6 +107,8 @@ Code.initLanguage = function() {
   $('#btn_html').attr('title', MSG['btn_html']);
   $('#btn_card').attr('title', MSG['cardLabel']);
   $('#btn_tint').attr('title', MSG['btn_tint']);
+  $('#btn_games').attr('title', MSG['btn_games']);
+  $('#btn_cable').attr('title', MSG['btn_cable']);
   $("xml").find("category").each(function() {
 	if (!$(this).attr('id')) {
 	  $(this).attr('id', $(this).attr('name'));

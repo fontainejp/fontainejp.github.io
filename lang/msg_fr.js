@@ -18,6 +18,8 @@ var MSG = {
   btn_redo: " Rétablir ",
   btn_search: " Rechercher ",
   btn_tint: " Couleurs ",
+  btn_games:" BLOCKLY-GAMES ",
+  btn_cable:" HackCable ",
   span_fontsize: "Taille de police : ",
   span_theme: "Thème : ",
   span_card_connect: "Connecteur :",
