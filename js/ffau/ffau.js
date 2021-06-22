@@ -91,19 +91,49 @@ window.addEventListener('load', function load(event) {
 	$('#lien2').on('click', function(){
 		if (window.localStorage.contentHTML=="on") {
 			ffau.clearWorkspace()
-			$.get("./examples/html/simple.www", function(data) { 
+			$.get("./examples/html/ia.www", function(data) { 
 				if (data) {
 					var xml = Blockly.Xml.textToDom(data);
 					Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
 				}
 			}, 'text')
 		} else {
-			$.get("./examples/html/simple.html", function(data) { 
+			$.get("./examples/html/ia.html", function(data) { 
 				if (data) editor.setValue(data,1)
 			}, 'text')
 		}
 	})
 	$('#lien3').on('click', function(){
+		if (window.localStorage.contentHTML=="on") {
+			ffau.clearWorkspace()
+			$.get("./examples/html/gafam.www", function(data) { 
+				if (data) {
+					var xml = Blockly.Xml.textToDom(data);
+					Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
+				}
+			}, 'text')
+		} else {
+			$.get("./examples/html/gafam.html", function(data) { 
+				if (data) editor.setValue(data,1)
+			}, 'text')
+		}
+	})
+	$('#lien4').on('click', function(){
+		if (window.localStorage.contentHTML=="on") {
+			ffau.clearWorkspace()
+			$.get("./examples/html/zen.www", function(data) { 
+				if (data) {
+					var xml = Blockly.Xml.textToDom(data);
+					Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
+				}
+			}, 'text')
+		} else {
+			$.get("./examples/html/zen.html", function(data) { 
+				if (data) editor.setValue(data,1)
+			}, 'text')
+		}
+	})
+	$('#lien5').on('click', function(){
 		if (window.localStorage.contentHTML=="on") {
 			ffau.clearWorkspace()
 			$.get("./examples/html/complexe.www", function(data) { 
@@ -114,21 +144,6 @@ window.addEventListener('load', function load(event) {
 			}, 'text')
 		} else {
 			$.get("./examples/html/complexe.html", function(data) { 
-				if (data) editor.setValue(data,1)
-			}, 'text')
-		}
-	})
-	$('#lien4').on('click', function(){
-		if (window.localStorage.contentHTML=="on") {
-			ffau.clearWorkspace()
-			$.get("./examples/html/bootstrap.www", function(data) { 
-				if (data) {
-					var xml = Blockly.Xml.textToDom(data);
-					Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
-				}
-			}, 'text')
-		} else {
-			$.get("./examples/html/bootstrap.html", function(data) { 
 				if (data) editor.setValue(data,1)
 			}, 'text')
 		}
