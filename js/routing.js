@@ -18297,8 +18297,7 @@ module.exports = L.Routing = {
 				var options = {
 						draggable: this.draggableWaypoints
 					},
-				    marker = L.marker(wp.latLng, options).bindPopup("Départ/Arrivée");
-					console.log(wp.latLng.toString());
+				    marker = L.marker(wp.latLng, options).bindPopup("Trajet");
 				return marker;
 			},
 			geocodersClassName: ''
