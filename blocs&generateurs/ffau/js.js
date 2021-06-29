@@ -150,7 +150,6 @@ Blockly.html['jquery_css_set']=function(block){
   return '$("'+value_text+'").css("'+value_dropdown+'", '+value_block+');\n'
 }
 //////////////////////// variable ////////////////////////
-//
 Blockly.Variables.flyoutCategory = function(workspace) {
 	var variableList = workspace.variableList;
 	variableList.sort(goog.string.caseInsensitiveCompare);

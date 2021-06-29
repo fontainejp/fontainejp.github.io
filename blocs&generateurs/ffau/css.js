@@ -1626,7 +1626,7 @@ Blockly.html['w3_onclick'] = function (block) {
 Blockly.Blocks['w3_dropdown'] = {
     init: function () {
         this.jsonInit({
-            "message0": 'class=" %1 " %2',
+            "message0": '%1 %2',
             "args0": [
                 {
                     "type": "field_dropdown",

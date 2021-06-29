@@ -1527,7 +1527,7 @@ Blockly.html['img'] = function (block) {
 	return '<img src="' + source + '"' + (block_modifier ? " " + block_modifier.trim() : "") + '>\n';
 }
 //////////////////////// openStreetMap ////////////////////////
-// map js / css / HTML
+// initMap
 Blockly.Blocks['initMap'] = {
     init: function () {
         this.jsonInit({
@@ -1551,14 +1551,32 @@ Blockly.Blocks['initMap'] = {
     }
 }
 Blockly.html['initMap'] = function (block) {
-    return '<link rel="stylesheet" href="css/map.css">\n<link rel="stylesheet" href="css/routing.css">\n<link rel="stylesheet" href="css/geosearch.css">\n<script src="js/map.js"></script>\n<script src="js/geosearch.js"></script>\n<script src="js/routing.js"></script>\n'
+    return '<link rel="stylesheet" href="css/map.css">\n<link rel="stylesheet" href="css/routing.css">\n<script src="js/map.js"></script>\n<script src="js/esri-leaflet.js"></script>\n<script src="js/esri-leaflet-geocoder.js"></script>\n<script src="js/routing.js"></script>\n<script src="js/html-overlay.js"></script>\n'
 }
 // viewMap
 Blockly.Blocks['viewMap'] = {
     init: function () {
         this.jsonInit({
-            "message0": '<viewMap> Lat,long %1 zoom %2 ',
+            "message0": '<viewMap> %1 Lat, long %2 zoom %3 ',
             "args0": [
+                {
+                    "type": "field_dropdown",
+                    "name": "type",
+                    "options": [
+                        [
+                            "street",
+                            "https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png"
+                        ],
+                        [
+                            "Topo",
+                            "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
+                        ],
+                        [
+                            "sattelite",
+                            "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                        ]
+                    ]
+                },
                 {
                     "type": "input_value",
                     "name": "PT",
@@ -1581,7 +1599,8 @@ Blockly.Blocks['viewMap'] = {
 Blockly.html['viewMap'] = function (block) {
     var ptxy = Blockly.html.valueToCode(block, 'PT', Blockly.html.ORDER_ATOMIC);
     var zoom_val = Blockly.html.valueToCode(block, 'zoom', Blockly.html.ORDER_ATOMIC);
-    return 'var maCarte = L.map("map").setView('+ptxy+', '+zoom_val+');\nL.tileLayer("https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",{minZoom:1,maxZoom:20, attribution: " &copy; OpenStreetMap"}).addTo(maCarte);\n'
+    var type = block.getFieldValue("type");
+    return 'var maCarte = L.map("map").setView('+ptxy+', '+zoom_val+');\nL.tileLayer("'+type+'",{minZoom:1,maxZoom:20, attribution: " &copy; OpenStreetMap"}).addTo(maCarte);\n'
 }
 // map
 Blockly.Blocks['map'] = {
@@ -1609,8 +1628,17 @@ Blockly.html['map'] = function (block) {
 Blockly.Blocks['marker'] = {
     init: function () {
         this.jsonInit({
-            "message0": '<marker> Lat,long %1 %2',
+            "message0": '<marker%1> Lat, long %2 %3',
             "args0": [
+                {
+                    "type": "field_dropdown",
+                    "name": "type",
+                    "options": [
+                        ["auto", "media/map/automotive.png"],["star", "media/map/default.png"],["event", "media/map/event.png"],["books", "media/map/libraries.png"],
+						["medical", "media/map/medical.png"],["photography", "media/map/photography.png"],["playgrounds", "media/map/playgrounds.png"],["restaurants", "media/map/restaurants.png"],
+						["schools", "media/map/schools.png"],["shopping", "media/map/shopping.png"],["sports", "media/map/sports.png"],["tools", "media/map/tools.png"],
+                    ]
+                },
                 {
                     "type": "input_value",
                     "name": "PT",
@@ -1632,13 +1660,14 @@ Blockly.Blocks['marker'] = {
 Blockly.html['marker'] = function (block) {
     var ptxy = Blockly.html.valueToCode(block, 'PT', Blockly.html.ORDER_ATOMIC);
     var block_modifier = Blockly.html.valueToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC);
-    return 'var mIcon = L.icon({iconUrl: "media/marker.png", iconAnchor: [5, 41]});\nL.marker('+ptxy+', {icon: mIcon}).addTo(maCarte)'+block_modifier+';\n'
+    var type = block.getFieldValue("type");
+    return 'L.marker('+ptxy+', {icon: L.icon({iconUrl: "'+type+'", iconAnchor: [15, 41], popupAnchor: [1, -34]})}).addTo(maCarte)'+block_modifier+';\n'
 }
 // CIRCLE
 Blockly.Blocks['circle'] = {
     init: function () {
         this.jsonInit({
-            "message0": '<circle> Lat,long %1 radius %2 %3',
+            "message0": '<circle> Lat, long %1 radius %2 %3',
             "args0": [
                 {
                     "type": "input_value",
@@ -1668,13 +1697,13 @@ Blockly.html['circle'] = function (block) {
     var ptxy = Blockly.html.valueToCode(block, 'PT', Blockly.html.ORDER_ATOMIC);
     var r_val = Blockly.html.valueToCode(block, 'rayon', Blockly.html.ORDER_ATOMIC);
     var block_modifier = Blockly.html.valueToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC);
-    return 'L.circle('+ptxy+', '+r_val+',{color: "red", fillColor: "#f03"}).addTo(maCarte)'+block_modifier+';\n'
+    return 'L.circle('+ptxy+', '+r_val+',{color: "yellow", fillColor: "#ff3"}).addTo(maCarte)'+block_modifier+';\n'
 }
 // POLYGON
 Blockly.Blocks['polygon'] = {
     init: function () {
         this.jsonInit({
-            "message0": '<triangle> Lat1,long1 %1 Lat2,long2 %2 Lat3,long3 %3 %4',
+            "message0": '<triangle> Lat1, long1 %1 Lat2, long2 %2 Lat3, long3 %3 %4',
             "args0": [
                 {
                     "type": "input_value",
@@ -1749,6 +1778,31 @@ Blockly.html['bindpopup'] = function (block) {
     var value = Blockly.html.valueToCode(block, 'content', Blockly.html.ORDER_ATOMIC);
     return ['.bindPopup('+value+')', Blockly.html.ORDER_ATOMIC]
 }
+// popupHTML
+Blockly.Blocks['bindpopupHTML'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": 'popupHTML %1 %2',
+            "args0": [
+                {
+                    "type": "input_dummy"
+                },
+                {
+                    "type": "input_statement",
+                    "name": "content",
+                    "check": ["html", "textcontainer"]
+
+                }
+            ],
+			"colour": "#154360",
+            "output": "popup"
+        });
+    }
+}
+Blockly.html['bindpopupHTML'] = function (block) {
+    var value = Blockly.html.statementToCode(block, 'content', Blockly.html.ORDER_ATOMIC).trim().replace(/\n/g, "");
+    return [".bindPopup('"+value+"')", Blockly.html.ORDER_ATOMIC]
+}
 // geoSearch
 Blockly.Blocks['geoSearch'] = {
     init: function () {
@@ -1781,6 +1835,7 @@ Blockly.Blocks["math_xy"] = {
 				}
             ],
             "output": "XY",
+			"tooltip": "Coordonées GPS :\nLattitude , longitude",
             "colour": "#00CC00"
         })
     }
@@ -1795,7 +1850,7 @@ Blockly.html["math_xy"]=function(block){
 Blockly.Blocks['routing'] = {
     init: function () {
         this.jsonInit({
-            "message0": '<Routing> Lat1,long1 %1 Lat2,long2 %2 ',
+            "message0": '<Routing> Lat1, long1 %1 Lat2, long2 %2 ',
             "args0": [
                 {
                     "type": "input_value",
@@ -1821,4 +1876,97 @@ Blockly.html['routing'] = function (block) {
     var ptxyb = Blockly.html.valueToCode(block, 'PTB', Blockly.html.ORDER_ATOMIC);
     return 'L.Routing.control({waypoints:['+ptxya+', '+ptxyb+']}).addTo(maCarte);\n$(".leaflet-routing-collapse-btn").click();\n'
 }
-
+// scale
+Blockly.Blocks['scale'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": '<addScale>',
+            "previousStatement": "script",
+            "nextStatement": "script",
+            "colour": "#154360"
+        })
+    }
+}
+Blockly.html['scale'] = function (block) {
+    return 'L.control.scale({imperial:false}).addTo(maCarte);\n'
+}
+// scale
+Blockly.Blocks['line'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": '<Distance> Lat1, long1 %1 Lat2, long2 %2 ',
+            "args0": [
+                {
+                    "type": "input_value",
+                    "name": "PTA",
+                    "check": "XY",
+					"align": "RIGHT"
+                },
+                {
+                    "type": "input_value",
+                    "name": "PTB",
+                    "check": "XY",
+					"align": "RIGHT"
+                }
+            ],
+            "previousStatement": "script",
+            "nextStatement": "script",
+            "colour": "#154360"
+        })
+    }
+}
+Blockly.html['line'] = function (block) {
+    var ptxya = Blockly.html.valueToCode(block, 'PTA', Blockly.html.ORDER_ATOMIC);
+    var ptxyb = Blockly.html.valueToCode(block, 'PTB', Blockly.html.ORDER_ATOMIC);	
+	var code = "var mark1 = L.marker("+ptxya+", {icon: L.icon({iconUrl: 'media/map/markerA.png', iconAnchor: [25, 41], popupAnchor: [-15, -34]}), draggable: 'true'}).bindPopup('').addTo(maCarte);\nvar mark2 = L.marker("+ptxyb+", {icon: L.icon({iconUrl: 'media/map/markerB.png', iconAnchor: [10, 41], popupAnchor: [10, -34]}), draggable: 'true'}).bindPopup('').addTo(maCarte);\nvar ligne = L.polyline([],{color: '#FF0099'}).addTo(maCarte);\n"
+	code += "mark1.on('dragend', findrag);\nmark2.on('dragend', findrag);\n"
+	code += "mark1.on('drag', deplacement);\nmark2.on('drag', deplacement);\n"
+    code += "function findrag(e) {\n  var mark = e.target;\n  mark.getPopup().setContent('Distance = '+Math.round(mark1.getLatLng().distanceTo(mark2.getLatLng()))+' m');\n  mark.openPopup();\n}\n";
+	code += "function deplacement(e) {\n  ligne.setLatLngs([mark1.getLatLng(), mark2.getLatLng()]);\n}\n"
+	return code
+}
+// HTMLoverlay tag
+Blockly.Blocks['HTMLoverlay'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": '<insertHTML> Lat1, long1 %1 %2',
+            "args0": [
+                {
+                    "type": "input_value",
+                    "name": "modifier",
+                    "check": "XY"
+                },
+                {
+                    "type": "input_statement",
+                    "name": "content",
+					"check": ["html", "textcontainer"]
+                }
+            ],
+            "previousStatement": "script",
+            "nextStatement": "script",
+            "colour": "#154360"
+        });
+    }
+}
+Blockly.html['HTMLoverlay'] = function (block) {
+    var statements_content = Blockly.html.statementToCode(block, 'content').trim().replace(/\n/g, "");
+    var block_modifier = Blockly.html.valueToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC);
+    var code = "L.htmlOverlay('" + statements_content + "', "+block_modifier+", {zoom: maCarte.getZoom()}).addTo(maCarte);\n";
+    return code
+}
+// onRightclick
+Blockly.Blocks['onRightclick'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": '<onRightclick viewAdress>',
+            "previousStatement": "script",
+            "nextStatement": "script",
+            "colour": "#154360"
+        });
+    }
+}
+Blockly.html['onRightclick'] = function (block) {
+    var lat_val = block.getFieldValue('lat');
+    var long_val = block.getFieldValue('long');
+    return 'maCarte.on("contextmenu", function (e) {\n  L.esri.Geocoding.geocodeService().reverse().latlng(e.latlng).run(function(error, result){\n    L.popup().setLatLng(result.latlng).setContent(result.address.Match_addr).openOn(maCarte);\n  });\n});\n'
+}
