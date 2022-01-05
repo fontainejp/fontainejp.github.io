@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<link rel="icon" type="image/png" href="media/icon.png">
-		<title>BLOCKLINO 1.8</title>
+		<title>BLOCKLINO 1.9.3</title>
 		<script src="js/blockly.min.js"></script>
 		<script src="js/type.js"></script>
 		<script src="js/types.js"></script>
@@ -76,13 +76,18 @@
 					<button id="btn_config" class="btn btn-default" data-toggle="modal" data-target="#configModal">
 						<i class="fa fa-cog fa-1_5x btn_color"></i>
 					</button>
-					<button id="btn_tint" class="btn btn-default" data-toggle="modal" data-target="#colorModal">
-						<i class="fa fa-tint fa-1_5x btn_color"></i>
-					</button>
-					<button id="btn_html" class="btn btn-default"><i class="fa fa-globe fa-1_5x btn_color"></i></button>
-					<button id="btn_factory" class="btn btn-default"><i class="fa fa-industry fa-1_5x btn_color"></i></button>
-					<button id="btn_games" class="btn btn-default"><i class="fa fa-gamepad fa-1_5x btn_color"></i></button>
-					<button id="btn_cable" class="btn btn-default"><i class="fa fa-object-ungroup fa-1_5x btn_color"></i></button>
+					<div class="btn-group">
+						<button id="btn_tools" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							<i class="fa fa-list-ul fa-1_5x btn_color"></i>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="#" id="btn_html"><i class="fa fa-globe fa-1_5x fa-fw"></i><span id="span_html"></span></a></li>
+							<li><a href="#" id="btn_factory"><i class="fa fa-industry fa-1_5x fa-fw"></i><span id="span_factory"></span></a></li>
+							<li><a href="#" id="btn_games"><i class="fa fa-gamepad fa-1_5x fa-fw"></i><span id="span_games"></span></a></li>
+							<li><a href="#" id="btn_tint" role="button" data-toggle="modal" data-target="#colorModal"><i class="fa fa-tint fa-1_5x fa-fw"></i><span id="span_tint"></span></a></li>
+							<li><a href="#" id="btn_midi"><i class="fa fa-headphones fa-1_5x fa-fw"></i><span id="span_midi"></span></a></li>
+						</ul>
+					</div>
 					<button id="btn_about" class="btn btn-default" data-toggle="modal" data-target="#aboutModal">
 						<i class="fa fa-question fa-1_5x btn_color"></i>
 					</button>

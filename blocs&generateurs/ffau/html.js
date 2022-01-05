@@ -308,7 +308,7 @@ Blockly.Blocks['icon'] = {
 Blockly.html['icon'] = function (block) {
     var text_content = block.getFieldValue('content');
     var block_modifier = Blockly.html.statementToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC);
-    var code = ' <i class="fa fa-' + text_content + '" '+ (block_modifier ? " " + block_modifier.trim() : "") +'></i> ';
+    var code = ' <i class="fa fa-' + text_content + '"'+ (block_modifier ? " " + block_modifier.trim() : "") +'></i> ';
     return code
 }
 // Divider tag
@@ -610,7 +610,7 @@ Blockly.Blocks['paragraph'] = {
 Blockly.html['paragraph'] = function (block) {
     var statements_content = Blockly.html.statementToCode(block, 'content');
     var block_modifier = Blockly.html.statementToCode(block, 'modifier');
-    return '<p' + (block_modifier ? " " + block_modifier.trim() : "") + '>\n' + statements_content + '</p>\n';
+    return '<p' + (block_modifier ? " " + block_modifier.trim() : "") + '>' + statements_content + '</p>\n';
 }
 // Header tag
 Blockly.Blocks['header'] = {
@@ -1139,8 +1139,8 @@ Blockly.Blocks['orderedlist'] = {
                     "check": "list"
                 }
             ],
-            "previousStatement": ["html", "textcontainer"],
-            "nextStatement": ["html", "textcontainer"],
+            "previousStatement": ["html", "textcontainer", "list"],
+            "nextStatement": ["html", "textcontainer", "list"],
             "colour": "#FD6C9E"
         });
     }
@@ -1168,8 +1168,8 @@ Blockly.Blocks['unorderedlist'] = {
                     "check": "list"
                 }
             ],
-            "previousStatement": ["html", "textcontainer"],
-            "nextStatement": ["html", "textcontainer"],
+            "previousStatement": ["html", "textcontainer", "list"],
+            "nextStatement": ["html", "textcontainer", "list"],
             "colour": "#FD6C9E"
         });
     }

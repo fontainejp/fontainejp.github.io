@@ -27,6 +27,9 @@ Blockly.Arduino["serial_line"]=function(block){
     var code='"\\n"';
     return [code, Blockly.Arduino.ORDER_ATOMIC]
 };
+Blockly.Arduino["serial_writeln"]=function(block){
+    return "Serial.println();\n"
+};
 Blockly.Arduino["serial_tab"]=function(block){
     var code='" ; "';
     return [code, Blockly.Arduino.ORDER_ATOMIC]
@@ -126,13 +129,12 @@ Blockly.Arduino["esp8266_request_indexof"]=function(block){
 	return code
 };
 /*  bluetooth  */
-
 Blockly.Arduino["bluetooth_init"]=function(block){
     var dropdown_pin1=Blockly.Arduino.valueToCode(block,"PIN1", Blockly.Arduino.ORDER_NONE);
     var dropdown_pin2=Blockly.Arduino.valueToCode(block,"PIN2", Blockly.Arduino.ORDER_NONE);
     var dropdown_speed=block.getFieldValue("SPEED");
     var n=0;
-	Blockly.Arduino.includes_["bluetooth"]="#include <SoftwareSerial.h>";
+	Blockly.Arduino.includes_["define_ss"]="#include <SoftwareSerial.h>";
 	Blockly.Arduino.definitions_["bluetooth"]="SoftwareSerial bluetooth("+dropdown_pin1+","+dropdown_pin2+");";
 	Blockly.Arduino.setups_["bluetooth"]="bluetooth.begin(" + dropdown_speed + ");";
 	return ""
@@ -140,6 +142,10 @@ Blockly.Arduino["bluetooth_init"]=function(block){
 Blockly.Arduino["bluetooth_a"]=function(block){
     var value_data_s=Blockly.Arduino.valueToCode(block, "data_s", Blockly.Arduino.ORDER_NONE);
     return "if (bluetooth.available() > 0) {\n  bluetooth.write(" + value_data_s + ");\n}\n"
+};
+Blockly.Arduino["bluetooth_print"]=function(block){
+    var value_data_s=Blockly.Arduino.valueToCode(block, "data_s", Blockly.Arduino.ORDER_NONE);
+    return "if (bluetooth.available() > 0) {\n  bluetooth.print(" + value_data_s + ");\n}\n"
 };
 Blockly.Arduino["bluetooth_b"]=function(block){
     var n=0;
@@ -218,6 +224,36 @@ Blockly.Arduino["millis"]=function(block){
 	}
     return [code, Blockly.Arduino.ORDER_ATOMIC]
 };
+Blockly.Arduino["chrono"]=function(block){
+	var _u=block.getFieldValue("unite");
+    switch (_u) {
+        case "u":
+            var code="start-micros()";
+            break;
+        case "m":
+            var code="start-millis()";
+            break;
+        case "s":
+            code="start-1000*millis()";
+            break
+	}
+    return [code, Blockly.Arduino.ORDER_SUBTRACTION]
+};
+Blockly.Arduino["millis_start"]=function(block){
+	var _u=block.getFieldValue("unite");
+    switch (_u) {
+        case "u":
+            var code="unsigned long start = micros();\n";
+            break;
+        case "m":
+            var code="unsigned long start = millis();\n";
+            break;
+        case "s":
+            code="unsigned long start = 1000*millis();\n";
+            break
+	}
+    return code
+};
 Blockly.Arduino["base_delay"]=function(block){
     var _u=block.getFieldValue("unite");
     var delay_time=Blockly.Arduino.valueToCode(block, "DELAY_TIME", Blockly.Arduino.ORDER_ATOMIC);
@@ -239,7 +275,7 @@ Blockly.Arduino["tempo_sans_delay"]=function(block){
     var delay_time=Blockly.Arduino.valueToCode(block, "DELAY_TIME", Blockly.Arduino.ORDER_ATOMIC);
 	var faire=Blockly.Arduino.statementToCode(block, "branche");
 	var temps="temps"+delay_time;
-	Blockly.Arduino.definitions_["temporisation"+delay_time]="long "+temps+"=0 ;";
+	Blockly.Arduino.definitions_["temporisation"+delay_time]="unsigned long "+temps+"=0 ;";
     switch (_u) {
         case "u":
             var code="if ((micros()-"+temps+")>=" + delay_time + ") {\n  "+temps+"=micros();\n"+faire+"}\n";
@@ -256,9 +292,10 @@ Blockly.Arduino["tempo_sans_delay"]=function(block){
 /*  entree sortie  */
 Blockly.Arduino["inout_attachInterrupt"]=function(block){
 	var dropdown_pin=block.getFieldValue('PIN');
+	var INT=parseInt(dropdown_pin)+2;
 	var dropdown_mode=block.getFieldValue('mode');
 	var funcName='interrupt_'+dropdown_pin;
-	Blockly.Arduino.setups_['setup_Interrupt_'+dropdown_pin]='pinMode('+dropdown_pin+', INPUT);\n  attachInterrupt('+dropdown_pin+','+funcName+','+dropdown_mode+');';
+	Blockly.Arduino.setups_['setup_Interrupt_'+dropdown_pin]='pinMode('+INT+', INPUT_PULLUP);\n  attachInterrupt('+dropdown_pin+','+funcName+','+dropdown_mode+');';
 	var branch=Blockly.Arduino.statementToCode(block, 'DO' );
 	Blockly.Arduino.codeFunctions_[funcName] ='void ' + funcName + '() {\n' + branch + '}';
 	return "";
@@ -323,5 +360,5 @@ Blockly.Arduino['eeprom_write'] = function(block) {
 Blockly.Arduino['eeprom_read'] = function(block) {
 	var adresse = Blockly.Arduino.valueToCode(block, 'adr', Blockly.Arduino.ORDER_ATOMIC);
 	Blockly.Arduino.includes_["eeprom"]='#include <EEPROM.h>';
-	return 'EEPROM.read('+adresse+')';
+return ['EEPROM.read('+adresse+')', Blockly.Arduino.ORDER_ATOMIC];
 };

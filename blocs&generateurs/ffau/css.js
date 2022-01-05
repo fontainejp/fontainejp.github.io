@@ -262,7 +262,7 @@ Blockly.Blocks['fontweight'] = {
 }
 Blockly.html['fontweight'] = function (block) {
     var weight = block.getFieldValue('weight');
-    return `font-weight: ${weight}\n`;
+    return `font-weight: ${weight};\n`;
 }
 // Border Collapse
 Blockly.Blocks['display'] = {
@@ -430,7 +430,7 @@ Blockly.Blocks['textdecoration'] = {
 }
 Blockly.html['textdecoration'] = function (block) {
     var value = block.getFieldValue('value');
-    return `text-decoration: ${value}\n`;
+    return `text-decoration: ${value};\n`;
 }
 // Text transform
 Blockly.Blocks['texttransform'] = {
@@ -457,7 +457,7 @@ Blockly.Blocks['texttransform'] = {
 }
 Blockly.html['texttransform'] = function (block) {
     var value = block.getFieldValue('value');
-    return `text-transform: ${value}\n`;
+    return `text-transform: ${value};\n`;
 }
 // Text Align
 Blockly.Blocks['textalign'] = {
@@ -484,7 +484,7 @@ Blockly.Blocks['textalign'] = {
 }
 Blockly.html['textalign'] = function (block) {
     var value = block.getFieldValue('value');
-    return `text-align: ${value}\n`;
+    return `text-align: ${value};\n`;
 }
 // BGColor new
 Blockly.Blocks['bgcolor-new'] = {
@@ -600,7 +600,6 @@ Blockly.html['border-new'] = function (block) {
     var width = fullEscape(block.getFieldValue('width'));
     var type = block.getFieldValue('type');
     var color = Blockly.html.statementToCode(block, 'color', Blockly.html.ORDER_ATOMIC).trim();
-
     return 'border: ' + width + 'px ' + type + ' ' + color + ';\n';
 }
 // Border Edge new
@@ -699,8 +698,7 @@ Blockly.html['borderedge-new'] = function (block) {
     var width = fullEscape(block.getFieldValue('width'));
     var type = block.getFieldValue('type');
     var color = Blockly.html.statementToCode(block, 'color', Blockly.html.ORDER_ATOMIC).trim();
-
-    return `${edge}: ${width}px ${type} ${color}\n`;
+    return `${edge}: ${width}px ${type} ${color};\n`;
 }
 // Border radius
 Blockly.Blocks['borderrad'] = {
