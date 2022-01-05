@@ -280,7 +280,7 @@ Blockly.Msg.ARRAY_GETINDEX_TOOLTIP2 = "created an array of the selected type";
 Blockly.Msg.ARRAY_GETINDEX_TOOLTIP3 = "fix an element of the list or array to the indicated value";
 Blockly.Msg.ARRAY_create = "set array";
 Blockly.Msg.ARRAY_fixe = "put the element of the array";
-Blockly.Msg.ARRAY_dim = "size of";
+Blockly.Msg.ARRAY_dim = "dimension";
 Blockly.Msg.ARRAY_index = "index";
 Blockly.Msg.ARRAY_append_tooltip = "add an item at the end of the list or array";
 Blockly.Msg.ARRAY_append_url = "";
@@ -299,6 +299,11 @@ Blockly.Msg.TEXT_LENGTH_TOOLTIP = "returns the number of letters (including spac
 Blockly.Msg.TEXT_PRINT_TITLE = "show %1";
 Blockly.Msg.TEXT_PRINT_TOOLTIP = "Show text, number or other specified value";
 Blockly.Msg.TEXT_TEXT_TOOLTIP = "A letter, a word or a phrase";
+//color
+Blockly.Msg.COLOR_rvb = "colour with R";
+Blockly.Msg.COLOR_v = "G";
+Blockly.Msg.COLOR_b = "B";
+//other
 Blockly.Msg.TODAY = "Today";
 Blockly.Msg.UNDO = "Cancel";
 Blockly.Msg.VARIABLES_AS = "type";
