@@ -64,6 +64,7 @@ Code.initLanguage = function() {
   $('#cardLabel').text(Blockly.Msg['cardLabel']);
   $('#aboutcardLabel').text(Blockly.Msg['aboutcardLabel']);
   $('#configModalLabel').text(Blockly.Msg['btn_config']);
+  $('#cardModalLabel').text(Blockly.Msg['cardLabel']);
   $('#colorModalLabel').text(Blockly.Msg['btn_tint']);
   $('#usbModalLabel').text(Blockly.Msg['usbLabel']);
   $('#exampleModalLabel').text(Blockly.Msg['btn_example']); 
