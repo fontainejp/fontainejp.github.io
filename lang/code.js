@@ -137,4 +137,3 @@ document.write('<script src="lang/msg_' + Code.LANG + '.js"></script>\n');
 document.write('<script src="lang/Blockly_' + Code.LANG + '.js"></script>\n');
 document.write('<script src="lang/Arduino_' + Code.LANG + '.js"></script>\n');
 document.write('<script src="lang/microbit_' + Code.LANG + '.js"></script>\n');
-document.write('<script src="lang/fresnel_' + Code.LANG + '.js"></script>\n');
