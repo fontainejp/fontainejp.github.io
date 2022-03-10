@@ -1,0 +1,16 @@
+#colors {
+    margin: 0 5px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 210px;
+    font-size: 0;
+    overflow: hidden;
+}
+.color {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-clip: padding-box;
+    white-space: normal;
+    cursor: pointer;
+}
