@@ -535,7 +535,7 @@ Blockly.Blocks['canvas'] = {
 }
 Blockly.html['canvas'] = function (block) {
 	var val_content = Blockly.html.statementToCode(block, "content", Blockly.html.ORDER_ATOMIC)
-    return '<canvas width="'+block.getFieldValue("width")+'" height="'+block.getFieldValue("height")+'" style="border: 1px solid "'+val_content+'></canvas>\n'
+    return '<canvas width="'+block.getFieldValue("width")+'" height="'+block.getFieldValue("height")+'" '+val_content+'></canvas>\n'
 }
 //////////////////////// MODIFIERS ////////////////////////
 // Modifiers
