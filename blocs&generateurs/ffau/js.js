@@ -1,6 +1,7 @@
 'use strict';
 goog.provide('Blockly.html');
 goog.require('Blockly.Generator');
+
   ////////////////
  /*  function  */
 ////////////////
@@ -28,6 +29,7 @@ function URLInput(input) {
         return 'https://' + input;
     }
 }
+
 //////////////////////// JavaScript ////////////////////////
 // script
 Blockly.Blocks['balise_js'] = {
@@ -51,31 +53,7 @@ Blockly.Blocks['balise_js'] = {
     }
 }
 Blockly.html['balise_js'] = function (block) {
-    return '<script>\n  $(document).ready(function(){\n' + Blockly.html.statementToCode(block, 'content') + '  });\n</script>\n'
-}
-// neutralino
-Blockly.Blocks['neutralino']={
-    init: function () {
-        this.jsonInit({
-            "message0": '<App> %1 %2 </App>',
-            "args0": [
-                {
-                    "type": "input_dummy"
-                },
-                {
-                    "type": "input_statement",
-                    "name": "content",
-					"check": "script"
-                }
-            ],
-			"previousStatement": "header",
-            "nextStatement": "header",
-            "colour": "#FF0000"
-        })
-    }
-}
-Blockly.html['neutralino']=function(block){
-  return '<script src="js/neutralino.js"></script>\n<script>\n  $(document).ready(function(){\n  Neutralino.init();\n' + Blockly.html.statementToCode(block, 'content') + '  });\n</script>\n'
+    return '<script>\n  window.addEventListener("load", function load(event) {\n' + Blockly.html.statementToCode(block, 'content') + '  })\n</script>\n'
 }
 // jquery_event
 Blockly.Blocks['jquery_event']={init:function(){
@@ -161,6 +139,7 @@ Blockly.html['jquery_css_set']=function(block){
   var value_dropdown = block.getFieldValue('_dropdown');
   return '$("'+value_text+'").css("'+value_dropdown+'", '+value_block+');\n'
 }
+
 //////////////////////// variable ////////////////////////
 Blockly.Variables.flyoutCategory = function(workspace) {
 	var variableList = workspace.variableList;
@@ -174,85 +153,50 @@ Blockly.Variables.flyoutCategory = function(workspace) {
 	});
 	xmlList.push(button);
 	if (variableList.length > 0) {
-		if (window.localStorage.prog!="python") {
-			
-			if (Blockly.Blocks['variables_set_init']) {
-				var block = goog.dom.createDom('block');
-				block.setAttribute('type', 'variables_set_init');
-				block.setAttribute('gap', 8);
-				var field = goog.dom.createDom('field', null, variableList[0]);
-				field.setAttribute('name', 'VAR');
-				block.appendChild(field);
-				xmlList.push(block);
-			}
-			if (Blockly.Blocks['variables_set']) {
-				var block = goog.dom.createDom('block');
-				block.setAttribute('type', 'variables_set');
-				block.setAttribute('gap', 8);
-				var field = goog.dom.createDom('field', null, variableList[0]);
-				field.setAttribute('name', 'VAR');
-				block.appendChild(field);
-				xmlList.push(block);
-			}
-			if (Blockly.Blocks['math_change']) {
-				var block = goog.dom.createDom('block');
-				block.setAttribute('type', 'math_change');
-				block.setAttribute('gap', 8);
-				var field = goog.dom.createDom('field', null, variableList[0]);
-				field.setAttribute('name', 'VAR');
-				block.appendChild(field);
-				xmlList.push(block);
-			}
-			
-			for (var i = 0; i < variableList.length; i++) {
-			  if (Blockly.Blocks['variables_get']) {
+		if (Blockly.Blocks['variables_set_init']) {
+			var block = goog.dom.createDom('block');
+			block.setAttribute('type', 'variables_set_init');
+			block.setAttribute('gap', 8);
+			var field = goog.dom.createDom('field', null, variableList[0]);
+			field.setAttribute('name', 'VAR');
+			block.appendChild(field);
+			xmlList.push(block);
+		}
+		if (Blockly.Blocks['variables_set']) {
+			var block = goog.dom.createDom('block');
+			block.setAttribute('type', 'variables_set');
+			block.setAttribute('gap', 8);
+			var field = goog.dom.createDom('field', null, variableList[0]);
+			field.setAttribute('name', 'VAR');
+			block.appendChild(field);
+			xmlList.push(block);
+		}
+		if (Blockly.Blocks['math_change']) {
+			var block = goog.dom.createDom('block');
+			block.setAttribute('type', 'math_change');
+			block.setAttribute('gap', 8);
+			var field = goog.dom.createDom('field', null, variableList[0]);
+			field.setAttribute('name', 'VAR');
+			block.appendChild(field);
+			xmlList.push(block);
+		}
+		for (var i = 0; i < variableList.length; i++) {
+			if (Blockly.Blocks['variables_get']) {
 				var block = goog.dom.createDom('block');
 				block.setAttribute('type', 'variables_get');
 				if (Blockly.Blocks['variables_set']) {
-				  block.setAttribute('gap', 8);
+					block.setAttribute('gap', 8);
 				}
 				var field = goog.dom.createDom('field', null, variableList[i]);
 				field.setAttribute('name', 'VAR');
 				block.appendChild(field);
 				xmlList.push(block);
-			  }
-			}
-		} else {
-			if (Blockly.Blocks['variables_set']) {
-				var block = goog.dom.createDom('block');
-				block.setAttribute('type', 'variables_set');
-				block.setAttribute('gap', 8);
-				var field = goog.dom.createDom('field', null, variableList[0]);
-				field.setAttribute('name', 'VAR');
-				block.appendChild(field);
-				xmlList.push(block);
-			}
-			if (Blockly.Blocks['math_change']) {
-				var block = goog.dom.createDom('block');
-				block.setAttribute('type', 'math_change');
-				block.setAttribute('gap', 8);
-				var field = goog.dom.createDom('field', null, variableList[0]);
-				field.setAttribute('name', 'VAR');
-				block.appendChild(field);
-				xmlList.push(block);
-			}
-			for (var i = 0; i < variableList.length; i++) {
-			  if (Blockly.Blocks['variables_get']) {
-				var block = goog.dom.createDom('block');
-				block.setAttribute('type', 'variables_get');
-				if (Blockly.Blocks['variables_set']) {
-				  block.setAttribute('gap', 8);
-				}
-				var field = goog.dom.createDom('field', null, variableList[i]);
-				field.setAttribute('name', 'VAR');
-				block.appendChild(field);
-				xmlList.push(block);
-			  }
 			}
 		}
 	}
-  return xmlList
+	return xmlList
 }
+
 //////////////////////// openStreetMap ///////////////////
 // initMap
 Blockly.Blocks['initMap'] = {
@@ -328,34 +272,6 @@ Blockly.html['viewMap'] = function (block) {
     var zoom_val = Blockly.html.valueToCode(block, 'zoom', Blockly.html.ORDER_ATOMIC);
     var type = block.getFieldValue("type");
     return 'var maCarte = L.map("map").setView(['+ptxy+'], '+zoom_val+');\nL.tileLayer("'+type+'",{minZoom:1,maxZoom:20, attribution: " &copy; OpenStreetMap"}).addTo(maCarte);\n'
-}
-// map
-Blockly.Blocks['map'] = {
-    init: function () {
-        this.jsonInit({
-            "message0": '<div id=%1> </div> %2',
-            "args0": [
-                {
-                    "type": "field_input",
-                    "name": "id",
-                    "text": "map"
-                },
-				{
-                    "type": "input_value",
-                    "name": "modifier",
-                    "check": "attributes"
-                }
-            ],
-            "previousStatement": "html",
-            "nextStatement": "html",
-            "colour": "#787746"
-        })
-    }
-}
-Blockly.html['map'] = function (block) {
-	var div_id = block.getFieldValue("id");
-    var block_modifier = Blockly.html.statementToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC);
-    return "<div id=\"" + div_id +"\""+ (block_modifier ? " " + block_modifier.trim() : "") + "></div>\n";
 }
 // marker
 Blockly.Blocks['marker'] = {
@@ -703,6 +619,7 @@ Blockly.html['onRightclick'] = function (block) {
     var long_val = block.getFieldValue('long');
     return 'maCarte.on("contextmenu", function (e) {\n  L.esri.Geocoding.geocodeService().reverse().latlng(e.latlng).run(function(error, result){\n    L.popup().setLatLng(result.latlng).setContent(result.address.Match_addr).openOn(maCarte);\n  });\n});\n'
 }
+
 //////////////////////// canvas ///////////////////
 // $Canvas
 Blockly.Blocks['Scanvas'] = {
@@ -723,7 +640,7 @@ Blockly.Blocks['Scanvas'] = {
     }
 }
 Blockly.html['Scanvas'] = function (block) {
-    return "$('canvas')"+Blockly.html.valueToCode(block, 'content', Blockly.html.ORDER_ATOMIC)+";\n"
+    return "$('canvas')"+Blockly.html.valueToCode(block, 'content', Blockly.html.ORDER_ATOMIC)
 }
 // ctx_rect
 Blockly.Blocks['ctx_rect'] = {

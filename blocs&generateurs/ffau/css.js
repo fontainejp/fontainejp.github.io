@@ -8,9 +8,7 @@
 'use strict';
 goog.provide('Blockly.html');
 goog.require('Blockly.Generator');
-  ////////////////
- /*  function  */
-////////////////
+/////////////////  function  /////////////////
 var URLRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
 var hashRegex = /#([A-z0-9]*)/;
 function hexEscape(str) {
@@ -34,31 +32,8 @@ function CSSEscape(input) {
         .replace(/}/g, "")
         .replace(/</g, "")
 }
-// attr_title
-Blockly.Blocks['attr_title'] = {
-    init: function () {
-        this.jsonInit({"message0": 'title=%1 %2',
-            "args0": [
-                {
-                    "type": "field_input",
-                    "name": "value",
-                    "text": ""
-                },
-				{
-				  "type": "input_value",
-				  "name": "in"
-				}
-            ],
-            "output": "attributes",
-            "colour": "#727272"
-        });
-    }
-}
-Blockly.html['attr_title'] = function (block) {
-    var value = block.getFieldValue('value');
-    var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE);
-    return 'title="' + fullEscape(value) + '"' + argument;
-}
+
+/////////////////  CSS  /////////////////
 // Style
 Blockly.Blocks['style'] = {
     init: function () {
@@ -83,31 +58,6 @@ Blockly.Blocks['style'] = {
 Blockly.html['style'] = function (block) {
     var statement = Blockly.html.statementToCode(block, 'content');
     return '<style>\n' + statement + '</style>\n';
-}
-// Style modifier
-Blockly.Blocks['stylearg'] = {
-    init: function () {
-        this.jsonInit({
-            "message0": 'style=%1 %2',
-            "args0": [
-                {
-                    "type": "input_dummy"
-                },
-                {
-                    "type": "input_statement",
-                    "name": "content",
-                    "check": "stylecontent"
-
-                }
-            ],
-            "colour": "#727272",
-            "output": "attributes"
-        });
-    }
-}
-Blockly.html['stylearg'] = function (block) {
-    var statement = Blockly.html.statementToCode(block, 'content').trim();
-    return 'style="' + statement + '" ';
 }
 // CSS Item
 Blockly.Blocks['cssitem'] = {
@@ -153,12 +103,12 @@ Blockly.Blocks['othercss'] = {
 				{
 					"type": "field_input",
 					"name": "property",
-					"text": "property"
+					"text": "list-style-type"
 				},
 				{
 					"type": "field_input",
 					"name": "value",
-					"text": "value"
+					"text": "circle"
 				}
 			],
 			"previousStatement": "stylecontent",
@@ -172,6 +122,111 @@ Blockly.html['othercss'] = function(block){
 	var value = block.getFieldValue('value');
 	var code = property+': '+value+';\n';
 	return code;
+}
+
+/////////////////  texte  /////////////////
+// Text decoration
+Blockly.Blocks['textdecoration'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": "text-decoration : %1",
+            "args0": [
+                {
+                    "type": "field_dropdown",
+                    "name": "value",
+                    "options": [
+                        ["overline", "overline"],
+                        ["underline", "underline"],
+						["under&over", "underline overline"],
+						["none", "none"]
+                    ]
+                }
+            ],
+            "previousStatement": "stylecontent",
+            "nextStatement": "stylecontent",
+            "colour": "#00929F"
+        });
+    }
+}
+Blockly.html['textdecoration'] = function (block) {
+    var value = block.getFieldValue('value');
+    return `text-decoration: ${value};\n`;
+}
+// Text transform
+Blockly.Blocks['texttransform'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": "text-transform : %1",
+            "args0": [
+                {
+                    "type": "field_dropdown",
+                    "name": "value",
+                    "options": [
+                        ["capitalize", "capitalize"],
+                        ["uppercase", "uppercase"],
+                        ["lowercase", "lowercase"],
+                        ["none", "none"]
+                    ]
+                }
+            ],
+            "previousStatement": "stylecontent",
+            "nextStatement": "stylecontent",
+            "colour": "#00929F"
+        });
+    }
+}
+Blockly.html['texttransform'] = function (block) {
+    var value = block.getFieldValue('value');
+    return `text-transform: ${value};\n`;
+}
+// Text INDENT
+Blockly.Blocks['textindent'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": "text-indent : %1",
+            "args0": [
+                {
+                    "type": "field_input",
+                    "name": "value",
+                    "text": "25px"
+                }
+            ],
+            "previousStatement": "stylecontent",
+            "nextStatement": "stylecontent",
+            "colour": "#00929F"
+        })
+    }
+}
+Blockly.html['textindent'] = function (block) {
+    var value = block.getFieldValue('value');
+    return `text-indent: ${value};\n`;
+}
+// Text Align
+Blockly.Blocks['textalign'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": "text-align : %1",
+            "args0": [
+                {
+                    "type": "field_dropdown",
+                    "name": "value",
+                    "options": [
+                        ["center", "center"],
+                        ["left", "left"],
+                        ["right", "right"],
+                        ["justify", "justify"]
+                    ]
+                }
+            ],
+            "previousStatement": "stylecontent",
+            "nextStatement": "stylecontent",
+            "colour": "#00929F"
+        })
+    }
+}
+Blockly.html['textalign'] = function (block) {
+    var value = block.getFieldValue('value');
+    return `text-align: ${value};\n`;
 }
 // Font-family
 Blockly.Blocks['fontfamily'] = {
@@ -264,7 +319,99 @@ Blockly.html['fontweight'] = function (block) {
     var weight = block.getFieldValue('weight');
     return `font-weight: ${weight};\n`;
 }
-// Border Collapse
+
+/////////////////  arrangement  /////////////////
+// top bottom left right
+Blockly.Blocks['tblr'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": '%1 : %2',
+            "args0": [
+                {
+                    "type": "field_dropdown",
+                    "name": "direction",
+                    "options": [
+                        [
+                            "top",
+                            "top"
+                        ],
+                        [
+                            "right",
+                            "right"
+                        ],
+                        [
+                            "bottom",
+                            "bottom"
+                        ],
+                        [
+                            "left",
+                            "left"
+                        ]
+                    ]
+                },
+                {
+                    "type": "field_input",
+                    "name": "value",
+                    "text": "15px"
+                }
+            ],
+            "previousStatement": "stylecontent",
+            "nextStatement": "stylecontent",
+            "colour": "#00929F"
+        });
+    }
+}
+Blockly.html['tblr'] = function (block) {
+    var direction = block.getFieldValue('direction');
+    var value = block.getFieldValue('value');
+    return direction + ': ' + fullEscape(value) + ';\n';
+}
+// grid
+Blockly.Blocks['grid'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": '%1 : %2',
+            "args0": [
+                {
+                    "type": "field_dropdown",
+                    "name": "direction",
+                    "options": [
+                        ["grid","grid"],
+						["grid-area","grid-area"],
+						["grid-template-columns","grid-template-columns"],
+						["grid-template-rows","grid-template-rows"],
+						["grid-template-areas","grid-template-areas"],
+						["grid-template","grid-template"],
+						["grid-auto-columns","grid-auto-columns"],
+						["grid-auto-rows","grid-auto-rows"],
+						["grid-auto-flow","grid-auto-flow"],
+						["grid-row-start","grid-row-start"],
+						["grid-row-end","grid-row-end"],
+						["grid-row","grid-row"],
+						["grid-column-start","grid-column-start"],
+						["grid-column-end","grid-column-end"],
+						["grid-column","grid-column"],
+						["gap","gap"]
+                    ]
+                },
+                {
+                    "type": "field_input",
+                    "name": "value",
+                    "text": ""
+                }
+            ],
+            "previousStatement": "stylecontent",
+            "nextStatement": "stylecontent",
+            "colour": "#00929F"
+        });
+    }
+}
+Blockly.html['grid'] = function (block) {
+    var direction = block.getFieldValue('direction');
+    var value = block.getFieldValue('value');
+    return direction + ': ' + value + ';\n';
+}
+// display
 Blockly.Blocks['display'] = {
     init: function () {
         this.jsonInit({
@@ -405,20 +552,59 @@ Blockly.html['padding'] = function (block) {
     var value = block.getFieldValue('value');
     return direction + ': ' + fullEscape(value) + ';\n';
 }
-// Text decoration
-Blockly.Blocks['textdecoration'] = {
+// Width height
+Blockly.Blocks['widthheightnum'] = {
     init: function () {
         this.jsonInit({
-            "message0": "text-decoration : %1",
+            "message0": '%1 : %2',
             "args0": [
                 {
                     "type": "field_dropdown",
-                    "name": "value",
+                    "name": "option",
                     "options": [
-                        ["overline", "overline"],
-                        ["underline", "underline"],
-						["under&over", "underline overline"],
-						["none", "none"]
+                        [
+                            "width",
+                            "width"
+                        ],
+                        [
+                            "height",
+                            "height"
+                        ]
+                    ]
+                },
+                {
+                    "type": "field_input",
+                    "name": "size",
+                    "text": "100%"
+                }
+            ],
+            "previousStatement": "stylecontent",
+            "nextStatement": "stylecontent",
+            "colour": "#00929F"
+        });
+    }
+}
+Blockly.html['widthheightnum'] = function (block) {
+    var option = block.getFieldValue('option');
+    var size = block.getFieldValue('size');
+
+    return option + ': ' + fullEscape(size) + ';\n';
+}
+// Float 
+Blockly.Blocks['float'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": 'float : %1',
+            "args0": [
+                {
+                    "type": "field_dropdown",
+                    "name": "content",
+                    "options": [
+                        ['right', 'right'],
+                        ['left', 'left'],
+                        ['none', 'none'],
+                        ['initial', 'initial'],
+                        ['inherit', 'inherit']
                     ]
                 }
             ],
@@ -428,25 +614,110 @@ Blockly.Blocks['textdecoration'] = {
         });
     }
 }
-Blockly.html['textdecoration'] = function (block) {
-    var value = block.getFieldValue('value');
-    return `text-decoration: ${value};\n`;
+Blockly.html['float'] = function (block) {
+    return 'float: ' + block.getFieldValue('content') + ';\n';
 }
-// Text transform
-Blockly.Blocks['texttransform'] = {
+// Vertical align
+Blockly.Blocks['verticalalign'] = {
     init: function () {
         this.jsonInit({
-            "message0": "text-transform : %1",
+            "message0": "vertical-align : %1",
             "args0": [
                 {
                     "type": "field_dropdown",
-                    "name": "value",
+                    "name": "align",
                     "options": [
-                        ["capitalize", "capitalize"],
-                        ["uppercase", "uppercase"],
-                        ["lowercase", "lowercase"],
-                        ["none", "none"]
+                        [
+                            "top",
+                            "top"
+                        ],
+						[
+                            "baseline",
+                            "baseline"
+                        ],
+                        [
+                            "text-top",
+                            "text-top"
+                        ],
+                        [
+                            "middle",
+                            "middle"
+                        ],
+                        [
+                            "bottom",
+                            "bottom"
+                        ],
+                        [
+                            "text-bottom",
+                            "text-bottom"
+                        ]
                     ]
+                }
+            ],
+            "previousStatement": "stylecontent",
+            "nextStatement": "stylecontent",
+            "colour": "#00929F"
+        })
+    }
+}
+Blockly.html['verticalalign'] = function (block) {
+    var align = block.getFieldValue('align');
+    return `vertical-align: ${align};\n`;
+}
+// position
+Blockly.Blocks['position'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": "position : %1",
+            "args0": [
+                {
+                    "type": "field_dropdown",
+                    "name": "align",
+                    "options": [
+                        [
+                            "static",
+                            "static"
+                        ],
+                        [
+                            "relative",
+                            "relative"
+                        ],
+                        [
+                            "absolute",
+                            "absolute"
+                        ],
+                        [
+                            "fixed",
+                            "fixed"
+                        ],
+                        [
+                            "sticky",
+                            "sticky"
+                        ]
+                    ]
+                }
+            ],
+            "previousStatement": "stylecontent",
+            "nextStatement": "stylecontent",
+            "colour": "#00929F"
+        })
+    }
+}
+Blockly.html['position'] = function (block) {
+    return "position: "+block.getFieldValue('align')+";\n"
+}
+
+/////////////////  couleur  /////////////////
+// Color
+Blockly.Blocks['color-new'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": 'color : %1',
+            "args0": [
+                {
+                    "type": "input_value",
+                    "name": "value",
+                    "check": "color"
                 }
             ],
             "previousStatement": "stylecontent",
@@ -455,60 +726,101 @@ Blockly.Blocks['texttransform'] = {
         });
     }
 }
-Blockly.html['texttransform'] = function (block) {
-    var value = block.getFieldValue('value');
-    return `text-transform: ${value};\n`;
+Blockly.html['color-new'] = function (block) {
+    var color = Blockly.html.statementToCode(block, 'value', Blockly.html.ORDER_ATOMIC).trim();
+    return 'color: ' + color + ';\n';
 }
-// Text INDENT
-Blockly.Blocks['textindent'] = {
+// Hex color picker block
+Blockly.Blocks['hex_picker'] = {
     init: function () {
         this.jsonInit({
-            "message0": "text-indent : %1",
+            "message0": "# %1",
             "args0": [
                 {
                     "type": "field_input",
-                    "name": "value",
-                    "text": "25px"
+                    "name": "color",
+                    "text": "ffffff"
                 }
             ],
-            "previousStatement": "stylecontent",
-            "nextStatement": "stylecontent",
+            "output": "color",
             "colour": "#00929F"
-        })
+        });
     }
 }
-Blockly.html['textindent'] = function (block) {
-    var value = block.getFieldValue('value');
-    return `text-indent: ${value};\n`;
+Blockly.html['hex_picker'] = function (block) {
+    return "#" + hexEscape(block.getFieldValue('color'));
 }
-// Text Align
-Blockly.Blocks['textalign'] = {
+// RGBA color picker block
+Blockly.Blocks['rgba_picker'] = {
     init: function () {
         this.jsonInit({
-            "message0": "text-align : %1",
+            "message0": "rgba ( %1,%2,%3,%4 )",
             "args0": [
                 {
-                    "type": "field_dropdown",
-                    "name": "value",
-                    "options": [
-                        ["center", "center"],
-                        ["left", "left"],
-                        ["right", "right"],
-                        ["justify", "justify"]
-                    ]
+                    "type": "field_number",
+                    "name": "r",
+                    "value": 255,
+                    "min": 0,
+                    "max": 255,
+                    "precision": 1
+                },
+                {
+                    "type": "field_number",
+                    "name": "g",
+                    "value": 255,
+                    "min": 0,
+                    "max": 255,
+                    "precision": 1
+                },
+                {
+                    "type": "field_number",
+                    "name": "b",
+                    "value": 255,
+                    "min": 0,
+                    "max": 255,
+                    "precision": 1
+                },
+                {
+                    "type": "field_number",
+                    "name": "a",
+                    "value": 1,
+                    "min": 0,
+                    "max": 1
                 }
             ],
-            "previousStatement": "stylecontent",
-            "nextStatement": "stylecontent",
+            "output": "color",
             "colour": "#00929F"
-        })
+        });
     }
 }
-Blockly.html['textalign'] = function (block) {
-    var value = block.getFieldValue('value');
-    return `text-align: ${value};\n`;
+Blockly.html['rgba_picker'] = function (block) {
+    var r = looseEscape(block.getFieldValue('r'));
+    var g = looseEscape(block.getFieldValue('g'));
+    var b = looseEscape(block.getFieldValue('b'));
+    var a = looseEscape(block.getFieldValue('a'));
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
 }
-// BGColor new
+// Color picker block
+Blockly.Blocks['color_picker'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": "%1",
+            "args0": [
+                {
+                    "type": "field_colour",
+                    "name": "color",
+                    "colour": "#ffffff"
+                }
+            ],
+            "output": "color",
+            "colour": "#00929F"
+        });
+    }
+}
+Blockly.html['color_picker'] = function (block) {
+    return looseEscape(block.getFieldValue('color'));
+}
+// background-color
 Blockly.Blocks['bgcolor-new'] = {
     init: function () {
         this.jsonInit({
@@ -552,78 +864,8 @@ Blockly.html['background'] = function (block) {
     var val = block.getFieldValue('value');
     return 'background: ' + val + ';\n';
 }
-// Border new
-Blockly.Blocks['border-new'] = {
-    init: function () {
-        this.jsonInit({
-            "message0": 'border : %1px %2 %3',
-            "args0": [
-                {
-                    "type": "field_number",
-                    "name": "width",
-                    "value": 5,
-                    "min": 0
-                },
-                {
-                    "type": "field_dropdown",
-                    "name": "type",
-                    "options": [
-                        [
-                            "none",
-                            "none"
-                        ],
-                        [
-                            "solid",
-                            "solid"
-                        ],
-                        [
-                            "dotted",
-                            "dotted"
-                        ],
-                        [
-                            "dashed",
-                            "dashed"
-                        ],
-                        [
-                            "double",
-                            "double"
-                        ],
-                        [
-                            "groove",
-                            "groove"
-                        ],
-                        [
-                            "ridge",
-                            "ridge"
-                        ],
-                        [
-                            "inset",
-                            "inset"
-                        ],
-                        [
-                            "outset",
-                            "outset"
-                        ]
-                    ]
-                },
-                {
-                    "type": "input_value",
-                    "name": "color",
-                    "check": "color"
-                }
-            ],
-            "previousStatement": "stylecontent",
-            "nextStatement": "stylecontent",
-            "colour": "#00929F"
-        });
-    }
-}
-Blockly.html['border-new'] = function (block) {
-    var width = fullEscape(block.getFieldValue('width'));
-    var type = block.getFieldValue('type');
-    var color = Blockly.html.statementToCode(block, 'color', Blockly.html.ORDER_ATOMIC).trim();
-    return 'border: ' + width + 'px ' + type + ' ' + color + ';\n';
-}
+
+/////////////////  bordure  /////////////////
 // Border Edge new
 Blockly.Blocks['borderedge-new'] = {
     init: function () {
@@ -775,388 +1017,6 @@ Blockly.html['bordercollapse'] = function (block) {
     var content = block.getFieldValue('content');
     return 'border-collapse: ' + fullEscape(content) + ';\n';
 }
-// Width height number selector
-Blockly.Blocks['widthheightnum'] = {
-    init: function () {
-        this.jsonInit({
-            "message0": '%1 : %2',
-            "args0": [
-                {
-                    "type": "field_dropdown",
-                    "name": "option",
-                    "options": [
-                        [
-                            "width",
-                            "width"
-                        ],
-                        [
-                            "height",
-                            "height"
-                        ]
-                    ]
-                },
-                {
-                    "type": "field_input",
-                    "name": "size",
-                    "text": "100%"
-                }
-            ],
-            "previousStatement": "stylecontent",
-            "nextStatement": "stylecontent",
-            "colour": "#00929F"
-        });
-    }
-}
-Blockly.html['widthheightnum'] = function (block) {
-    var option = block.getFieldValue('option');
-    var size = block.getFieldValue('size');
-
-    return option + ': ' + fullEscape(size) + ';\n';
-}
-// Float (CSS-version of 'align')
-Blockly.Blocks['float'] = {
-    init: function () {
-        this.jsonInit({
-            "message0": 'float : %1',
-            "args0": [
-                {
-                    "type": "field_dropdown",
-                    "name": "content",
-                    "options": [
-                        ['right', 'right'],
-                        ['left', 'left'],
-                        ['none', 'none'],
-                        ['initial', 'initial'],
-                        ['inherit', 'inherit']
-                    ]
-                }
-            ],
-            "previousStatement": "stylecontent",
-            "nextStatement": "stylecontent",
-            "colour": "#00929F"
-        });
-    }
-}
-Blockly.html['float'] = function (block) {
-    return 'float: ' + block.getFieldValue('content') + ';\n';
-}
-// Vertical align
-Blockly.Blocks['verticalalign'] = {
-    init: function () {
-        this.jsonInit({
-            "message0": "vertical-align : %1",
-            "args0": [
-                {
-                    "type": "field_dropdown",
-                    "name": "align",
-                    "options": [
-                        [
-                            "top",
-                            "top"
-                        ],
-						[
-                            "baseline",
-                            "baseline"
-                        ],
-                        [
-                            "text-top",
-                            "text-top"
-                        ],
-                        [
-                            "middle",
-                            "middle"
-                        ],
-                        [
-                            "bottom",
-                            "bottom"
-                        ],
-                        [
-                            "text-bottom",
-                            "text-bottom"
-                        ]
-                    ]
-                }
-            ],
-            "previousStatement": "stylecontent",
-            "nextStatement": "stylecontent",
-            "colour": "#00929F"
-        })
-    }
-}
-Blockly.html['verticalalign'] = function (block) {
-    var align = block.getFieldValue('align');
-    return `vertical-align: ${align};\n`;
-}
-// position
-Blockly.Blocks['position'] = {
-    init: function () {
-        this.jsonInit({
-            "message0": "position : %1",
-            "args0": [
-                {
-                    "type": "field_dropdown",
-                    "name": "align",
-                    "options": [
-                        [
-                            "static",
-                            "static"
-                        ],
-                        [
-                            "relative",
-                            "relative"
-                        ],
-                        [
-                            "absolute",
-                            "absolute"
-                        ],
-                        [
-                            "fixed",
-                            "fixed"
-                        ],
-                        [
-                            "sticky",
-                            "sticky"
-                        ]
-                    ]
-                }
-            ],
-            "previousStatement": "stylecontent",
-            "nextStatement": "stylecontent",
-            "colour": "#00929F"
-        })
-    }
-}
-Blockly.html['position'] = function (block) {
-    return "position: "+block.getFieldValue('align')+";\n"
-}
-// Color
-Blockly.Blocks['color-new'] = {
-    init: function () {
-        this.jsonInit({
-            "message0": 'color : %1',
-            "args0": [
-                {
-                    "type": "input_value",
-                    "name": "value",
-                    "check": "color"
-                }
-            ],
-            "previousStatement": "stylecontent",
-            "nextStatement": "stylecontent",
-            "colour": "#00929F"
-        });
-    }
-}
-Blockly.html['color-new'] = function (block) {
-    var color = Blockly.html.statementToCode(block, 'value', Blockly.html.ORDER_ATOMIC).trim();
-    return 'color: ' + color + ';\n';
-}
-// Hex color picker block
-Blockly.Blocks['hex_picker'] = {
-    init: function () {
-        this.jsonInit({
-            "message0": "# %1",
-            "args0": [
-                {
-                    "type": "field_input",
-                    "name": "color",
-                    "text": "ffffff"
-                }
-            ],
-            "output": "color",
-            "colour": "#00929F"
-        });
-    }
-}
-Blockly.html['hex_picker'] = function (block) {
-    return "#" + hexEscape(block.getFieldValue('color'));
-}
-// RGBA color picker block
-Blockly.Blocks['rgba_picker'] = {
-    init: function () {
-        this.jsonInit({
-            "message0": "rgba ( %1,%2,%3,%4 )",
-            "args0": [
-                {
-                    "type": "field_number",
-                    "name": "r",
-                    "value": 255,
-                    "min": 0,
-                    "max": 255,
-                    "precision": 1
-                },
-                {
-                    "type": "field_number",
-                    "name": "g",
-                    "value": 255,
-                    "min": 0,
-                    "max": 255,
-                    "precision": 1
-                },
-                {
-                    "type": "field_number",
-                    "name": "b",
-                    "value": 255,
-                    "min": 0,
-                    "max": 255,
-                    "precision": 1
-                },
-                {
-                    "type": "field_number",
-                    "name": "a",
-                    "value": 1,
-                    "min": 0,
-                    "max": 1
-                }
-            ],
-            "output": "color",
-            "colour": "#00929F"
-        });
-    }
-}
-Blockly.html['rgba_picker'] = function (block) {
-    var r = looseEscape(block.getFieldValue('r'));
-    var g = looseEscape(block.getFieldValue('g'));
-    var b = looseEscape(block.getFieldValue('b'));
-    var a = looseEscape(block.getFieldValue('a'));
-    return `rgba(${r}, ${g}, ${b}, ${a})`;
-}
-// Color picker block
-Blockly.Blocks['color_picker'] = {
-    init: function () {
-        this.jsonInit({
-            "message0": "%1",
-            "args0": [
-                {
-                    "type": "field_colour",
-                    "name": "color",
-                    "colour": "#ffffff"
-                }
-            ],
-            "output": "color",
-            "colour": "#00929F"
-        });
-    }
-}
-Blockly.html['color_picker'] = function (block) {
-    return looseEscape(block.getFieldValue('color'));
-}
-// top bottom left right
-Blockly.Blocks['tblr'] = {
-    init: function () {
-        this.jsonInit({
-            "message0": '%1 : %2',
-            "args0": [
-                {
-                    "type": "field_dropdown",
-                    "name": "direction",
-                    "options": [
-                        [
-                            "top",
-                            "top"
-                        ],
-                        [
-                            "right",
-                            "right"
-                        ],
-                        [
-                            "bottom",
-                            "bottom"
-                        ],
-                        [
-                            "left",
-                            "left"
-                        ]
-                    ]
-                },
-                {
-                    "type": "field_input",
-                    "name": "value",
-                    "text": "15px"
-                }
-            ],
-            "previousStatement": "stylecontent",
-            "nextStatement": "stylecontent",
-            "colour": "#00929F"
-        });
-    }
-}
-Blockly.html['tblr'] = function (block) {
-    var direction = block.getFieldValue('direction');
-    var value = block.getFieldValue('value');
-    return direction + ': ' + fullEscape(value) + ';\n';
-}
-// grid
-Blockly.Blocks['grid'] = {
-    init: function () {
-        this.jsonInit({
-            "message0": '%1 : %2',
-            "args0": [
-                {
-                    "type": "field_dropdown",
-                    "name": "direction",
-                    "options": [
-                        ["grid","grid"],
-						["grid-area","grid-area"],
-						["grid-template-columns","grid-template-columns"],
-						["grid-template-rows","grid-template-rows"],
-						["grid-template-areas","grid-template-areas"],
-						["grid-template","grid-template"],
-						["grid-auto-columns","grid-auto-columns"],
-						["grid-auto-rows","grid-auto-rows"],
-						["grid-auto-flow","grid-auto-flow"],
-						["grid-row-start","grid-row-start"],
-						["grid-row-end","grid-row-end"],
-						["grid-row","grid-row"],
-						["grid-column-start","grid-column-start"],
-						["grid-column-end","grid-column-end"],
-						["grid-column","grid-column"],
-						["gap","gap"]
-                    ]
-                },
-                {
-                    "type": "field_input",
-                    "name": "value",
-                    "text": ""
-                }
-            ],
-            "previousStatement": "stylecontent",
-            "nextStatement": "stylecontent",
-            "colour": "#00929F"
-        });
-    }
-}
-Blockly.html['grid'] = function (block) {
-    var direction = block.getFieldValue('direction');
-    var value = block.getFieldValue('value');
-    return direction + ': ' + value + ';\n';
-}
-// tabindex
-Blockly.Blocks['tabindex'] = {
-    init: function () {
-        this.jsonInit({
-            "message0": 'tabindex=%1 %2',
-            "args0": [
-                {
-                    "type": "field_input",
-                    "name": "value",
-                    "text": ""
-                },
-				{
-				  "type": "input_value",
-				  "name": "in"
-				}
-            ],
-            "output": "attributes",
-            "colour": "#727272"
-        });
-    }
-}
-Blockly.html['tabindex'] = function (block) {
-    var value = block.getFieldValue('value');
-    var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE);
-    return 'tabindex="' + fullEscape(value) + '"' + argument;
-}
 
   ////////////////
  /*  Bootstrap  */
@@ -1190,7 +1050,7 @@ Blockly.Blocks['B_class_modal'] = {
 				  "name": "in"
 				}
             ],
-            "colour": "#ffff00",
+            "colour": "#FFA500",
             "output": "attributes"
         });
     }
@@ -1226,7 +1086,7 @@ Blockly.Blocks['B_data'] = {
 				  "name": "in"
 				}
             ],
-            "colour": "#ffff00",
+            "colour": "#FFA500",
             "output": "attributes"
         });
     }
@@ -1257,7 +1117,7 @@ Blockly.Blocks['B_class_img'] = {
 				  "name": "in"
 				}
             ],
-            "colour": "#ffff00",
+            "colour": "#FFA500",
             "output": "attributes"
         });
     }
@@ -1290,7 +1150,7 @@ Blockly.Blocks['B_class_btn'] = {
 				  "name": "in"
 				}
             ],
-            "colour": "#ffff00",
+            "colour": "#FFA500",
             "output": "attributes"
         });
     }
@@ -1321,7 +1181,7 @@ Blockly.Blocks['B_class_dropdown'] = {
 				  "name": "in"
 				}
             ],
-            "colour": "#ffff00",
+            "colour": "#FFA500",
             "output": "attributes"
         });
     }
@@ -1352,7 +1212,7 @@ Blockly.Blocks['B_class_alert'] = {
 				  "name": "in"
 				}
             ],
-            "colour": "#ffff00",
+            "colour": "#FFA500",
             "output": "attributes"
         });
     }
@@ -1379,7 +1239,7 @@ Blockly.Blocks['role'] = {
 				}
             ],
             "output": "attributes",
-            "colour": "#ffff00"
+            "colour": "#FFA500"
         });
     }
 }
@@ -1402,7 +1262,7 @@ Blockly.Blocks['w3_class'] = {
 				  "type": "input_value",
 				  "name": "in"
 				}],
-            "colour": "#66ff99",
+            "colour": "#EEDD22",
             "output": "attributes"
         });
     }
@@ -1434,7 +1294,7 @@ Blockly.Blocks['w3_btn'] = {
 				  "name": "in"
 				}
             ],
-            "colour": "#66ff99",
+            "colour": "#EEDD22",
             "output": "attributes"
         });
     }
@@ -1463,7 +1323,7 @@ Blockly.Blocks['w3_modal'] = {
 				  "name": "in"
 				}
             ],
-            "colour": "#66ff99",
+            "colour": "#EEDD22",
             "output": "attributes"
         });
     }
@@ -1493,7 +1353,7 @@ Blockly.Blocks['w3_tooltip'] = {
 				  "name": "in"
 				}
             ],
-            "colour": "#66ff99",
+            "colour": "#EEDD22",
             "output": "attributes"
         });
     }
@@ -1529,7 +1389,7 @@ Blockly.Blocks['w3_hover_color'] = {
 				  "name": "in"
 				}
             ],
-            "colour": "#66ff99",
+            "colour": "#EEDD22",
             "output": "attributes"
         });
     }
@@ -1566,7 +1426,7 @@ Blockly.Blocks['w3_color'] = {
 				  "name": "in"
 				}
             ],
-            "colour": "#66ff99",
+            "colour": "#EEDD22",
             "output": "attributes"
         });
     }
@@ -1597,7 +1457,7 @@ Blockly.Blocks['w3_round'] = {
 				  "name": "in"
 				}
             ],
-            "colour": "#66ff99",
+            "colour": "#EEDD22",
             "output": "attributes"
         });
     }
@@ -1631,7 +1491,7 @@ Blockly.Blocks['w3_onclick'] = {
 				  "name": "in"
 				}
             ],
-            "colour": "#66ff99",
+            "colour": "#EEDD22",
             "output": "attributes"
         });
     }
@@ -1662,7 +1522,7 @@ Blockly.Blocks['w3_dropdown'] = {
 				  "name": "in"
 				}
             ],
-            "colour": "#66ff99",
+            "colour": "#EEDD22",
             "output": "attributes"
         });
     }
@@ -1694,7 +1554,7 @@ Blockly.Blocks['w3_panel'] = {
 				  "name": "in"
 				}
             ],
-            "colour": "#66ff99",
+            "colour": "#EEDD22",
             "output": "attributes"
         });
     }

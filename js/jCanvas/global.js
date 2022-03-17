@@ -17,8 +17,8 @@ var painter = {
 function updateCanvasSize() {
 
 	var image = painter.$canvas.getCanvasImage('image/png');
-	painter.canvasW = 400;
-	painter.canvasH = 300;
+	painter.canvasW = window.innerWidth;
+	painter.canvasH = window.innerHeight;
 
 	painter.$canvas.prop({
 		width: painter.canvasW,
@@ -43,9 +43,9 @@ function updateCanvasSize() {
 
 var $$ = {
 	stroke: $('#stroke'),
-	strokeContainer: $('#stroke-container'),
-	box: $('#box'),
-	tools: $('#tools'),
+	//strokeContainer: $('#stroke-container'),
+	//box: $('#box'),
+	//tools: $('#tools'),
 	clear: $('#clear'),
 	//slider: $('#slider'),
 	colors: $('#colors'),
@@ -123,12 +123,12 @@ function updateStroke() {
 		marginLeft: ($$.box.width() - $$.stroke.width()) / 2,
 		marginTop: ($$.box.height() - $$.stroke.height()) / 2
 	});
-if (painter.start === false) {
-	$$.stroke.css({backgroundColor: painter.color});
-	painter.start += 1;
-} else if (painter.start === true) {
-	$$.stroke.stop().animate({backgroundColor: painter.color}, duration);
-}
+	if (painter.start === false) {
+		$$.stroke.css({backgroundColor: painter.color});
+		painter.start += 1;
+	} else if (painter.start === true) {
+		$$.stroke.stop().animate({backgroundColor: painter.color}, duration);
+	}
 	painter.start = true;
 }
 
@@ -296,8 +296,7 @@ $$.slider.bind('slide', function(event, ui) {
 	fillSlider(percent);
 });*/
 
-updateStroke();
-//updateCanvasSize();
+updateCanvasSize();
 clearCanvas();
 
 });

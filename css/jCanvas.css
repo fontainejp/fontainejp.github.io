@@ -15,5 +15,6 @@
     cursor: pointer;
 }
 canvas{
+    position: relative;
 	border: 1px solid;
 }
