@@ -53,7 +53,7 @@ Blockly.Blocks['balise_js'] = {
     }
 }
 Blockly.html['balise_js'] = function (block) {
-    return '<script>\n  window.addEventListener("load", function load(event) {\n' + Blockly.html.statementToCode(block, 'content') + '  })\n</script>\n'
+    return '<script>\n  window.addEventListener("load", function load(event) {\n' + Blockly.html.statementToCode(block, 'content', Blockly.html.ORDER_ATOMIC) + '  })\n</script>\n'
 }
 // jquery_event
 Blockly.Blocks['jquery_event']={init:function(){
@@ -87,7 +87,7 @@ Blockly.Blocks['jquery_event']={init:function(){
 	})
 }}
 Blockly.html['jquery_event']=function(block){
-  var value_statement = Blockly.html.statementToCode(block, '_statement');
+  var value_statement = Blockly.html.statementToCode(block, '_statement', Blockly.html.ORDER_ATOMIC);
   var value_text = block.getFieldValue('_text');
   var value_dropdown = block.getFieldValue('_dropdown');
   return '$("'+value_text+'").'+value_dropdown+'(function(){\n'+value_statement+'});\n'
@@ -105,7 +105,7 @@ Blockly.Blocks['jquery_get']={init:function(){
 Blockly.html['jquery_get']=function(block){
   var value_text = block.getFieldValue('_text');
   var value_dropdown = block.getFieldValue('_dropdown');
-  return ['$("'+value_text+'").'+value_dropdown+'()',Blockly.html.ORDER_ATOMIC]
+  return '$("'+value_text+'").'+value_dropdown+'()'
 }
 // jquery_set
 Blockly.Blocks['jquery_set']={init:function(){
@@ -118,7 +118,7 @@ Blockly.Blocks['jquery_set']={init:function(){
     this.setColour('#FF0000')}
 }
 Blockly.html['jquery_set']=function(block){
-  var value_block = Blockly.html.valueToCode(block, '_block', Blockly.html.ORDER_ATOMIC);
+  var value_block = Blockly.html.statementToCode(block, '_block', Blockly.html.ORDER_ATOMIC).trim();
   var value_text = block.getFieldValue('_text');
   var value_dropdown = block.getFieldValue('_dropdown');
   return '$("'+value_text+'").'+value_dropdown+'('+value_block+');\n'
@@ -128,13 +128,13 @@ Blockly.Blocks['jquery_css_set']={init:function(){
     this.appendValueInput("_block")
         .appendField(new Blockly.FieldTextInput(""), "_text")
         .appendField(".css")
-        .appendField(new Blockly.FieldDropdown([["color", "color"], ["background-color", "background-color"], ["border", "border"], ["display", "display"], ["float", "float"], ["font", "font"], ["text-align", "text-align"], ["text-decoration", "text-decoration"], ["text-transform", "text-transform"]]), "_dropdown");
+        .appendField(new Blockly.FieldDropdown([["color", "color"], ["background-color", "background-color"], ["border", "border"], ["display", "display"], ["float", "float"], ["font-size", "font-size"], ["text-align", "text-align"], ["text-decoration", "text-decoration"], ["text-transform", "text-transform"]]), "_dropdown");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour('#FF0000')}
 }
 Blockly.html['jquery_css_set']=function(block){
-  var value_block = Blockly.html.valueToCode(block, '_block', Blockly.html.ORDER_ATOMIC);
+  var value_block = Blockly.html.statementToCode(block, '_block', Blockly.html.ORDER_ATOMIC).trim();
   var value_text = block.getFieldValue('_text');
   var value_dropdown = block.getFieldValue('_dropdown');
   return '$("'+value_text+'").css("'+value_dropdown+'", '+value_block+');\n'
@@ -268,8 +268,8 @@ Blockly.Blocks['viewMap'] = {
     }
 }
 Blockly.html['viewMap'] = function (block) {
-    var ptxy = Blockly.html.valueToCode(block, 'PT', Blockly.html.ORDER_ATOMIC);
-    var zoom_val = Blockly.html.valueToCode(block, 'zoom', Blockly.html.ORDER_ATOMIC);
+    var ptxy = Blockly.html.statementToCode(block, 'PT', Blockly.html.ORDER_ATOMIC).trim();
+    var zoom_val = Blockly.html.statementToCode(block, 'zoom', Blockly.html.ORDER_ATOMIC).trim();
     var type = block.getFieldValue("type");
     return 'var maCarte = L.map("map").setView(['+ptxy+'], '+zoom_val+');\nL.tileLayer("'+type+'",{minZoom:1,maxZoom:20, attribution: " &copy; OpenStreetMap"}).addTo(maCarte);\n'
 }
@@ -307,8 +307,8 @@ Blockly.Blocks['marker'] = {
     }
 }
 Blockly.html['marker'] = function (block) {
-    var ptxy = Blockly.html.valueToCode(block, 'PT', Blockly.html.ORDER_ATOMIC);
-    var block_modifier = Blockly.html.valueToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC);
+    var ptxy = Blockly.html.statementToCode(block, 'PT', Blockly.html.ORDER_ATOMIC).trim();
+    var block_modifier = Blockly.html.statementToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC).trim();
     var type = block.getFieldValue("type");
     return 'L.marker(['+ptxy+'], {icon: L.icon({iconUrl: "'+type+'", iconAnchor: [15, 41], popupAnchor: [1, -34]})}).addTo(maCarte)'+block_modifier+';\n'
 }
@@ -343,9 +343,9 @@ Blockly.Blocks['circle'] = {
     }
 }
 Blockly.html['circle'] = function (block) {
-    var ptxy = Blockly.html.valueToCode(block, 'PT', Blockly.html.ORDER_ATOMIC);
-    var r_val = Blockly.html.valueToCode(block, 'rayon', Blockly.html.ORDER_ATOMIC);
-    var block_modifier = Blockly.html.valueToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC);
+    var ptxy = Blockly.html.statementToCode(block, 'PT', Blockly.html.ORDER_ATOMIC).trim();
+    var r_val = Blockly.html.statementToCode(block, 'rayon', Blockly.html.ORDER_ATOMIC).trim();
+    var block_modifier = Blockly.html.statementToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC).trim();
     return 'L.circle(['+ptxy+'], '+r_val+',{color: "yellow", fillColor: "#ff3"}).addTo(maCarte)'+block_modifier+';\n'
 }
 // POLYGON
@@ -385,10 +385,10 @@ Blockly.Blocks['polygon'] = {
     }
 }
 Blockly.html['polygon'] = function (block) {
-	var block_modifier = Blockly.html.valueToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC);
-    var point1 = Blockly.html.valueToCode(block, 'PT1', Blockly.html.ORDER_ATOMIC);
-    var point2 = Blockly.html.valueToCode(block, 'PT2', Blockly.html.ORDER_ATOMIC);
-    var point3 = Blockly.html.valueToCode(block, 'PT3', Blockly.html.ORDER_ATOMIC);
+	var block_modifier = Blockly.html.statementToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC).trim();
+    var point1 = Blockly.html.statementToCode(block, 'PT1', Blockly.html.ORDER_ATOMIC).trim();
+    var point2 = Blockly.html.statementToCode(block, 'PT2', Blockly.html.ORDER_ATOMIC).trim();
+    var point3 = Blockly.html.statementToCode(block, 'PT3', Blockly.html.ORDER_ATOMIC).trim();
     return 'L.polygon([['+point1+'],['+point2+'],['+point3+']],{color: "green"}).addTo(maCarte)'+block_modifier+';\n'
 }
 // onclick
@@ -424,8 +424,8 @@ Blockly.Blocks['bindpopup'] = {
     }
 }
 Blockly.html['bindpopup'] = function (block) {
-    var value = Blockly.html.valueToCode(block, 'content', Blockly.html.ORDER_ATOMIC);
-    return ['.bindPopup('+value+')', Blockly.html.ORDER_ATOMIC]
+    var value = Blockly.html.statementToCode(block, 'content', Blockly.html.ORDER_ATOMIC).trim();
+    return '.bindPopup('+value+')'
 }
 // popupHTML
 Blockly.Blocks['bindpopupHTML'] = {
@@ -449,8 +449,8 @@ Blockly.Blocks['bindpopupHTML'] = {
     }
 }
 Blockly.html['bindpopupHTML'] = function (block) {
-    var value = Blockly.html.statementToCode(block, 'content', Blockly.html.ORDER_ATOMIC).trim().replace(/\n/g, "");
-    return [".bindPopup('"+value+"')", Blockly.html.ORDER_ATOMIC]
+    var value = Blockly.html.statementToCode(block, 'content', Blockly.html.ORDER_ATOMIC).replace(/ +/g, ' ').replace(/\n/g, '');
+    return ".bindPopup('"+value+"')"
 }
 // geoSearch
 Blockly.Blocks['geoSearch'] = {
@@ -492,8 +492,7 @@ Blockly.Blocks["math_xy"] = {
 Blockly.html["math_xy"]=function(block){
     var codex = window.parseFloat(block.getFieldValue("NUMX"));
     var codey = window.parseFloat(block.getFieldValue("NUMY"));
-    //var order = code < 0 ? Blockly.html.ORDER_UNARY_PREFIX : Blockly.html.ORDER_ATOMIC;
-    return [codex+", "+codey, Blockly.html.ORDER_ATOMIC]
+    return codex+", "+codey
 }
 // routing
 Blockly.Blocks['routing'] = {
@@ -521,8 +520,8 @@ Blockly.Blocks['routing'] = {
     }
 }
 Blockly.html['routing'] = function (block) {
-    var ptxya = Blockly.html.valueToCode(block, 'PTA', Blockly.html.ORDER_ATOMIC);
-    var ptxyb = Blockly.html.valueToCode(block, 'PTB', Blockly.html.ORDER_ATOMIC);
+    var ptxya = Blockly.html.statementToCode(block, 'PTA', Blockly.html.ORDER_ATOMIC).trim();
+    var ptxyb = Blockly.html.statementToCode(block, 'PTB', Blockly.html.ORDER_ATOMIC).trim();
     return 'L.Routing.control({waypoints:[['+ptxya+'], ['+ptxyb+']]}).addTo(maCarte);\n$(".leaflet-routing-collapse-btn").click();\n'
 }
 // scale
@@ -565,8 +564,8 @@ Blockly.Blocks['line'] = {
     }
 }
 Blockly.html['line'] = function (block) {
-    var ptxya = Blockly.html.valueToCode(block, 'PTA', Blockly.html.ORDER_ATOMIC);
-    var ptxyb = Blockly.html.valueToCode(block, 'PTB', Blockly.html.ORDER_ATOMIC);	
+    var ptxya = Blockly.html.statementToCode(block, 'PTA', Blockly.html.ORDER_ATOMIC).trim();
+    var ptxyb = Blockly.html.statementToCode(block, 'PTB', Blockly.html.ORDER_ATOMIC).trim();	
 	var code = "var mark1 = L.marker(["+ptxya+"], {icon: L.icon({iconUrl: 'https://fontainejp.github.io/media/map/markerA.png', iconAnchor: [25, 41], popupAnchor: [-15, -34]}), draggable: 'true'}).bindPopup('').addTo(maCarte);\nvar mark2 = L.marker(["+ptxyb+"], {icon: L.icon({iconUrl: 'https://fontainejp.github.io/media/map/markerB.png', iconAnchor: [10, 41], popupAnchor: [10, -34]}), draggable: 'true'}).bindPopup('').addTo(maCarte);\nvar ligne = L.polyline([],{color: '#FF0099'}).addTo(maCarte);\n"
 	code += "mark1.on('dragend', findrag);\nmark2.on('dragend', findrag);\n"
 	code += "mark1.on('drag', deplacement);\nmark2.on('drag', deplacement);\n"
@@ -598,8 +597,8 @@ Blockly.Blocks['HTMLoverlay'] = {
     }
 }
 Blockly.html['HTMLoverlay'] = function (block) {
-    var statements_content = Blockly.html.statementToCode(block, 'content').trim().replace(/\n/g, "");
-    var block_modifier = Blockly.html.valueToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC);
+    var statements_content = Blockly.html.statementToCode(block, 'content').trim().replace(/ +/g, ' ').replace(/\n/g, '');
+    var block_modifier = Blockly.html.statementToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC).trim();
     var code = "L.htmlOverlay('" + statements_content + "', ["+block_modifier+"], {zoom: maCarte.getZoom()}).addTo(maCarte);\n";
     return code
 }
@@ -625,14 +624,7 @@ Blockly.html['onRightclick'] = function (block) {
 Blockly.Blocks['Scanvas'] = {
     init: function () {
         this.jsonInit({
-            "message0": "canvas %1",
-			"args0": [
-                {
-                    "type": "input_value",
-					"check": "canvas",
-                    "name": "content"
-                }
-            ],
+            "message0": "canvas.init",
             "previousStatement": "script",
             "nextStatement": "script",
             "colour": "#cc33cc"
@@ -640,13 +632,13 @@ Blockly.Blocks['Scanvas'] = {
     }
 }
 Blockly.html['Scanvas'] = function (block) {
-    return "$('canvas')"+Blockly.html.valueToCode(block, 'content', Blockly.html.ORDER_ATOMIC)
+    return "var canvas = document.getElementById('jcanvas');\ncontext = canvas.getContext('2d');\n$('#jcanvas').css('border','1px solid black');\n"
 }
 // ctx_rect
 Blockly.Blocks['ctx_rect'] = {
     init: function () {
         this.jsonInit({
-            "message0": ".drawRect color%1 x, y%2 width%3 height%4",
+            "message0": "canvas.fillRect %1 x1,y1%2 width%3 height%4",
 			"args0": [
                 {
                     "type": "input_value",
@@ -655,38 +647,41 @@ Blockly.Blocks['ctx_rect'] = {
                 },
 				{
                     "type": "input_value",
-                    "name": "point",
+                    "name": "pointA",
                     "check": "XY",
 					"align": "RIGHT"
                 },
 				{
                     "type": "input_value",
                     "name": "width",
+                    "check": "Number",
 					"align": "RIGHT"
                 },
 				{
                     "type": "input_value",
                     "name": "height",
+                    "check": "Number",
 					"align": "RIGHT"
                 }
             ],
-			"output": "canvas",
-            "colour": "#cc33cc"
+            "previousStatement": "script",
+            "nextStatement": "script",
+			"colour": "#cc33cc"
         });
     }
 }
 Blockly.html['ctx_rect'] = function (block) {
-	var val_color = Blockly.html.statementToCode(block, 'color', Blockly.html.ORDER_ATOMIC) ;
-	var val_xy = Blockly.html.valueToCode(block, 'point', Blockly.html.ORDER_ATOMIC).split(",") ;
-	var val_width = Blockly.html.valueToCode(block, 'width', Blockly.html.ORDER_ATOMIC) ;
-	var val_height = Blockly.html.valueToCode(block, 'height', Blockly.html.ORDER_ATOMIC) ;
-    return [".drawRect({fillStyle: '"+val_color+"', x: "+val_xy[0]+", y:"+val_xy[1]+", width: "+val_width+", height: "+val_height+", fromCenter: false});\n", Blockly.html.ORDER_ATOMIC]
+	var val_color = Blockly.html.statementToCode(block, 'color', Blockly.html.ORDER_ATOMIC).trim() ;
+	var val_xy_A = Blockly.html.statementToCode(block, 'pointA', Blockly.html.ORDER_ATOMIC).trim() ;
+	var val_width = Blockly.html.statementToCode(block, 'width', Blockly.html.ORDER_ATOMIC).trim() ;
+	var val_height = Blockly.html.statementToCode(block, 'height', Blockly.html.ORDER_ATOMIC).trim() ;
+    return "context.fillStyle='"+val_color+"';\ncontext.fillRect("+val_xy_A+", "+val_width+", "+val_height+");\n"
 }
 // ctx_arc
 Blockly.Blocks['ctx_arc'] = {
     init: function () {
         this.jsonInit({
-            "message0": ".drawArc color%1 x, y%2 radius%3",
+            "message0": "canvas.arc %1 x,y%2 radius%3",
 			"args0": [
                 {
                     "type": "input_value",
@@ -702,25 +697,27 @@ Blockly.Blocks['ctx_arc'] = {
 				{
                     "type": "input_value",
                     "name": "radius",
+                    "check": "Number",
 					"align": "RIGHT"
                 }
             ],
-			"output": "canvas",
+            "previousStatement": "script",
+            "nextStatement": "script",
             "colour": "#cc33cc"
         });
     }
 }
 Blockly.html['ctx_arc'] = function (block) {
-	var val_color = Blockly.html.statementToCode(block, 'color', Blockly.html.ORDER_ATOMIC) ;
-	var val_xy = Blockly.html.valueToCode(block, 'point', Blockly.html.ORDER_ATOMIC).split(",") ;
-	var val_width = Blockly.html.valueToCode(block, 'radius', Blockly.html.ORDER_ATOMIC) ;
-    return [".drawArc({fillStyle: '"+val_color+"', x: "+val_xy[0]+", y:"+val_xy[1]+", radius: "+val_width+"});\n", Blockly.html.ORDER_ATOMIC]
+	var val_color = Blockly.html.statementToCode(block, 'color', Blockly.html.ORDER_ATOMIC).trim() ;
+	var val_xy = Blockly.html.statementToCode(block, 'point', Blockly.html.ORDER_ATOMIC).trim();
+	var val_width = Blockly.html.statementToCode(block, 'radius', Blockly.html.ORDER_ATOMIC).trim() ;
+    return "context.beginPath();\ncontext.strokeStyle='"+val_color+"';\ncontext.arc("+val_xy+", "+val_width+", 0, Math.PI*2);\ncontext.stroke();\n"
 }
 // ctx_line
 Blockly.Blocks['ctx_line'] = {
     init: function () {
         this.jsonInit({
-            "message0": ".drawLine color%1 x1, y1%2 x2, y2%3",
+            "message0": "canvas.line %1 x1,y1%2 x2,y2%3",
 			"args0": [
                 {
                     "type": "input_value",
@@ -739,22 +736,23 @@ Blockly.Blocks['ctx_line'] = {
 					"align": "RIGHT"
                 }
             ],
-			"output": "canvas",
+            "previousStatement": "script",
+            "nextStatement": "script",
             "colour": "#cc33cc"
         });
     }
 }
 Blockly.html['ctx_line'] = function (block) {
-	var val_color = Blockly.html.statementToCode(block, 'color', Blockly.html.ORDER_ATOMIC) ;
-	var val_xya = Blockly.html.valueToCode(block, 'pointA', Blockly.html.ORDER_ATOMIC).split(",") ;
-	var val_xyb = Blockly.html.valueToCode(block, 'pointB', Blockly.html.ORDER_ATOMIC).split(",") ;
-    return [".drawLine({strokeStyle: '"+val_color+"', x1: "+val_xya[0]+", y1:"+val_xya[1]+", x2: "+val_xyb[0]+", y2:"+val_xyb[1]+"});\n", Blockly.html.ORDER_ATOMIC]
+	var val_color = Blockly.html.statementToCode(block, 'color', Blockly.html.ORDER_ATOMIC).trim() ;
+	var val_xya = Blockly.html.statementToCode(block, 'pointA', Blockly.html.ORDER_ATOMIC).trim() ;
+	var val_xyb = Blockly.html.statementToCode(block, 'pointB', Blockly.html.ORDER_ATOMIC).trim() ;
+    return "context.beginPath();\ncontext.strokeStyle='"+val_color+"';\ncontext.moveTo("+val_xya+");\ncontext.lineTo("+val_xyb+");\ncontext.stroke();\n"
 }
 // ctx_text
 Blockly.Blocks['ctx_text'] = {
     init: function () {
         this.jsonInit({
-            "message0": ".drawText color%1 x,y%2 text%3 ",
+            "message0": "canvas.fillText %1 x1,y1%2 text%3 font%4",
 			"args0": [
                 {
                     "type": "input_value",
@@ -768,18 +766,30 @@ Blockly.Blocks['ctx_text'] = {
                 },
 				{
                     "type": "input_value",
-                    "name": "width",
+                    "name": "text",
+					"align": "RIGHT"
+                },
+				{
+                    "type": "input_value",
+                    "name": "font",
 					"align": "RIGHT"
                 }
             ],
-			"output": "canvas",
+            "previousStatement": "script",
+            "nextStatement": "script",
             "colour": "#cc33cc"
         });
     }
 }
 Blockly.html['ctx_text'] = function (block) {
-	var val_color = Blockly.html.statementToCode(block, 'color', Blockly.html.ORDER_ATOMIC) ;
-	var val_xy = Blockly.html.valueToCode(block, 'point', Blockly.html.ORDER_ATOMIC).split(",") ;
-	var val_width = Blockly.html.valueToCode(block, 'width', Blockly.html.ORDER_ATOMIC) ;
-    return [".drawText({fillStyle: '"+val_color+"', x: "+val_xy[0]+", y:"+val_xy[1]+", text: "+val_width+"});\n", Blockly.html.ORDER_ATOMIC]
+	var val_color = Blockly.html.statementToCode(block, 'color', Blockly.html.ORDER_ATOMIC).trim() ;
+	var val_xy = Blockly.html.statementToCode(block, 'point', Blockly.html.ORDER_ATOMIC).trim() ;
+	var val_text = Blockly.html.statementToCode(block, 'text', Blockly.html.ORDER_ATOMIC).trim() ;
+	var val_font = Blockly.html.statementToCode(block, 'font', Blockly.html.ORDER_ATOMIC).trim() ;
+	if (val_font) {
+		var code = "context.font="+val_font+";\n"
+	}else{
+		var code = "context.font='14px serif';\n"
+	}
+    return code + "context.fillStyle='"+val_color+"';\ncontext.fillText("+val_text+", "+val_xy+");\n"
 }

@@ -661,7 +661,7 @@ Blockly.Blocks['canvas'] = {
     }
 }
 Blockly.html['canvas'] = function (block) {
-	var val_content = Blockly.html.statementToCode(block, "content", Blockly.html.ORDER_ATOMIC)
+	var val_content = Blockly.html.statementToCode(block, "content", Blockly.html.ORDER_ATOMIC).trim();
     return '<canvas id="jcanvas" width="'+block.getFieldValue("width")+'" height="'+block.getFieldValue("height")+'" '+val_content+'></canvas>\n'
 }
 //////////////////////// MODIFIERS ////////////////////////
@@ -1198,7 +1198,7 @@ Blockly.Blocks['option'] = {
 }
 Blockly.html['option'] = function (block) {
     var content = Blockly.html.statementToCode(block, 'content');
-    var block_modifier = Blockly.html.statementToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC);
+    var block_modifier = Blockly.html.statementToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC).trim();
     return '<option' + (block_modifier ? " " + block_modifier.trim() : "") + '>\n' + content + '</option>\n';
 }
 // textarea
@@ -1237,7 +1237,7 @@ Blockly.Blocks['textarea'] = {
     }
 }
 Blockly.html['textarea'] = function (block) {
-    return '<textarea rows="'+block.getFieldValue("width")+'" cols="'+block.getFieldValue("height")+'" '+Blockly.html.valueToCode(block, 'content', Blockly.html.ORDER_ATOMIC)+'></textarea>\n'
+    return '<textarea cols="'+block.getFieldValue("height")+'" rows="'+block.getFieldValue("width")+'"'+Blockly.html.statementToCode(block, 'content', Blockly.html.ORDER_NONE)+'></textarea>\n'
 }
 //////////////////////// LIST ////////////////////////
 // OL tag

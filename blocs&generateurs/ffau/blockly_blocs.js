@@ -968,11 +968,10 @@ Blockly.Blocks["math_trig"] = {
 Blockly.Blocks["math_constant"] = {
     init: function() {
         var CONSTANTS = [
-            ["\u03c0", "PI"],
-            ["e", "E"],
-            ["\u221A 2", "SQRT2"],
-            ["\u221A \u00BD", "SQRT1_2"],
-            ["\u221E", "INFINITY"]
+            ["\u03c0", "Math.PI"],
+            ["e", "Math.E"],
+            ["\u221A 2", "Math.SQRT2"],
+            ["\u221A \u00BD", "Math.SQRT1_2"]
         ];
         this.setHelpUrl(Blockly.Msg.HELPURL);
         this.setColour("#00CC00");

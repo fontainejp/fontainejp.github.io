@@ -1142,6 +1142,7 @@ Blockly.Blocks['B_class_btn'] = {
                         ["btn-success", "btn btn-success"],
                         ["btn-warning", "btn btn-warning"],
                         ["btn-danger", "btn btn-danger"],
+                        ["btn-group-vertical", "btn-group-vertical"],
                         ["btn-group", "btn-group"]
                     ]
                 },

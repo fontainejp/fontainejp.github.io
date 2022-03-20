@@ -95,22 +95,19 @@ Blockly.html["logic_operation"]=function(block){
     var order = operator == "&&" ? Blockly.html.ORDER_LOGICAL_AND : Blockly.html.ORDER_LOGICAL_OR;
     var argument0 = Blockly.html.valueToCode(block, "A", order);
     var argument1 = Blockly.html.valueToCode(block, "B", order);
-    var code = argument0 + " " + operator + " " + argument1;
-    return [code, order]
+    return argument0 + " " + operator + " " + argument1
 };
 Blockly.html.logic_operation.OPERATORS = {and: "&", or: "|", xor: "^", shiftL: "<<", shiftR: ">>"};
 Blockly.html["logic_negate"]=function(block){
     var order = Blockly.html.ORDER_UNARY_PREFIX;
     var argument0 = Blockly.html.valueToCode(block, "BOOL", order);
-    var code = "!" + argument0;
-    return [code, order]
+    return "!" + argument0
 };
 Blockly.html["logic_null"]=function(block){
-    var code = "NULL";
-    return [code, Blockly.html.ORDER_ATOMIC]
+    return "null"
 };
 Blockly.html["true_false"]=function(block){
-    return [block.getFieldValue("BOOL"), Blockly.html.ORDER_ATOMIC]
+    return block.getFieldValue("BOOL")
 };
 // math
 Blockly.html["logic_compare"]=function(block){
@@ -119,9 +116,8 @@ Blockly.html["logic_compare"]=function(block){
     var order = operator == "==" || operator == "!=" ? Blockly.html.ORDER_EQUALITY : Blockly.html.ORDER_RELATIONAL;
     var argument0 = Blockly.html.valueToCode(block, "A", order);
     var argument1 = Blockly.html.valueToCode(block, "B", order);
-    var code = argument0 + " " + operator + " " + argument1;
-    return [code, order]
-};
+    return argument0 + " " + operator + " " + argument1
+}
 Blockly.html.logic_compare.OPERATORS = {EQ: "==", NEQ: "!=", LT: "<", LTE: "<=", GT: ">", GTE: ">="};
 Blockly.html['intervalle']=function(block){
     var OPERATORS = {
@@ -149,12 +145,10 @@ Blockly.html['intervalle']=function(block){
         code += '(' + value_valeur + ' >= ' + value_inf + ' )';
     }
     code += ' && ( ' + value_valeur + ' ' + dropdown_comp_sup + ' ' + value_sup + ')';
-    return [code, Blockly.html.ORDER_NONE]
+    return code
 };
 Blockly.html["math_number"]=function(block){
-    var code = window.parseFloat(block.getFieldValue("NUM"));
-    var order = code < 0 ? Blockly.html.ORDER_UNARY_PREFIX : Blockly.html.ORDER_ATOMIC;
-    return [code, order]
+    return block.getFieldValue("NUM")
 };
 Blockly.html["math_arithmetic"]=function(block){
     var mode = block.getFieldValue("OP");
@@ -168,8 +162,7 @@ Blockly.html["math_arithmetic"]=function(block){
         code = "Math.pow(" + argument0 + ", " + argument1 + ")";
         return [code, Blockly.html.ORDER_UNARY_POSTFIX]
     }
-    code = argument0 + operator + argument1;
-    return [code, order]
+    return argument0 + operator + argument1
 };
 Blockly.html.math_arithmetic.OPERATORS = {ADD: [" + ", Blockly.html.ORDER_ADDITIVE],MINUS: [" - ", Blockly.html.ORDER_ADDITIVE], MULTIPLY: [" * ", Blockly.html.ORDER_MULTIPLICATIVE], DIVIDE: [" / ", Blockly.html.ORDER_MULTIPLICATIVE], POWER: [null, Blockly.html.ORDER_NONE]};
 Blockly.html["math_single"]=function(block){
@@ -212,18 +205,16 @@ Blockly.html["math_single"]=function(block){
         default:
             throw "Unknown math operator: " + operator;
     }
-    if (code) return [code, Blockly.html.ORDER_FUNCTION_CALL];
-    return [code, Blockly.html.ORDER_DIVISION]
+    return code
 };
 Blockly.html["math_constant"]=function(block){
     var CONSTANTS = {
         PI: ["Math.PI", Blockly.html.ORDER_MEMBER],
         E: ["Math.E", Blockly.html.ORDER_MEMBER],
         SQRT2: ["Math.SQRT2", Blockly.html.ORDER_MEMBER],
-        SQRT1_2: ["Math.SQRT1_2", Blockly.html.ORDER_MEMBER],
-        INFINITY: ["Infinity", Blockly.html.ORDER_ATOMIC]
+        SQRT1_2: ["Math.SQRT1_2", Blockly.html.ORDER_MEMBER]
     };
-    return CONSTANTS[block.getFieldValue("CONSTANT")]
+    return block.getFieldValue("CONSTANT")
 };
 Blockly.html["math_number_property"]=function(block){
     var number_to_check = Blockly.html.valueToCode(block, "NUMBER_TO_CHECK", Blockly.html.ORDER_MODULUS);
@@ -255,31 +246,27 @@ Blockly.html["math_number_property"]=function(block){
             code = number_to_check + " % " + divisor + " == 0";
             break
     }
-    return [code, Blockly.html.ORDER_EQUALITY]
+    return code
 };
 Blockly.html["math_round"] = Blockly.html["math_single"];
 Blockly.html["math_trig"] = Blockly.html["math_single"];
 Blockly.html["math_modulo"]=function(block){
     var argument0 = Blockly.html.valueToCode(block, "DIVIDEND", Blockly.html.ORDER_MODULUS);
     var argument1 = Blockly.html.valueToCode(block, "DIVISOR", Blockly.html.ORDER_MODULUS);
-    var code = argument0 + " % " + argument1;
-    return [code, Blockly.html.ORDER_MODULUS]
+    return argument0 + " % " + argument1
 };
 Blockly.html["math_random_int"]=function(block){
     var argument0 = Blockly.html.valueToCode(block, "FROM", Blockly.html.ORDER_COMMA);
     var arg = Blockly.html.valueToCode(block, "TO", Blockly.html.ORDER_COMMA);
 	var argument1 = parseInt(arg) + 1 ;
-	var code = "Math.trunc(" + argument0 + " + Math.random()*" + argument1 + ")" ;
-    return [code, Blockly.html.ORDER_FUNCTION_CALL]
+	return "Math.trunc(" + argument0 + " + Math.random()*" + argument1 + ")" 
 };
 // texte
 Blockly.html['text_char']=function(block){
-    var code = '\'' + block.getFieldValue('TEXT') + '\'';
-    return [code, Blockly.html.ORDER_ATOMIC];
+    return "'" + block.getFieldValue('TEXT') + "'"
 };
 Blockly.html["text"]=function(block){
-    var code = Blockly.html.quote_(block.getFieldValue("TEXT"));
-    return [code, Blockly.html.ORDER_ATOMIC]
+    return Blockly.html.quote_(block.getFieldValue("TEXT"))
 };
 Blockly.html["text_join"]=function(block){
     var code;
@@ -329,8 +316,7 @@ Blockly.html["math_change"]=function(block){
     return code
 };
 Blockly.html['variables_get']=function(block){
-    var code = Blockly.html.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-    return [code, Blockly.html.ORDER_ATOMIC];
+    return Blockly.html.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE)
 };
 Blockly.html['variables_set']=function(block){
     var argument0 = Blockly.html.valueToCode(block, 'VALUE', Blockly.html.ORDER_ASSIGNMENT);
