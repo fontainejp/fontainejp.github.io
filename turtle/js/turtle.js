@@ -15,7 +15,6 @@ function loadTurtle(file){
 }
 
 window.addEventListener('load', function load(event){
-	Neutralino.init()
 	$('[rel="tooltip"]').tooltip({trigger: "hover"})
 	$('[data-toggle="tooltip"]').tooltip()
 	workspace = Blockly.inject('blocklyDiv',{
@@ -43,27 +42,30 @@ window.addEventListener('load', function load(event){
 	})
 	$('#btn_print').on('click', function(){
 		var code = $('#leSVG').prop('outerHTML')
-		Neutralino.os.showSaveDialog('Enregistrer', {
-			defaultPath: "capture",
-			filters: [{name: 'Fichier SVG', extensions: ['svg']}]
-		}).then((result) => {
-			Neutralino.filesystem.writeFile(result+".svg", code)			
-		})
+		var datenow = Date.now();
+		var filename = "capture"+datenow+".svg"
+		var element = document.createElement('a')
+		element.setAttribute('href', code)
+		element.setAttribute('download', filename)
+		element.style.display = 'none'
+		document.body.appendChild(element)
+		element.click()
+		document.body.removeChild(element)
 	})
 	$('#btn_save').on('click', function(){
 		var code = Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(workspace))
-		Neutralino.os.showSaveDialog('Enregistrer', {
-			defaultPath: "turtle",
-			filters: [{name: 'Fichier TTL', extensions: ['ttl']}]
-		}).then((result) => {
-			Neutralino.filesystem.writeFile(result+".ttl", code)
-			var tab = result.split("\/")
-			Neutralino.window.setTitle(NL_APPID + ' - ' + tab[tab.length - 1])
-		})
+		var datenow = Date.now()
+		var filename = "tortue"+datenow+".ttl"
+		var element = document.createElement('a')
+		element.setAttribute('href', code)
+		element.setAttribute('download', filename)
+		element.style.display = 'none'
+		document.body.appendChild(element)
+		element.click()
+		document.body.removeChild(element)
 	})
 	$('#btn_new').on('click', function(){
 		if (window.confirm(Blockly.Msg.discard)) workspace.clear()
-		Neutralino.window.setTitle(NL_APPID)
 		eval("effaceDessin();toto=1;totos[toto].t=0;totos[toto].teleport(320,320);")
 	})
 	$('#btn_open').on('click', function(){
@@ -78,29 +80,24 @@ window.addEventListener('load', function load(event){
 			if (target.readyState == 2) loadTurtle(target.result)
 		}
 		fileReader.readAsText(files[0])
-		var name = files[0].name.split("\.")
-		Neutralino.window.setTitle(NL_APPID + ' - ' + name[0])
 	})
 	$('#lien_carre').on('click', function(){
 		if (window.confirm(Blockly.Msg['discard'])) 
 			$.get("./examples/carre.ttl", function(data) { 
 				if (data) loadTurtle(data)
 			}, 'text')
-		Neutralino.window.setTitle(NL_APPID + ' - carre')
 	})
 	$('#lien_etoile5').on('click', function(){
 		if (window.confirm(Blockly.Msg['discard'])) 
 			$.get("./examples/etoile5.ttl", function(data) { 
 				if (data) loadTurtle(data)
 			}, 'text')
-		Neutralino.window.setTitle(NL_APPID + ' - etoile5')
 	})
 	$('#lien_maison').on('click', function(){
 		if (window.confirm(Blockly.Msg['discard'])) 
 			$.get("./examples/maison.ttl", function(data) { 
 				if (data) loadTurtle(data)
 			}, 'text')
-		Neutralino.window.setTitle(NL_APPID + ' - maison')
 	})
 	$('#btn_exe').on("click", function(){
 		try {
