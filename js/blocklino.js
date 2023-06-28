@@ -401,8 +401,8 @@ BlocklyDuino.bindFunctions = function() {
 	$('#btn_games').on('click', function(){
 		window.open("games/index.html","_blank", null);
 	});
-	$('#btn_cable').on('click', function(){
-		window.open("hackcable/index.html","_blank", null);
+	$('#btn_turtle').on('click', function(){
+		window.open("turtle/index.html","_blank", null);
 	});
 	$('#btn_preview').on("click", function() {
 		$("#toggle").toggle("slide");
