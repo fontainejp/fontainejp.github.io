@@ -68,7 +68,7 @@ Blockly.Blocks['cssitem'] = {
                 {
                     "type": "field_input",
                     "name": "selector",
-                    "text": "selector"
+                    "text": "p"
                 },
                 {
                     "type": "input_value",
@@ -183,12 +183,12 @@ Blockly.html['texttransform'] = function (block) {
 Blockly.Blocks['textindent'] = {
     init: function () {
         this.jsonInit({
-            "message0": "text-indent : %1",
+            "message0": "text-indent : %1px",
             "args0": [
                 {
                     "type": "field_input",
                     "name": "value",
-                    "text": "25px"
+                    "text": "25"
                 }
             ],
             "previousStatement": "stylecontent",
@@ -199,7 +199,7 @@ Blockly.Blocks['textindent'] = {
 }
 Blockly.html['textindent'] = function (block) {
     var value = block.getFieldValue('value');
-    return `text-indent: ${value};\n`;
+    return `text-indent: ${value}px;\n`;
 }
 // Text Align
 Blockly.Blocks['textalign'] = {
@@ -248,18 +248,18 @@ Blockly.Blocks['fontfamily'] = {
 }
 Blockly.html['fontfamily'] = function (block) {
     var value = block.getFieldValue('value');
-    return 'font-family: ' + fullEscape(value) + ';\n';
+    return "font-family: '" + value + "';\n";
 }
 // Font-size
 Blockly.Blocks['fontsize'] = {
     init: function () {
         this.jsonInit({
-            "message0": 'font-size : %1',
+            "message0": 'font-size : %1 px',
             "args0": [
                 {
                     "type": "field_input",
                     "name": "value",
-                    "text": "16px"
+                    "text": "16"
                 }
             ],
             "previousStatement": "stylecontent",
@@ -270,7 +270,7 @@ Blockly.Blocks['fontsize'] = {
 }
 Blockly.html['fontsize'] = function (block) {
     var value = block.getFieldValue('value');
-    return 'font-size: ' + fullEscape(value) + ';\n';
+    return 'font-size: ' + fullEscape(value) + 'px;\n';
 }
 // Font weight
 Blockly.Blocks['fontweight'] = {
@@ -325,7 +325,7 @@ Blockly.html['fontweight'] = function (block) {
 Blockly.Blocks['tblr'] = {
     init: function () {
         this.jsonInit({
-            "message0": '%1 : %2',
+            "message0": '%1 : %2px',
             "args0": [
                 {
                     "type": "field_dropdown",
@@ -352,7 +352,7 @@ Blockly.Blocks['tblr'] = {
                 {
                     "type": "field_input",
                     "name": "value",
-                    "text": "15px"
+                    "text": "15"
                 }
             ],
             "previousStatement": "stylecontent",
@@ -364,7 +364,7 @@ Blockly.Blocks['tblr'] = {
 Blockly.html['tblr'] = function (block) {
     var direction = block.getFieldValue('direction');
     var value = block.getFieldValue('value');
-    return direction + ': ' + fullEscape(value) + ';\n';
+    return direction + ': ' + fullEscape(value) + 'px;\n';
 }
 // grid
 Blockly.Blocks['grid'] = {
@@ -458,7 +458,7 @@ Blockly.html['display'] = function (block) {
 Blockly.Blocks['margin'] = {
     init: function () {
         this.jsonInit({
-            "message0": '%1 : %2',
+            "message0": '%1 : %2px',
             "args0": [
                 {
                     "type": "field_dropdown",
@@ -489,7 +489,7 @@ Blockly.Blocks['margin'] = {
                 {
                     "type": "field_input",
                     "name": "value",
-                    "text": "15px"
+                    "text": "15"
                 }
             ],
             "previousStatement": "stylecontent",
@@ -501,13 +501,13 @@ Blockly.Blocks['margin'] = {
 Blockly.html['margin'] = function (block) {
     var direction = block.getFieldValue('direction');
     var value = block.getFieldValue('value');
-    return direction + ': ' + fullEscape(value) + ';\n';
+    return direction + ': ' + fullEscape(value) + 'px;\n';
 }
 // Padding
 Blockly.Blocks['padding'] = {
     init: function () {
         this.jsonInit({
-            "message0": '%1 : %2',
+            "message0": '%1 : %2px',
             "args0": [
                 {
                     "type": "field_dropdown",
@@ -538,7 +538,7 @@ Blockly.Blocks['padding'] = {
                 {
                     "type": "field_input",
                     "name": "value",
-                    "text": "15px"
+                    "text": "15"
                 }
             ],
             "previousStatement": "stylecontent",
@@ -550,7 +550,7 @@ Blockly.Blocks['padding'] = {
 Blockly.html['padding'] = function (block) {
     var direction = block.getFieldValue('direction');
     var value = block.getFieldValue('value');
-    return direction + ': ' + fullEscape(value) + ';\n';
+    return direction + ': ' + fullEscape(value) + 'px;\n';
 }
 // Width height
 Blockly.Blocks['widthheightnum'] = {
@@ -968,12 +968,12 @@ Blockly.html['borderedge-new'] = function (block) {
 Blockly.Blocks['borderrad'] = {
     init: function () {
         this.jsonInit({
-            "message0": 'border-radius : %1',
+            "message0": 'border-radius : %1px',
             "args0": [
                 {
                     "type": "field_input",
                     "name": "content",
-                    "text": "10px"
+                    "text": "10"
                 }
             ],
             "previousStatement": "stylecontent",
@@ -984,7 +984,7 @@ Blockly.Blocks['borderrad'] = {
 }
 Blockly.html['borderrad'] = function (block) {
     var content = block.getFieldValue('content');
-    return 'border-radius: ' + fullEscape(content) + ';\n';
+    return 'border-radius: ' + fullEscape(content) + 'px;\n';
 }
 // Border Collapse
 Blockly.Blocks['bordercollapse'] = {
@@ -1022,11 +1022,29 @@ Blockly.html['bordercollapse'] = function (block) {
  /*  Bootstrap  */
 ////////////////
 
+// Class Bootstrap
+Blockly.Blocks['B_class'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": 'class=%1',
+            "args0": [{
+				  "type": "input_value",
+				  "name": "in"
+				}],
+            "colour": "#FFA500",
+            "output": "attributes"
+        });
+    }
+}
+Blockly.html['B_class'] = function (block) {
+    var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE);
+    return 'class="' + argument + '"';
+}
 // modal Class Bootstrap
 Blockly.Blocks['B_class_modal'] = {
     init: function () {
         this.jsonInit({
-            "message0": 'class=%1 %2',
+            "message0": '%1 %2',
             "args0": [
                 {
                     "type": "field_dropdown",
@@ -1058,7 +1076,7 @@ Blockly.Blocks['B_class_modal'] = {
 Blockly.html['B_class_modal'] = function (block) {
     var text_content = block.getFieldValue('content');
     var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE);
-    return 'class="' + looseEscape(text_content) + '"' + argument ;
+    return looseEscape(text_content) + ' ' + argument ;
 }
 // data attribute Bootstrap
 Blockly.Blocks['B_data'] = {
@@ -1101,7 +1119,7 @@ Blockly.html['B_data'] = function (block) {
 Blockly.Blocks['B_class_img'] = {
     init: function () {
         this.jsonInit({
-            "message0": 'class=%1 %2',
+            "message0": '%1 %2',
             "args0": [
                 {
                     "type": "field_dropdown",
@@ -1125,13 +1143,13 @@ Blockly.Blocks['B_class_img'] = {
 Blockly.html['B_class_img'] = function (block) {
     var text_content = block.getFieldValue('content');
     var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE);
-    return 'class="' + looseEscape(text_content) + '"' + argument ;
+    return looseEscape(text_content) + ' ' + argument ;
 }
 // button Class Bootstrap
 Blockly.Blocks['B_class_btn'] = {
     init: function () {
         this.jsonInit({
-            "message0": 'class=%1 %2',
+            "message0": '%1 %2',
             "args0": [
                 {
                     "type": "field_dropdown",
@@ -1159,13 +1177,13 @@ Blockly.Blocks['B_class_btn'] = {
 Blockly.html['B_class_btn'] = function (block) {
     var text_content = block.getFieldValue('content');
     var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE);
-    return 'class="' + looseEscape(text_content) + '"' + argument ;
+    return looseEscape(text_content) + ' ' + argument ;
 }
 // dropdown Class Bootstrap
 Blockly.Blocks['B_class_dropdown'] = {
     init: function () {
         this.jsonInit({
-            "message0": 'class=%1 %2',
+            "message0": '%1 %2',
             "args0": [
                 {
                     "type": "field_dropdown",
@@ -1190,13 +1208,13 @@ Blockly.Blocks['B_class_dropdown'] = {
 Blockly.html['B_class_dropdown'] = function (block) {
     var text_content = block.getFieldValue('content');
     var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE);
-    return 'class="' + looseEscape(text_content) + '"' + argument ;
+    return looseEscape(text_content) + ' ' + argument ;
 }
 // alert Class Bootstrap
 Blockly.Blocks['B_class_alert'] = {
     init: function () {
         this.jsonInit({
-            "message0": 'class=%1 %2',
+            "message0": '%1 %2',
             "args0": [
                 {
                     "type": "field_dropdown",
@@ -1221,33 +1239,7 @@ Blockly.Blocks['B_class_alert'] = {
 Blockly.html['B_class_alert'] = function (block) {
     var text_content = block.getFieldValue('content');
     var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE);
-    return 'class="' + looseEscape(text_content) + '"' + argument ;
-}
-// role Bootstrap
-Blockly.Blocks['role'] = {
-    init: function () {
-        this.jsonInit({
-            "message0": 'role=%1 %2',
-            "args0": [
-                {
-                    "type": "field_input",
-                    "name": "value",
-                    "text": ""
-                },
-				{
-				  "type": "input_value",
-				  "name": "in"
-				}
-            ],
-            "output": "attributes",
-            "colour": "#FFA500"
-        });
-    }
-}
-Blockly.html['role'] = function (block) {
-    var value = block.getFieldValue('value');
-    var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE);
-    return 'role="' + fullEscape(value) + '"' + argument;
+    return looseEscape(text_content) + ' ' + argument ;
 }
 
   ////////////////
@@ -1450,7 +1442,8 @@ Blockly.Blocks['w3_round'] = {
                         ["round", "w3-round"],
                         ["round-large", "w3-round-large"],
                         ["round-xlarge", "w3-round-xlarge"],
-                        ["round-xxlarge", "w3-round-xxlarge"]
+                        ["round-xxlarge", "w3-round-xxlarge"],
+                        ["circle", "w3-circle"]
                     ]
                 },
 				{
@@ -1563,5 +1556,35 @@ Blockly.Blocks['w3_panel'] = {
 Blockly.html['w3_panel'] = function (block) {
     var text_content = block.getFieldValue('content');
     var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE);
+    return text_content + argument ;
+}
+// card W3
+Blockly.Blocks['w3_card'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": '%1 %2',
+            "args0": [
+                {
+                    "type": "field_dropdown",
+                    "name": "content",
+                    "options": [
+                        ["card-2", "w3-card-2"],
+                        ["card-4", "w3-card-4"],
+                        ["container", "w3-container"]
+                    ]
+                },
+				{
+				  "type": "input_value",
+				  "name": "in"
+				}
+            ],
+            "colour": "#EEDD22",
+            "output": "attributes"
+        });
+    }
+}
+Blockly.html['w3_card'] = function (block) {
+    var text_content = block.getFieldValue('content');
+    var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE).trim();
     return text_content + argument ;
 }

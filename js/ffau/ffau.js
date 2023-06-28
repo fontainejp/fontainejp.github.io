@@ -48,12 +48,6 @@ window.addEventListener('load', function load(event) {
 	$('#btn_search').on('click', function(){
 		editor.execCommand("find")
 	})
-	$('#btn_factory').on('click', function(){
-		window.open("factory.html","_blank", null)
-	})
-	$('#btn_games').on('click', function(){
-		window.open("games/index.html","_blank", null)
-	})
 	$('#btn_open').on('click', function(){
 		$('#loadText').click()
 	})

@@ -40,7 +40,7 @@ Blockly.html["controls_for"]=function(block){
 };
 Blockly.html["controls_if"]=function(block){
     var n = 0;
-    var argument = Blockly.html.valueToCode(block, "IF" + n, Blockly.html.ORDER_NONE);
+    var argument = Blockly.html.statementToCode(block, "IF" + n, Blockly.html.ORDER_ATOMIC).trim();
     var branch = Blockly.html.statementToCode(block, "DO" + n);
     var code = "if (" + argument + ") {\n" + branch + "}";
     for (n = 1; n <= block.elseifCount_; n++) {
@@ -90,35 +90,28 @@ Blockly.html["controls_flow_statements"]=function(block){
     throw "Unknown flow statement.";
 };
 Blockly.html["logic_operation"]=function(block){
-    var mode = block.getFieldValue("OP");
-	var operator = Blockly.html.logic_operation.OPERATORS[mode];
-    var order = operator == "&&" ? Blockly.html.ORDER_LOGICAL_AND : Blockly.html.ORDER_LOGICAL_OR;
-    var argument0 = Blockly.html.valueToCode(block, "A", order);
-    var argument1 = Blockly.html.valueToCode(block, "B", order);
+    var operator = block.getFieldValue("OP");
+    var argument0 = Blockly.html.statementToCode(block, "A", Blockly.html.ORDER_ATOMIC).trim();
+    var argument1 = Blockly.html.statementToCode(block, "B", Blockly.html.ORDER_ATOMIC).trim();
     return argument0 + " " + operator + " " + argument1
-};
-Blockly.html.logic_operation.OPERATORS = {and: "&", or: "|", xor: "^", shiftL: "<<", shiftR: ">>"};
+}
 Blockly.html["logic_negate"]=function(block){
-    var order = Blockly.html.ORDER_UNARY_PREFIX;
-    var argument0 = Blockly.html.valueToCode(block, "BOOL", order);
+    var argument0 = Blockly.html.statementToCode(block, "BOOL", Blockly.html.ORDER_ATOMIC);
     return "!" + argument0
 };
 Blockly.html["logic_null"]=function(block){
     return "null"
-};
+}
 Blockly.html["true_false"]=function(block){
     return block.getFieldValue("BOOL")
 };
 // math
 Blockly.html["logic_compare"]=function(block){
-    var mode = block.getFieldValue("OP");
-    var operator = Blockly.html.logic_compare.OPERATORS[mode];
-    var order = operator == "==" || operator == "!=" ? Blockly.html.ORDER_EQUALITY : Blockly.html.ORDER_RELATIONAL;
-    var argument0 = Blockly.html.valueToCode(block, "A", order);
-    var argument1 = Blockly.html.valueToCode(block, "B", order);
+    var operator = block.getFieldValue("OP");
+    var argument0 = Blockly.html.statementToCode(block, "A", Blockly.html.ORDER_ATOMIC).trim();
+    var argument1 = Blockly.html.statementToCode(block, "B", Blockly.html.ORDER_ATOMIC).trim();
     return argument0 + " " + operator + " " + argument1
-}
-Blockly.html.logic_compare.OPERATORS = {EQ: "==", NEQ: "!=", LT: "<", LTE: "<=", GT: ">", GTE: ">="};
+};
 Blockly.html['intervalle']=function(block){
     var OPERATORS = {
         'LT': '<',
@@ -151,33 +144,23 @@ Blockly.html["math_number"]=function(block){
     return block.getFieldValue("NUM")
 };
 Blockly.html["math_arithmetic"]=function(block){
-    var mode = block.getFieldValue("OP");
-    var tuple = Blockly.html.math_arithmetic.OPERATORS[mode];
-    var operator = tuple[0];
-    var order = tuple[1];
-    var argument0 = Blockly.html.valueToCode(block, "A", order);
-    var argument1 = Blockly.html.valueToCode(block, "B", order);
-    var code;
-    if (!operator) {
-        code = "Math.pow(" + argument0 + ", " + argument1 + ")";
-        return [code, Blockly.html.ORDER_UNARY_POSTFIX]
-    }
-    return argument0 + operator + argument1
+    var operator = block.getFieldValue("OP");
+    var argument0 = Blockly.html.statementToCode(block, "A", Blockly.html.ORDER_ATOMIC).trim();
+    var argument1 = Blockly.html.statementToCode(block, "B", Blockly.html.ORDER_ATOMIC).trim();
+	if (operator=="POWER") {
+		return "Math.pow(" + argument0 + ", " + argument1 + ")";
+	} else {
+		return argument0 + " " + operator + " " + argument1 ;
+	}
 };
-Blockly.html.math_arithmetic.OPERATORS = {ADD: [" + ", Blockly.html.ORDER_ADDITIVE],MINUS: [" - ", Blockly.html.ORDER_ADDITIVE], MULTIPLY: [" * ", Blockly.html.ORDER_MULTIPLICATIVE], DIVIDE: [" / ", Blockly.html.ORDER_MULTIPLICATIVE], POWER: [null, Blockly.html.ORDER_NONE]};
 Blockly.html["math_single"]=function(block){
     var operator = block.getFieldValue("OP");
+    var arg = Blockly.html.statementToCode(block, "NUM", Blockly.html.ORDER_ATOMIC).trim();
     var code;
-    var arg;
-    if (operator == "NEG") {
-        arg = Blockly.html.valueToCode(block, "NUM", Blockly.html.ORDER_UNARY_NEGATION);
-        if (arg[0] == "-") arg = " " + arg;
-        code = "-" + arg;
-        return [code, Blockly.html.ORDER_UNARY_NEGATION]
-    }
-    if (operator == "SIN" || operator == "COS" || operator == "TAN") arg = Blockly.html.valueToCode(block, "NUM", Blockly.html.ORDER_DIVISION);
-    else arg = Blockly.html.valueToCode(block, "NUM", Blockly.html.ORDER_NONE);
     switch (operator) {
+        case "NEG":
+            code = "-"+ arg;
+            break;
         case "ABS":
             code = "Math.abs(" + arg + ")";
             break;
@@ -202,18 +185,10 @@ Blockly.html["math_single"]=function(block){
         case "TAN":
             code = "Math.tan(" + arg + ")";
             break;
-        default:
-            throw "Unknown math operator: " + operator;
     }
     return code
 };
 Blockly.html["math_constant"]=function(block){
-    var CONSTANTS = {
-        PI: ["Math.PI", Blockly.html.ORDER_MEMBER],
-        E: ["Math.E", Blockly.html.ORDER_MEMBER],
-        SQRT2: ["Math.SQRT2", Blockly.html.ORDER_MEMBER],
-        SQRT1_2: ["Math.SQRT1_2", Blockly.html.ORDER_MEMBER]
-    };
     return block.getFieldValue("CONSTANT")
 };
 Blockly.html["math_number_property"]=function(block){
@@ -246,7 +221,7 @@ Blockly.html["math_number_property"]=function(block){
             code = number_to_check + " % " + divisor + " == 0";
             break
     }
-    return code
+    return [code, Blockly.html.ORDER_EQUALITY]
 };
 Blockly.html["math_round"] = Blockly.html["math_single"];
 Blockly.html["math_trig"] = Blockly.html["math_single"];
@@ -256,17 +231,19 @@ Blockly.html["math_modulo"]=function(block){
     return argument0 + " % " + argument1
 };
 Blockly.html["math_random_int"]=function(block){
-    var argument0 = Blockly.html.valueToCode(block, "FROM", Blockly.html.ORDER_COMMA);
-    var arg = Blockly.html.valueToCode(block, "TO", Blockly.html.ORDER_COMMA);
-	var argument1 = parseInt(arg) + 1 ;
-	return "Math.trunc(" + argument0 + " + Math.random()*" + argument1 + ")" 
+    var argument0 = Blockly.html.statementToCode(block, "FROM", Blockly.html.ORDER_ATOMIC).trim();
+    var argument1 = Blockly.html.statementToCode(block, "TO", Blockly.html.ORDER_ATOMIC).trim();
+	return "Math.trunc(" + argument0 + "+" + argument1 + "*Math.random())" 
 };
 // texte
-Blockly.html['text_char']=function(block){
-    return "'" + block.getFieldValue('TEXT') + "'"
+Blockly.html["text_char"]=function(block){
+    return block.getFieldValue('TEXT')
 };
 Blockly.html["text"]=function(block){
     return Blockly.html.quote_(block.getFieldValue("TEXT"))
+};
+Blockly.html["text_2"]=function(block){
+    return Blockly.html.quote_(block.getFieldValue("TEXT1"))+", "+Blockly.html.quote_(block.getFieldValue("TEXT2"))
 };
 Blockly.html["text_join"]=function(block){
     var code;
@@ -310,158 +287,22 @@ Blockly.html["text_isEmpty"]=function(block){
 };
 // variable
 Blockly.html["math_change"]=function(block){
-    var argument0 = Blockly.html.valueToCode(block, "DELTA", Blockly.html.ORDER_ADDITIVE);
+    var argument0 = Blockly.html.statementToCode(block, "DELTA", Blockly.html.ORDER_ADDITIVE).trim();
     var varName = Blockly.html.variableDB_.getName(block.getFieldValue("VAR"), Blockly.Variables.NAME_TYPE);
     var code = varName + " = " + varName + " + " + argument0 + ";\n";
     return code
 };
 Blockly.html['variables_get']=function(block){
-    return Blockly.html.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE)
+    return Blockly.html.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
 };
 Blockly.html['variables_set']=function(block){
-    var argument0 = Blockly.html.valueToCode(block, 'VALUE', Blockly.html.ORDER_ASSIGNMENT);
+    var argument0 = Blockly.html.statementToCode(block, 'VALUE', Blockly.html.ORDER_ASSIGNMENT).trim();
     var varName = Blockly.html.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
     var code = varName + ' = ' + argument0 + ';\n';
     return code;
 };
 Blockly.html['variables_set_init']=function(block){
-	var argument0 = Blockly.html.valueToCode(block, 'VALUE', Blockly.html.ORDER_ASSIGNMENT);
+	var argument0 = Blockly.html.statementToCode(block, 'VALUE', Blockly.html.ORDER_ASSIGNMENT).trim();
 	var varName = Blockly.html.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-	Blockly.html.variables_[varName] = varName + ' = ' + argument0 + ';\n';
 	return 'var ' + varName + ' = ' + argument0 + ';\n'
-};
-// fonction
-Blockly.html['procedures_defnoreturn'] = function(block){
-    var funcName = Blockly.html.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Procedures.NAME_TYPE);
-    var branch = Blockly.html.statementToCode(block, 'STACK');
-    if (Blockly.html.INFINITE_LOOP_TRAP) {
-        branch = Blockly.html.INFINITE_LOOP_TRAP.replace(/%1/g, '\'' + block.id + '\'') + branch;
-    }
-	var args = [];
-	for (var x = 0; x < block.arguments_.length; x++) {
-		args[x] = Blockly.html.getArduinoType_(Blockly.Types[block.argumentstype_[x]]) + ' ' + block.arguments_[x];
-	}
-    var code = 'void ' + funcName + '(' + args.join(',') + ') {\n' + branch + '}\n';
-    code = Blockly.html.scrub_(block, code);
-    Blockly.html.codeFunctions_[funcName] = code;
-    return "";
-};
-Blockly.html['procedures_defreturn']=function(block){
-    var funcName = Blockly.html.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Procedures.NAME_TYPE);
-    var branch = Blockly.html.statementToCode(block, 'STACK');
-    if (Blockly.html.INFINITE_LOOP_TRAP) {
-        branch = Blockly.html.INFINITE_LOOP_TRAP.replace(/%1/g, '\'' + block.id + '\'') + branch;
-    }
-    var returnValue = Blockly.html.valueToCode(block, 'RETURN', Blockly.html.ORDER_NONE) || '';
-    if (returnValue) {
-        returnValue = '  return ' + returnValue + ';\n';
-    }
-    var returnType = Blockly.html.getArduinoType_(Blockly.Types[block.getFieldValue('type')]);
-    var args = [];
-	for (var x = 0; x < block.arguments_.length; x++) {
-		args[x] = Blockly.html.getArduinoType_(Blockly.Types[block.argumentstype_[x]]) + ' ' + Blockly.html.variableDB_.getName(block.arguments_[x], Blockly.Variables.NAME_TYPE);
-	}
-    var code = returnType + ' ' + funcName + '(' + args.join(',') + ') {\n' + branch + returnValue + '}\n';
-    code = Blockly.html.scrub_(block, code);
-    Blockly.html.codeFunctions_[funcName] = code;
-    return '';
-};
-Blockly.html['procedures_callreturn']=function(block){
-    var funcName = Blockly.html.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Procedures.NAME_TYPE);
-    var args = [];
-    for (var x = 0; x < block.arguments_.length; x++) {
-        args[x] = Blockly.html.valueToCode(block, 'ARG' + x, Blockly.html.ORDER_NONE) || 'null';
-    }
-    var code = funcName + '(' + args.join(', ') + ')';
-    return [code, Blockly.html.ORDER_UNARY_POSTFIX];
-};
-Blockly.html['procedures_callnoreturn']=function(block){
-    var funcName = Blockly.html.variableDB_.getName(block.getFieldValue('NAME'),
-        Blockly.Procedures.NAME_TYPE);
-    var args = [];
-    for (var x = 0; x < block.arguments_.length; x++) {
-        args[x] = Blockly.html.valueToCode(block, 'ARG' + x,
-            Blockly.html.ORDER_NONE) || 'null';
-    }
-    var code = funcName + '(' + args.join(', ') + ');\n';
-    return code;
-};
-Blockly.html['procedures_ifreturn']=function(block){
-    if (block.hasReturnValue_) {
-        var value = Blockly.html.valueToCode(block, 'VALUE', Blockly.html.ORDER_NONE) || 'null';
-        var code = '  return ' + value + ';\n';
-    } else {
-        var code = '  return;\n';
-    }
-    return code;
-};
-// tableau
-Blockly.html['creer_tableau']=function(block){
-	var varName = Blockly.html.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-	var typeBlock = Blockly.html.getArduinoType_(Blockly.Types[block.getFieldValue('type')]);
-	var menu = block.getFieldValue("choix");
-	var dimension = block.getFieldValue("dim");
-	var l = "" ;
-	var k = "" ;
-	switch (menu) {
-        case "c1":
-            for (var i = 0; i < dimension; i++) {
-				var j = Blockly.html.valueToCode(block, "D" + i, Blockly.html.ORDER_ASSIGNMENT);
-				k += "[" + j + "]"
-			}
-			Blockly.html.variables_[varName] = typeBlock + ' ' + varName + k + ';';
-			break;
-        case "c2":
-			if (dimension == "1"){
-				var j = Blockly.html.valueToCode(block, "D0", Blockly.html.ORDER_ASSIGNMENT);
-				Blockly.html.variables_[varName] = typeBlock + ' ' + varName + '[] =' + j + ';';
-				break
-			} else {
-				k += "{" ;
-				for (var i = 0; i < dimension; i++) {
-					var j = Blockly.html.valueToCode(block, "D" + i, Blockly.html.ORDER_ASSIGNMENT);
-					var nb = j.split(',');
-					k += j + ",";
-					l += "[" + nb.length + "]";
-				}
-				k=k.substr(0,k.length-1);
-				k+="}";
-				Blockly.html.variables_[varName] = typeBlock + ' ' + varName + l + '=' + k + ';';
-				break
-			}
-		}
-	return '';
-};
-Blockly.html['fixer_tableau']=function(block){
-    var value_value = Blockly.html.valueToCode(block, 'value', Blockly.html.ORDER_ATOMIC);
-	var code = Blockly.html.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-	var dimension = block.getFieldValue("dim");
-	for (var i = 0; i < dimension; i++) {
-		var j = Blockly.html.valueToCode(block, "D" + i, Blockly.html.ORDER_ASSIGNMENT);
-		code += "[" + j + "]"
-	}
-	code += '='+value_value+';\n';
-    return code;
-};
-Blockly.html["array_getIndex"]=function(block){
-    var code = Blockly.html.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-	var dimension = block.getFieldValue("dim");
-	for (var i = 0; i < dimension; i++) {
-		var j = Blockly.html.valueToCode(block, "D" + i, Blockly.html.ORDER_ASSIGNMENT);
-		code += "[" + j + "]"
-	}
-	return [code, Blockly.html.ORDER_ATOMIC] ;
-};
-Blockly.html["array_getsize"]=function(block){
-    var list = Blockly.html.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-    var code = 'sizeof('+list+')/sizeof('+list+'[0])';
-	return [code, Blockly.html.ORDER_ATOMIC] ;
-};
-Blockly.html["array_create_with"]=function(block){
-    var code = new Array(block.itemCount_);
-    for (var n = 0; n < block.itemCount_; n++) {
-        code[n] = Blockly.html.valueToCode(block, 'ADD' + n, Blockly.html.ORDER_COMMA) || 'null';
-    }
-    code = '{' + code.join(',') + '}';
-    return [code, Blockly.html.ORDER_ATOMIC];
 };

@@ -38,15 +38,15 @@ Blockly.Blocks['link_head'] = {
                     "options": [
                         [
                             "Bootstrap",
-                            "https://fontainejp.github.io/css/bootstrap.min.3.3.6.css"
+                            "css/bootstrap.min.3.3.6.css"
                         ],
                         [
                             "W3",
-                            "https://fontainejp.github.io/css/w3.css"
+                            "css/w3.css"
                         ],
                         [
                             "Fontawesome",
-							"https://fontainejp.github.io/css/font-awesome.css"
+							"css/fontawesome.css"
 						]
                     ]
                 }
@@ -72,19 +72,19 @@ Blockly.Blocks['script_head'] = {
                     "options": [
                         [
                             "jQuery",
-                            '<script src="https://fontainejp.github.io/js/jquery.min.2.1.3.js"></script>\n'
+                            '<script src="js/jquery.min.2.1.3.js"></script>\n'
                         ],
                         [
                             "Bootstrap",
-                            '<script src="https://fontainejp.github.io/js/bootstrap.min.3.3.6.js"></script>\n'
+                            '<script src="js/bootstrap.min.3.3.6.js"></script>\n'
                         ],
                         [
                             'openStreetMap',
-                            '<link rel="stylesheet" href="https://fontainejp.github.io/css/map.css">\n<link rel="stylesheet" href="https://fontainejp.github.io/css/routing.css">\n<script src="https://fontainejp.github.io/js/map/map.js"></script>\n<script src="https://fontainejp.github.io/js/map/esri-leaflet.js"></script>\n<script src="https://fontainejp.github.io/js/map/esri-leaflet-geocoder.js"></script>\n<script src="https://fontainejp.github.io/js/map/routing.js"></script>\n<script src="https://fontainejp.github.io/js/map/html-overlay.js"></script>\n'
+                            '<link rel="stylesheet" href="css/map.css">\n<link rel="stylesheet" href="css/routing.css">\n<script src="js/map/map.js"></script>\n<script src="js/map/esri-leaflet.js"></script>\n<script src="js/map/esri-leaflet-geocoder.js"></script>\n<script src="js/map/routing.js"></script>\n<script src="js/map/html-overlay.js"></script>\n'
                         ],
                         [
                             'Canvas',
-                            '<link rel="stylesheet" href="https://fontainejp.github.io/css/paint.css">\n<script src="https://fontainejp.github.io/js/paint.js"></script>\n'
+                            '<link rel="stylesheet" href="css/paint.css">\n<script src="js/paint.js"></script>\n'
                         ]
                     ]
                 }
@@ -132,18 +132,30 @@ Blockly.html['balise'] = function (block) {
     var code = '<' + text_content +  (block_modifier ? " " + block_modifier.trim() : "") + '>\n' + statements_content + '</' + text_content + '>\n';
     return code
 }
-// balise orpheline 
-Blockly.Blocks['balise_orph'] = {
+// balise set 
+Blockly.Blocks['balise_set'] = {
     init:function(){
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldTextInput("code html, css ou js"), "_text");
+		this.appendDummyInput()
+        .appendField(new Blockly.FieldTextInput("code html/css/js"), "_text");
     this.setInputsInline(false);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour("#4a235a")}
 }
-Blockly.html['balise_orph'] = function (block) {
+Blockly.html['balise_set'] = function (block) {
     return block.getFieldValue('_text') + '\n'
+}
+// balise get 
+Blockly.Blocks['balise_get'] = {
+    init:function(){
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldTextInput("code html/css/js"), "_text");
+    this.setInputsInline(false);
+    this.setOutput(true);
+    this.setColour("#4a235a")}
+}
+Blockly.html['balise_get'] = function (block) {
+    return block.getFieldValue('_text')
 }
 // HTML 
 Blockly.Blocks['html'] = {
@@ -437,6 +449,45 @@ Blockly.html['divider'] = function (block) {
     var code = '<div' + (block_modifier ? " " + block_modifier.trim() : "") + '>\n' + statements_content + '</div>\n';
     return code
 }
+// Canvas
+Blockly.Blocks['canvas'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": '<canvas width=%1 height=%2> </canvas>%3',
+            "args0": [
+                {
+                    "type": "field_input",
+                    "name": "width",
+                    "text": "400"
+                },
+                {
+                    "type": "field_input",
+                    "name": "height",
+                    "text": "300"
+                },
+				{
+                    "type": "input_value",
+                    "name": "content"
+                }
+            ],
+            "previousStatement": [
+                "textcontainer",
+                "html",
+                "form"
+            ],
+            "nextStatement": [
+                "textcontainer",
+                "html",
+                "form"
+            ],
+            "colour": "#006000"
+        });
+    }
+}
+Blockly.html['canvas'] = function (block) {
+	var val_content = Blockly.html.statementToCode(block, "content", Blockly.html.ORDER_ATOMIC).trim();
+    return '<canvas id="jcanvas" width="'+block.getFieldValue("width")+'" height="'+block.getFieldValue("height")+'" '+val_content+'></canvas>\n'
+}
 //////////////////////// EN LIGNE ////////////////////////
 // Link
 Blockly.Blocks['link'] = {
@@ -541,10 +592,6 @@ Blockly.Blocks['textmod'] = {
                         [
                             "q",
                             "q"
-                        ],
-                        [
-                            "blockquote",
-                            "blockquote"
                         ]
                     ]
                 },
@@ -625,51 +672,40 @@ Blockly.html['icon'] = function (block) {
     var code = '<i class="fa fa-' + text_content + '"'+ (block_modifier ? " " + block_modifier.trim() : "") +'></i>\n';
     return code
 }
-// Canvas
-Blockly.Blocks['canvas'] = {
+// progress 
+Blockly.Blocks['progress'] = {
     init: function () {
         this.jsonInit({
-            "message0": '<canvas width=%1 height=%2> </canvas>%3',
+            "message0": '<progress value=%1> </progress> %2',
             "args0": [
-                {
-                    "type": "field_input",
-                    "name": "width",
-                    "text": "400"
-                },
-                {
-                    "type": "field_input",
-                    "name": "height",
-                    "text": "300"
-                },
 				{
+                    "type": "field_input",
+                    "name": "value",
+                    "text": "50"
+                },
+                {
                     "type": "input_value",
-                    "name": "content"
+                    "name": "modifier",
+                    "check": "attributes"
                 }
             ],
-            "previousStatement": [
-                "textcontainer",
-                "html",
-                "form"
-            ],
-            "nextStatement": [
-                "textcontainer",
-                "html",
-                "form"
-            ],
+            "previousStatement": "textcontainer",
+            "nextStatement": "textcontainer",
             "colour": "#006000"
         });
     }
 }
-Blockly.html['canvas'] = function (block) {
-	var val_content = Blockly.html.statementToCode(block, "content", Blockly.html.ORDER_ATOMIC).trim();
-    return '<canvas id="jcanvas" width="'+block.getFieldValue("width")+'" height="'+block.getFieldValue("height")+'" '+val_content+'></canvas>\n'
+Blockly.html['progress'] = function (block) {
+    var block_modifier = Blockly.html.statementToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC);
+    var code = '<progress value="' + block.getFieldValue('value') + '" max="100"'+ (block_modifier ? " " + block_modifier.trim() : "") +'></progress>\n';
+    return code
 }
-//////////////////////// MODIFIERS ////////////////////////
+///////////////////////// MODIFIERS ////////////////////////
 // Style modifier
 Blockly.Blocks['stylearg'] = {
     init: function () {
         this.jsonInit({
-            "message0": 'style=%1 %2',
+            "message0": 'style%1 %2',
             "args0": [
                 {
                     "type": "input_dummy"
@@ -740,6 +776,24 @@ Blockly.html['class'] = function (block) {
     var text_content = block.getFieldValue('content');
     var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE);
     return 'class="' + looseEscape(text_content) + '"' + argument ;
+}
+// Class=
+Blockly.Blocks['class_'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": 'class=%1',
+            "args0": [{
+				  "type": "input_value",
+				  "name": "in"
+				}],
+            "colour": "#727272",
+            "output": "attributes"
+        });
+    }
+}
+Blockly.html['class_'] = function (block) {
+    var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE);
+    return 'class="' + argument + '"';
 }
 // ID
 Blockly.Blocks['id'] = {
@@ -845,6 +899,32 @@ Blockly.html['selected'] = function (block) {
     var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE);
     return ' selected' + argument;
 }
+// role 
+Blockly.Blocks['role'] = {
+    init: function () {
+        this.jsonInit({
+            "message0": 'role=%1 %2',
+            "args0": [
+                {
+                    "type": "field_input",
+                    "name": "value",
+                    "text": ""
+                },
+				{
+				  "type": "input_value",
+				  "name": "in"
+				}
+            ],
+            "output": "attributes",
+            "colour": "#727272"
+        });
+    }
+}
+Blockly.html['role'] = function (block) {
+    var value = block.getFieldValue('value');
+    var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE);
+    return 'role="' + fullEscape(value) + '"' + argument;
+}
 //////////////////////// TEXT ////////////////////////
 // Empty text
 Blockly.Blocks['emptytext'] = {
@@ -855,8 +935,7 @@ Blockly.Blocks['emptytext'] = {
                 {
                     "type": "field_input",
                     "name": "content",
-                    "text": "un texte",
-					"align": "CENTRE"
+                    "text": "abc"
                 }
             ],
             "previousStatement": "textcontainer",
@@ -1075,7 +1154,7 @@ Blockly.Blocks['input'] = {
                 {
                     "type": "field_input",
                     "name": "value",
-                    "text": ""
+                    "text": "ok"
                 },
                 {
                     "type": "field_input",
@@ -1363,7 +1442,8 @@ Blockly.Blocks['audios'] = {
 }
 Blockly.html['audios'] = function (block) {
     var source = block.getFieldValue('source');
-    var loop = block.getFieldValue('loop');
+    if (source.substr(0, 4) != "http") source = 'media/' + source;
+	var loop = block.getFieldValue('loop');
     var autoplay = block.getFieldValue('autoplay');
     var block_modifier = Blockly.html.statementToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC);
     var code = '<audio' + (block_modifier ? " " + block_modifier.trim() : "");
@@ -1438,16 +1518,13 @@ Blockly.Blocks['video_file'] = {
 }
 Blockly.html['video_file'] = function (block) {
     var source = block.getFieldValue('source');
+	if (source.substr(0, 4) != "http") source = 'media/' + source;
     var loop = block.getFieldValue('loop');
     var autoplay = block.getFieldValue('autoplay');
     var block_modifier = Blockly.html.statementToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC);
     var code = '<video' + (block_modifier ? " " + block_modifier.trim() : "");
-    if (loop === "TRUE") {
-        code += ' loop';
-    }
-    if (autoplay === "TRUE") {
-        code += ' autoplay';
-    }
+    if (loop === "TRUE") code += ' loop' ;
+    if (autoplay === "TRUE") code += ' autoplay' ;
     code += ' controls';
     var type = "video/mp4";
     code += '>\n  <source src="' + source + '" type="' + type + '">\n</video>\n';
@@ -1477,8 +1554,9 @@ Blockly.Blocks['image'] = {
     }
 }
 Blockly.html['image'] = function (block) {
-    var source = block.getFieldValue('source')||'media/no_photo.png';
+    var source = block.getFieldValue('source');
     var block_modifier = Blockly.html.statementToCode(block, 'modifier', Blockly.html.ORDER_ATOMIC);
-    var code = '<img src="' + source + '"' + (block_modifier ? " " + block_modifier.trim() : "") + '>\n';
+    if (source.substr(0, 4) != "http") source = 'media/' + source;
+	var code = '<img src="' + source + '"' + (block_modifier ? " " + block_modifier.trim() : "") + '>\n';
     return code
 }

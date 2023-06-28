@@ -53,44 +53,44 @@ Blockly.Blocks['balise_js'] = {
     }
 }
 Blockly.html['balise_js'] = function (block) {
-    return '<script>\n  window.addEventListener("load", function load(event) {\n' + Blockly.html.statementToCode(block, 'content', Blockly.html.ORDER_ATOMIC) + '  })\n</script>\n'
+	var code = Blockly.html.statementToCode(block, 'content', Blockly.html.ORDER_ATOMIC)
+    return '<script>\n  $(function(){\n' + code + '  })\n</script>\n'
 }
 // jquery_event
 Blockly.Blocks['jquery_event']={init:function(){
 	this.jsonInit({
-	"message0": '%1.%2 %3 %4',
-    "args0": [
-		{
-            "type": "field_input",
-            "name": "_text",
-            "text": ""
-        },
-        {
-            "type": "field_dropdown",
-            "name": "_dropdown",
-            "options": [
-				["change", "change"], ["click", "click"], ["dbclick", "dbclick"], ["hover", "hover"], ["keypress", "keypress"]
-            ]
-        },
-        {
-            "type": "input_dummy"
-        },
-		{
-            "type": "input_statement",
-            "name": "_statement",
-            "check": "document"
-        }
-    ],
-    "previousStatement": "script",
-    "nextStatement": "script",
-    "colour": "#FF0000"
+		"message0": '%1.%2 %3 %4',
+		"args0": [
+			{
+				"type": "field_input",
+				"name": "_text",
+				"text": ""
+			},
+			{
+				"type": "field_dropdown",
+				"name": "_dropdown",
+				"options": [
+					["change", "change"], ["click", "click"], ["dbclick", "dbclick"], ["hover", "hover"], ["keypress", "keypress"]
+				]
+			},
+			{
+				"type": "input_dummy"
+			},
+			{
+				"type": "input_statement",
+				"name": "_statement"
+			}
+		],
+		"previousStatement": "script",
+		"nextStatement": "script",
+		"colour": "#FF0000"
 	})
 }}
 Blockly.html['jquery_event']=function(block){
   var value_statement = Blockly.html.statementToCode(block, '_statement', Blockly.html.ORDER_ATOMIC);
   var value_text = block.getFieldValue('_text');
   var value_dropdown = block.getFieldValue('_dropdown');
-  return '$("'+value_text+'").'+value_dropdown+'(function(){\n'+value_statement+'});\n'
+  return '$("'+value_text+'").'+value_dropdown+'(function(event){\n'+value_statement+'});\n'
 }
 // jquery_get
 Blockly.Blocks['jquery_get']={init:function(){
@@ -109,14 +109,31 @@ Blockly.html['jquery_get']=function(block){
 }
 // jquery_set
 Blockly.Blocks['jquery_set']={init:function(){
-    this.appendValueInput("_block")
-        .appendField(new Blockly.FieldTextInput(""), "_text")
-        .appendField(".")
-        .appendField(new Blockly.FieldDropdown([["addClass", "addClass"], ["append", "append"], ["attr", "attr"], ["empty", "empty"], ["hide", "hide"], ["html", "html"], ["prepend", "prepend"], ["prop", "prop"], ["remove", "remove"], ["removeClass", "removeClass"], ["show", "show"], ["text", "text"], ["val", "val"]]), "_dropdown");
-    this.setPreviousStatement("script");
-    this.setNextStatement("script");
-    this.setColour('#FF0000')}
-}
+	this.jsonInit({
+		"message0": '%1.%2 %3',
+		"args0": [
+			{
+				"type": "field_input",
+				"name": "_text",
+				"text": ""
+			},
+			{
+				"type": "field_dropdown",
+				"name": "_dropdown",
+				"options": [
+					["addClass", "addClass"], ["append", "append"], ["attr", "attr"], ["empty", "empty"], ["hide", "hide"], ["html", "html"], ["prepend", "prepend"], ["prop", "prop"], ["remove", "remove"], ["removeClass", "removeClass"], ["show", "show"], ["text", "text"], ["val", "val"]
+				]
+			},
+			{
+				"type": "input_value",
+				"name": "_block",
+			}
+		],
+		"previousStatement": "script",
+		"nextStatement": "script",
+		"colour": "#FF0000"
+	})
+}}
 Blockly.html['jquery_set']=function(block){
   var value_block = Blockly.html.statementToCode(block, '_block', Blockly.html.ORDER_ATOMIC).trim();
   var value_text = block.getFieldValue('_text');
@@ -125,19 +142,124 @@ Blockly.html['jquery_set']=function(block){
 }
 // jquery_css_set
 Blockly.Blocks['jquery_css_set']={init:function(){
-    this.appendValueInput("_block")
-        .appendField(new Blockly.FieldTextInput(""), "_text")
-        .appendField(".css")
-        .appendField(new Blockly.FieldDropdown([["color", "color"], ["background-color", "background-color"], ["border", "border"], ["display", "display"], ["float", "float"], ["font-size", "font-size"], ["text-align", "text-align"], ["text-decoration", "text-decoration"], ["text-transform", "text-transform"]]), "_dropdown");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setColour('#FF0000')}
-}
+	this.jsonInit({
+		"message0": '%1.css %2 %3',
+		"args0": [
+			{
+				"type": "field_input",
+				"name": "_text",
+				"text": ""
+			},
+			{
+				"type": "field_dropdown",
+				"name": "_dropdown",
+				"options": [
+					["color", "color"], ["background-color", "background-color"], ["border", "border"], ["display", "display"], ["float", "float"], ["font-size", "font-size"], ["text-align", "text-align"], ["text-decoration", "text-decoration"], ["text-transform", "text-transform"]
+				]
+			},
+			{
+				"type": "input_value",
+				"name": "_block",
+			}
+		],
+		"previousStatement": "script",
+		"nextStatement": "script",
+		"colour": "#FF0000"
+	})
+}}
 Blockly.html['jquery_css_set']=function(block){
   var value_block = Blockly.html.statementToCode(block, '_block', Blockly.html.ORDER_ATOMIC).trim();
   var value_text = block.getFieldValue('_text');
   var value_dropdown = block.getFieldValue('_dropdown');
   return '$("'+value_text+'").css("'+value_dropdown+'", '+value_block+');\n'
+}
+// jquery_code
+Blockly.Blocks['jquery_code']={init:function(){
+    this.appendValueInput("_block")
+        .appendField(new Blockly.FieldDropdown([["eval", "eval"], ["confirm", "confirm"], ["prompt", "prompt"]]), "_dropdown");
+    this.setInputsInline(false);
+    this.setOutput(true);
+    this.setColour('#FF0000')
+}}
+Blockly.html['jquery_code']=function(block){
+	var value_dropdown = block.getFieldValue('_dropdown');
+	var value_text = block.getFieldValue('_text');
+	var value_block = Blockly.html.statementToCode(block, '_block', Blockly.html.ORDER_ATOMIC).trim();
+	return value_dropdown + "(" + value_block + ")"
+}
+// jquery_alert
+Blockly.Blocks['jquery_alert']={init:function(){
+    this.jsonInit({
+		"message0": 'alert %1',
+		"args0": [
+			{
+				"type": "input_value",
+				"name": "_block",
+			}
+		],
+		"previousStatement": "script",
+		"nextStatement": "script",
+		"colour": "#FF0000"
+	})
+}}
+Blockly.html['jquery_alert']=function(block){
+	var value_block = Blockly.html.statementToCode(block, '_block', Blockly.html.ORDER_ATOMIC).trim();
+	return 'alert('+value_block+');\n'
+}
+// jquery_key
+Blockly.Blocks['jquery_key']={init:function(){
+	this.jsonInit({
+	"message0": 'touche ENTRER pressée%1 %2',
+    "args0": [
+        {
+            "type": "input_dummy"
+        },
+		{
+            "type": "input_statement",
+            "name": "_statement",
+            "check": "script"
+        }
+    ],
+    "previousStatement": "script",
+    "nextStatement": "script",
+    "colour": "#FF0000"
+	})
+}}
+Blockly.html['jquery_key']=function(block){
+	var value_statement = Blockly.html.statementToCode(block, '_statement', Blockly.html.ORDER_ATOMIC);
+	return '$(document).on("keypress",function(event) {\n  if (event.key=="Enter"){\n'+value_statement+'  }\n})\n'
+}
+// setInterval
+Blockly.Blocks['setInterval']={init:function(){
+	this.jsonInit({
+	"message0": '%1 %2 %3',
+    "args0": [
+		{
+			"type": "field_dropdown",
+			"name": "_dropdown",
+			"options": [["setInterval", "setInterval"], 
+				["setTimeout", "setTimeout"]]
+		},
+        {
+            "type": "input_value",
+			"name": "_block",
+        },
+		{
+            "type": "input_statement",
+            "name": "_statement",
+            "check": "script"
+        }
+    ],
+    "previousStatement": "script",
+    "nextStatement": "script",
+    "colour": "#FF0000"
+	})
+}}
+Blockly.html['setInterval']=function(block){
+	var value_dropdown = block.getFieldValue('_dropdown');
+	var value_block = Blockly.html.statementToCode(block, '_block', Blockly.html.ORDER_ATOMIC).trim();
+	var value_statement = Blockly.html.statementToCode(block, '_statement', Blockly.html.ORDER_ATOMIC);
+	return value_dropdown + '(\n  function(){\n  '+value_statement+'},'+value_block+'\n)\n'
 }
 
 //////////////////////// variable ////////////////////////
@@ -196,7 +318,6 @@ Blockly.Variables.flyoutCategory = function(workspace) {
 	}
 	return xmlList
 }
-
 //////////////////////// openStreetMap ///////////////////
 // initMap
 Blockly.Blocks['initMap'] = {
@@ -283,9 +404,9 @@ Blockly.Blocks['marker'] = {
                     "type": "field_dropdown",
                     "name": "type",
                     "options": [
-                        ["auto", "https://fontainejp.github.io/media/map/automotive.png"],["star", "https://fontainejp.github.io/media/map/default.png"],["event", "https://fontainejp.github.io/media/map/event.png"],["books", "https://fontainejp.github.io/media/map/libraries.png"],
-						["medical", "https://fontainejp.github.io/media/map/medical.png"],["photography", "https://fontainejp.github.io/media/map/photography.png"],["playgrounds", "https://fontainejp.github.io/media/map/playgrounds.png"],["restaurants", "https://fontainejp.github.io/media/map/restaurants.png"],
-						["schools", "https://fontainejp.github.io/media/map/schools.png"],["shopping", "https://fontainejp.github.io/media/map/shopping.png"],["sports", "https://fontainejp.github.io/media/map/sports.png"],["tools", "https://fontainejp.github.io/media/map/tools.png"],
+                        ["auto", "media/map/automotive.png"],["star", "media/map/default.png"],["event", "media/map/event.png"],["books", "media/map/libraries.png"],
+						["medical", "media/map/medical.png"],["photography", "media/map/photography.png"],["playgrounds", "media/map/playgrounds.png"],["restaurants", "media/map/restaurants.png"],
+						["schools", "media/map/schools.png"],["shopping", "media/map/shopping.png"],["sports", "media/map/sports.png"],["tools", "media/map/tools.png"],
                     ]
                 },
                 {
@@ -566,7 +687,7 @@ Blockly.Blocks['line'] = {
 Blockly.html['line'] = function (block) {
     var ptxya = Blockly.html.statementToCode(block, 'PTA', Blockly.html.ORDER_ATOMIC).trim();
     var ptxyb = Blockly.html.statementToCode(block, 'PTB', Blockly.html.ORDER_ATOMIC).trim();	
-	var code = "var mark1 = L.marker(["+ptxya+"], {icon: L.icon({iconUrl: 'https://fontainejp.github.io/media/map/markerA.png', iconAnchor: [25, 41], popupAnchor: [-15, -34]}), draggable: 'true'}).bindPopup('').addTo(maCarte);\nvar mark2 = L.marker(["+ptxyb+"], {icon: L.icon({iconUrl: 'https://fontainejp.github.io/media/map/markerB.png', iconAnchor: [10, 41], popupAnchor: [10, -34]}), draggable: 'true'}).bindPopup('').addTo(maCarte);\nvar ligne = L.polyline([],{color: '#FF0099'}).addTo(maCarte);\n"
+	var code = "var mark1 = L.marker(["+ptxya+"], {icon: L.icon({iconUrl: 'media/map/markerA.png', iconAnchor: [25, 41], popupAnchor: [-15, -34]}), draggable: 'true'}).bindPopup('').addTo(maCarte);\nvar mark2 = L.marker(["+ptxyb+"], {icon: L.icon({iconUrl: 'media/map/markerB.png', iconAnchor: [10, 41], popupAnchor: [10, -34]}), draggable: 'true'}).bindPopup('').addTo(maCarte);\nvar ligne = L.polyline([],{color: '#FF0099'}).addTo(maCarte);\n"
 	code += "mark1.on('dragend', findrag);\nmark2.on('dragend', findrag);\n"
 	code += "mark1.on('drag', deplacement);\nmark2.on('drag', deplacement);\n"
     code += "function findrag(e) {\n  var mark = e.target;\n  mark.getPopup().setContent('Distance = '+Math.round(mark1.getLatLng().distanceTo(mark2.getLatLng()))+' m');\n  mark.openPopup();\n}\n";
