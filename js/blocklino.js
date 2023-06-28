@@ -540,7 +540,7 @@ BlocklyDuino.theme_monokai = function () {
 	document.getElementById("btn_save").className = document.getElementById("btn_save").className.replace( /(?:^|\s)btn-default(?!\S)/g , ' btn-secondary' );
 	document.getElementById("btn_copy").className = document.getElementById("btn_copy").className.replace( /(?:^|\s)btn-default(?!\S)/g , ' btn-secondary' );
 	document.getElementById("btn_search").className = document.getElementById("btn_search").className.replace( /(?:^|\s)btn-default(?!\S)/g , ' btn-secondary' );
-	document.getElementById("btn_tint").className = document.getElementById("btn_tint").className.replace( /(?:^|\s)btn-default(?!\S)/g , ' btn-secondary' );
+	document.getElementById("btn_turtle").className = document.getElementById("btn_tint").className.replace( /(?:^|\s)btn-default(?!\S)/g , ' btn-secondary' );
 };
 BlocklyDuino.theme_sqlserver = function () {
 	document.getElementById("theme_css").href = "css/blocklino_sqlserver.css";
@@ -562,7 +562,7 @@ BlocklyDuino.theme_sqlserver = function () {
 	document.getElementById("btn_save").className = document.getElementById("btn_save").className.replace( /(?:^|\s)btn-secondary(?!\S)/g , ' btn-default' );	
 	document.getElementById("btn_copy").className = document.getElementById("btn_copy").className.replace( /(?:^|\s)btn-secondary(?!\S)/g , ' btn-default' );	
 	document.getElementById("btn_search").className = document.getElementById("btn_search").className.replace( /(?:^|\s)btn-secondary(?!\S)/g , ' btn-default' );	
-	document.getElementById("btn_tint").className = document.getElementById("btn_tint").className.replace( /(?:^|\s)btn-secondary(?!\S)/g , ' btn-default' );
+	document.getElementById("btn_turtle").className = document.getElementById("btn_tint").className.replace( /(?:^|\s)btn-secondary(?!\S)/g , ' btn-default' );
 };
 BlocklyDuino.apply_theme = function () {
 	var new_theme = $('#theme').val();
