@@ -1,0 +1,62 @@
+@CHARSET "UTF-8";
+body {
+	background-color: white;
+	height: 100%,
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	padding: 0;
+	margin: 0;
+}
+#btn_center {
+	background-color: white;
+	height: 41px;
+	margin: 4px;
+}
+#blocklyDiv {
+	background-color: white;
+	float: left;
+	width: 595px;
+	height: 595px;
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+#leSVG{
+	float: right;
+	height: 640px;
+	width: 640px;
+	border: none;
+	background-color: #F0FFFF;
+	margin: 5px;
+}
+#toolbox, #loadText, #sortieJS {
+	display: none
+}
+.error{
+	color: #ff0000;
+}
+.tooltip-inner{
+	background-color: #5bc0de;
+}
+.btn_color {
+	color: gray;
+}
+.blocklyToolboxDiv {
+	background-color: #fff  !important;
+	opacity: 0.8 
+}
+.blocklyTreeRow {
+	height: 30px !important;
+	line-height: 30px !important
+}
+.blocklyScrollbarHandle {
+	fill: #5bc0de;
+}
+.blocklyScrollbarBackground:hover+.blocklyScrollbarHandle, .blocklyScrollbarHandle:hover {
+	fill: #5bc0de;
+}
+.blocklyFlyout .blocklyScrollbarHandle {
+	fill: #5bc0de;
+}
+.blocklyFlyout .blocklyScrollbarBackground:hover+.blocklyScrollbarHandle, .blocklyFlyout .blocklyScrollbarHandle:hover {
+	fill: #5bc0de;
+}

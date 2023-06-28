@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Turtle</title>
+		<link rel="icon" href="../media/turtle.ico">
+		<script src="js/jquery.min.2.1.3.js"></script>
+		<script src="js/bootstrap.min.3.3.6.js"></script>
+		<script src="js/neutralino.js"></script>
+		<script src="js/turtle.js"></script>
+		<script src="js/blockly.js"></script>
+		<script src="js/fr.js"></script>
+		<script src="js/javascript.js"></script>
+		<script src="js/blocks.js"></script>
+		<script src="js/tortue.js"></script>
+		<link rel="stylesheet" href="css/bootstrap.min.3.3.6.css">
+		<link rel="stylesheet" href="css/fontawesome.css">
+		<link rel="stylesheet" href="css/turtle.css">
+	</head>
+	<body>
+		<svg id="leSVG" xmlns='http://www.w3.org/2000/svg' version='1.1'/>
+		<div id="btn_center" class="btn-toolbar">
+			<div class="btn-group">
+				<button id="btn_new" class="btn btn-default"><i class="fa fa-file fa-1_5x btn_color"></i></button>
+				<div class="btn-group">
+					<button id="btn_example" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						<i class="fa fa-file-text fa-1_5x btn_color"></i>
+					</button>
+					<ul class="dropdown-menu">
+						<li class="dropdown-header">EXEMPLES</li>
+						<li class="divider"></li>
+						<li><a href="#" id="lien_carre"><i class="fa fa-square-o fa-fw btn_color"></i> carré</a></li>
+						<li><a href="#" id="lien_etoile5"><i class="fa fa-star-o fa-fw btn_color"></i> étoile</a></li>
+						<li><a href="#" id="lien_maison"><i class="fa fa-home fa-fw btn_color"></i> maison</a></li>
+					</ul>
+				</div>
+				<button id="btn_open" class="btn btn-default"><i class="fa fa-folder-open fa-1_5x btn_color"></i></button>
+				<button id="btn_save" class="btn btn-default"><i class="fa fa-cloud-download fa-1_5x btn_color"></i></button>
+			</div>
+			<button id="btn_exe" class="btn btn-info" rel="tooltip" data-placement="bottom" title="EXECUTER">
+					<i class="fa fa-play fa-1_5x"></i>
+				</button>	
+			<div class="btn-group">
+					<button id="btn_undo" class="btn btn-default"><i class="fa fa-undo fa-1_5x btn_color"></i></button>
+					<button id="btn_redo" class="btn btn-default"><i class="fa fa-repeat fa-1_5x btn_color"></i></button>
+					<button id="btn_print" class="btn btn-default"><i class="fa fa-camera fa-1_5x btn_color"></i></button>
+				</div>
+		</div>
+		<div id="blocklyDiv"></div>
+		<input type="file" id="loadText" accept=".ttl"/>
+		<textarea id="sortieJS"></textarea>
+		<div class="modal fade" id="message" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-body">
+						<p class="error">ERREUR :</p> 
+						<span id="message_body"></span>
+					</div>  
+				</div>
+			</div>
+		</div>
+		<xml id="toolbox">
+			<category colour="#5BC0DE" name="Tortue">
+				<block type="reset"></block>
+				<block type="cacher_montrer"></block>
+				<block type="avancer_reculer"></block>
+				<block type="tortue_teleport"></block>
+				<block type="gauche_droite"></block>
+				<!--block type="costume"></block-->
+			</category>
+			<category colour="#5BC0DE" name="Stylo">
+				<!--block type="eff_svg"></block-->
+				<block type="lever_baisser"></block>
+				<block type="couleur_stylo"></block>
+				<block type="dim"></block>
+				<block type="tampon"></block>
+			</category>
+			<category colour="#5BC0DE" name="Math">
+				<block type="math_number"></block>
+				<block type="sophus_angle"></block> 
+				<block type="math_constant"></block>
+				<block type="math_coord"></block>
+				<block type="math_random_int"></block>
+				<block type="random_coord"></block>
+			</category>
+			<category colour="#5BC0DE" name="Fonction">
+				<block type="logic_compare"></block>
+				<block type="math_modulo"></block>
+				<block type="math_arithmetic"></block>
+				<block type="math_single"></block>
+				<block type="math_trig"></block>
+				<block type="math_round"></block>
+				<block type="math_number_property"></block>
+			</category>
+			<category colour="#5BC0DE" name="Axe">
+				<block type="axes"></block>
+				<block type="grille"></block>
+				<block type="axeX"></block>
+				<block type="axeY"></block>
+			</category>
+			<category colour="#5BC0DE" name="Texte">
+				<block type="text"></block>
+				<block type="text_print"></block>
+				<block type="scribe"></block>
+				<block type="text_prompt_ext"></block>
+			</category>
+			<category colour="#5BC0DE" name="Contrôle">
+				<block type="controls_if"></block>
+				<block type="controls_if">
+					<mutation else="1"></mutation>
+				</block>
+				<block type="controls_repeat_ext"></block>
+				<block type="controls_whileUntil"></block>
+				<block type="controls_flow_statements"></block>
+				<block type="logic_operation"></block>
+				<block type="logic_boolean"></block>
+			</category>
+			<category colour="#5BC0DE" name="Variable">
+				<block type="variables_set"></block>
+				<block type="augmenter_diminuer"></block>
+				<block type="sophus_doubler"></block>
+				<block type="variables_get"></block>		
+			</category>
+		</xml>
+	</body>
+</html>
