@@ -77,6 +77,7 @@
 		<!-- toolbox config modal -->
 		<xml id="toolbox">
 			<category colour="#4a235a" name="Structure">
+				<block type="html"></block>
 				<block type="head"></block>
 				<block type="title"></block>
 				<block type="link_head"></block>
@@ -85,7 +86,8 @@
 				<block type="linebreak"></block>
 				<block type="hline"></block>
 				<block type="balise"></block>
-				<block type="balise_orph"></block>
+				<block type="balise_set"></block>
+				<block type="balise_get"></block>
 			</category>
 			<category colour="#787746" name="en-bloc">
 				<block type="paragraph"></block>
@@ -103,10 +105,19 @@
 			</category>
 			<category colour="#bbbbbb" name="Texte">
 				<block type="emptytext"></block>
-				<block type="text"></block>
-				<block type="text_char"></block>
 				<block type="emptytext">
 					<field name='content'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</field>
+				</block>
+				<block type="emptytext">
+					<field name='content'>Cras eu sodales tortor, blandit efficitur orci. Proin aliquam quam eu libero viverra, id gravida erat placerat. Quisque consequat nunc sed sollicitudin sodales. Phasellus eget sapien sit amet nunc vulputate mollis. Praesent id elit leo. Suspendisse non nunc at magna porta maximus. Nulla sit amet risus eu quam tincidunt euismod et a metus. Maecenas vitae justo eget libero maximus hendrerit. Donec porttitor ut dui eu malesuada. Suspendisse at molestie erat, ac imperdiet libero. Phasellus sit amet mi ante. Nunc elit nunc, feugiat quis lectus egestas, placerat tincidunt tortor.</field>
+				</block>
+				<block type="text"></block>
+				<block type="text_2"></block>
+				<block type="text">
+					<field name='TEXT'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</field>
+				</block>
+				<block type="text">
+					<field name='TEXT'>Cras eu sodales tortor, blandit efficitur orci. Proin aliquam quam eu libero viverra, id gravida erat placerat. Quisque consequat nunc sed sollicitudin sodales. Phasellus eget sapien sit amet nunc vulputate mollis. Praesent id elit leo. Suspendisse non nunc at magna porta maximus. Nulla sit amet risus eu quam tincidunt euismod et a metus. Maecenas vitae justo eget libero maximus hendrerit. Donec porttitor ut dui eu malesuada. Suspendisse at molestie erat, ac imperdiet libero. Phasellus sit amet mi ante. Nunc elit nunc, feugiat quis lectus egestas, placerat tincidunt tortor.</field>
 				</block>
 			</category>
 			<category colour="#00cc00" name="Media">
