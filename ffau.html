@@ -59,6 +59,26 @@
 							<button id="btn_save" class="btn btn-default"><i class="fa fa-cloud-download fa-1_5x btn_color"></i></button>
 						</div>
 						<div class="btn-group">
+								<button id="btn_media" class="btn btn-default dropdown-toggle" data-toggle="dropdown" rel="tooltip" data-placement="bottom" title="Média">
+									<i class="fa fa-image fa-1_5x btn_color"></i>
+								</button>
+								<ul class="dropdown-menu" id="menu_media">
+									<li class="dropdown-header">MEDIA</li>
+									<li class="divider"></li>
+									<li><a href="#" id="btn_media1"><i class="fa fa-music fa-fw"></i> acqua.mp3</a></li>
+									<li><a href="#" id="btn_media2"><i class="fa fa-file-image-o fa-fw"></i> allume.png</a></li>
+									<li><a href="#" id="btn_media3"><i class="fa fa-video-camera fa-fw"></i> aube.mp4</a></li>
+									<li><a href="#" id="btn_media4"><i class="fa fa-file-image-o fa-fw"></i> beige.gif</a></li>
+									<li><a href="#" id="btn_media5"><i class="fa fa-file-image-o fa-fw"></i> college.jpg</a></li>
+									<li><a href="#" id="btn_media6"><i class="fa fa-file-image-o fa-fw"></i> earth.jpg</a></li>
+									<li><a href="#" id="btn_media7"><i class="fa fa-file-image-o fa-fw"></i> eteint.jpg</a></li>
+									<li><a href="#" id="btn_media8"><i class="fa fa-file-image-o fa-fw"></i> neuronne.jpg</a></li>
+									<li><a href="#" id="btn_media9"><i class="fa fa-file-image-o fa-fw"></i> ordinateur.png</a></li>
+									<li><a href="#" id="btn_media10"><i class="fa fa-file-image-o fa-fw"></i> portable.png</a></li>
+									<li><a href="#" id="btn_media11"><i class="fa fa-file-image-o fa-fw"></i> zen.jpg</a></li>
+								</ul>
+						</div>
+						<div class="btn-group">
 							<button id="btn_undo" class="btn btn-default"><i class="fa fa-undo fa-1_5x btn_color"></i></button>
 							<button id="btn_redo" class="btn btn-default"><i class="fa fa-repeat fa-1_5x btn_color"></i></button>
 							<button id="btn_search" class="btn btn-default"><i class="fa fa-binoculars fa-1_5x btn_color"></i></button>
@@ -218,6 +238,10 @@
 				<block type="jquery_get"></block>
 				<block type="jquery_set"></block>
 				<block type="jquery_css_set"></block>
+				<block type="jquery_code"></block>
+				<block type="jquery_alert"></block>
+				<block type="jquery_key"></block>
+				<block type="setInterval"></block>
 				<category colour="#727272" name="Contrôle">
 					<block type="controls_if"></block>
 					<block type="controls_if"><mutation else="1"></mutation></block>
