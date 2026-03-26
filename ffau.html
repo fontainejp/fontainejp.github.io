@@ -19,8 +19,6 @@
 		<script src="blocs&generateurs/ffau/Arduino_fr.js"></script>
 		<script src="js/ffau/index.js"></script>
 		<script src="js/ffau/ffau.js"></script>
-		<script src="js/ace/ace.js"></script>
-		<script src="js/ace/ext-language_tools.js"></script>
 		<link rel="stylesheet" href="css/bootstrap.toggle.min.css">
 		<link rel="stylesheet" href="css/bootstrap.min.3.3.6.css">
 		<link rel="stylesheet" href="css/fontawesome.css">
@@ -30,13 +28,6 @@
 		<div id="container">
 			<div id="blockly_l">
 				<div id="header">
-					<div id="btn_left">
-						<ul class="nav nav-tabs" role="tablist" style="display:none">
-							<li role="presentation" class="active"><a href="#blocklyDiv" aria-controls="blocklyDiv" role="tab" data-toggle="tab"></a></li>
-							<li role="presentation"><a href="#content_code" aria-controls="content_code" role="tab" data-toggle="tab"></a></li>
-						</ul>
-						<input id="codeORblock" checked data-toggle="toggle" data-onstyle="default" data-on="<img src='media/icon.png' style='height:20px'>" data-off="<i class='fa fa-code fa-1_5x'></i>" type="checkbox">
-					</div>
 					<div id="btn_center" class="btn-toolbar">
 						<input type="file" id="loadText" accept=".www, .html" style="display:none">
 						<div class="btn-group">
@@ -86,10 +77,7 @@
 						</div>
 					</div>
 				</div>
-				<div id="divBody" class="tab-content">
-					<div role="tabpanel" id="blocklyDiv" class="tab-pane fade in active"></div>
-					<div role="tabpanel" id="content_code" class="tab-pane fade" onChange="update()"></div>
-				</div>
+				<div id="blocklyDiv" ></div>
 			</div>
 			<iframe id="blockly_r">
 			</iframe>
@@ -293,22 +281,4 @@
 			</category>
 		</xml>
 	</body>
-	<script>
-		ace.require("ace/ext/language_tools");
-		var editor = ace.edit("content_code");
-		editor.setTheme('ace/theme/sqlserver');
-		editor.session.setTabSize(2);
-		editor.setShowPrintMargin(false);
-		editor.session.setMode("ace/mode/html");
-		editor.session.on('change', function(){update()});
-		editor.setOptions({
-			enableBasicAutocompletion: true,
-			enableSnippets: true,
-			enableLiveAutocompletion: true
-		})
-		function update(){
-			var ace = editor.getValue();
-			document.getElementById('blockly_r').srcdoc = ace
-        }
-	</script>
 </html>
