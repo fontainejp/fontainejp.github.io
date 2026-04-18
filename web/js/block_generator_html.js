@@ -352,7 +352,7 @@ Blockly.defineBlocksWithJsonArray([
                     "options": [
                         [
                             "jQuery",
-                            '<script src="js/jquery.min.2.1.3.js"></script>\n'
+                            '<script src="js/jquery.min.4.js"></script>\n'
                         ],
                         [
                             "Bootstrap",
