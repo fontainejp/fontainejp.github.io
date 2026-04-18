@@ -989,6 +989,42 @@ Blockly.defineBlocksWithJsonArray([
             ],
             "colour": "#FFA500",
             "output": "attributes"
+	},
+	{	type: 'B_data',
+            "message0": 'data-toggle=%1 %2',
+            "args0": [
+                {
+                    "type": "field_dropdown",
+                    "name": "content",
+                    "options": [
+                        ["collapse", "collapse"],
+                        ["modal", "modal"],
+                        ["tab", "tab"]
+                    ]
+                },
+				{
+				  "type": "input_value",
+				  "name": "in"
+				}
+            ],
+            "colour": "#FFA500",
+            "output": "attributes"
+	},
+	{	type: 'B_data_target',
+            "message0": 'data-target=%1 %2',
+            "args0": [
+                {
+                    "type": "field_input",
+                    "name": "value",
+                    "text": ""
+                },
+				{
+				  "type": "input_value",
+				  "name": "in"
+				}
+            ],
+            "colour": "#FFA500",
+            "output": "attributes"
 	}
 ])
 
@@ -1177,4 +1213,14 @@ Blockly.html.forBlock['B_table'] = function (block) {
 }
 Blockly.html.forBlock['B_color'] = function (block) {
     return block.getFieldValue('content')+' '+Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE)
+}
+Blockly.html.forBlock['B_data'] = function (block) {
+    var text_value = block.getFieldValue('content');
+    var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE);
+    return 'data-toggle="' + text_value + '"' + argument ;
+}
+Blockly.html.forBlock['B_data_target'] = function (block) {
+    var text_value = block.getFieldValue('value');
+    var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE);
+    return 'data-target="' + text_value + '"' + argument ;
 }
