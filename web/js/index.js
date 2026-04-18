@@ -53,7 +53,7 @@ window.addEventListener('load', function load(event) {
 	})
 	$('#lien2').on('click', function(){
 		ffau.clearWorkspace()
-		$.get("../../examples/html/ia.www", function(data) { 
+		$.get("examples/ia.www", function(data) { 
 			if (data) {
 				var xml = Blockly.utils.xml.textToDom(data);
 				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
@@ -62,7 +62,7 @@ window.addEventListener('load', function load(event) {
 	})
 	$('#lien3').on('click', function(){
 		ffau.clearWorkspace()
-		$.get("../../examples/html/gafam.www", function(data) { 
+		$.get("examples/gafam.www", function(data) { 
 			if (data) {
 				var xml = Blockly.utils.xml.textToDom(data);
 				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
@@ -71,7 +71,7 @@ window.addEventListener('load', function load(event) {
 	})
 	$('#lien4').on('click', function(){
 		ffau.clearWorkspace()
-		$.get("examples/html/zen.www", function(data) { 
+		$.get("examples/zen.www", function(data) { 
 			if (data) {
 				var xml = Blockly.utils.xml.textToDom(data);
 				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
@@ -80,7 +80,7 @@ window.addEventListener('load', function load(event) {
 	})
 	$('#lien5').on('click', function(){
 		ffau.clearWorkspace()
-		$.get("../examples/html/complexe.www", function(data) { 
+		$.get("examples/complexe.www", function(data) { 
 			if (data) {
 				var xml = Blockly.utils.xml.textToDom(data);
 				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
