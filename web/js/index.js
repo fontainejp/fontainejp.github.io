@@ -46,7 +46,7 @@ window.addEventListener('load', function load(event) {
 		ffau.clearWorkspace()
 		$.get("examples/hello.www", function(data) { 
 			if (data) {
-				var xml = Blockly.Xml.textToDom(data);
+				var xml = Blockly.utils.xml.textToDom(data);
 				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
 			}
 		}, 'text')
@@ -55,7 +55,7 @@ window.addEventListener('load', function load(event) {
 		ffau.clearWorkspace()
 		$.get("../../examples/html/ia.www", function(data) { 
 			if (data) {
-				var xml = Blockly.Xml.textToDom(data);
+				var xml = Blockly.utils.xml.textToDom(data);
 				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
 			}
 		}, 'text')
@@ -64,7 +64,7 @@ window.addEventListener('load', function load(event) {
 		ffau.clearWorkspace()
 		$.get("../../examples/html/gafam.www", function(data) { 
 			if (data) {
-				var xml = Blockly.Xml.textToDom(data);
+				var xml = Blockly.utils.xml.textToDom(data);
 				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
 			}
 		}, 'text')
@@ -73,7 +73,7 @@ window.addEventListener('load', function load(event) {
 		ffau.clearWorkspace()
 		$.get("examples/html/zen.www", function(data) { 
 			if (data) {
-				var xml = Blockly.Xml.textToDom(data);
+				var xml = Blockly.utils.xml.textToDom(data);
 				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
 			}
 		}, 'text')
@@ -82,7 +82,7 @@ window.addEventListener('load', function load(event) {
 		ffau.clearWorkspace()
 		$.get("../examples/html/complexe.www", function(data) { 
 			if (data) {
-				var xml = Blockly.Xml.textToDom(data);
+				var xml = Blockly.utils.xml.textToDom(data);
 				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
 			}
 		}, 'text')
