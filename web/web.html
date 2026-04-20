@@ -1,11 +1,10 @@
-<!DOCTYPE HTML>
-<html lang="fr">
-	<head>
-		<meta charset="utf-8">
-		<title>BLOCKLY-WEB</title>
-		<link rel="icon" type="image/png" href="media/globe.png">
+﻿<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="js/jquery.min.2.2.4.js"></script>
-		<script src="js/bootstrap.min.3.3.6.js"></script>
+		<script src="js/bulma.js"></script>	
 		<script src="js/blockly.js"></script>
 		<script src="js/generator_blockly.js"></script>
 		<script src="js/block_generator_html.js"></script>
@@ -15,81 +14,109 @@
 		<script src="js/block_blockly.js"></script>
 		<script src="js/ffau.js"></script>
 		<script src="js/index.js"></script>
-		<link rel="stylesheet" href="css/bootstrap.min.3.3.6.css">
+    <title>Blockly-Web</title>
+    <link rel="stylesheet" href="css/bulma.min.1.0.4.css">
 		<link rel="stylesheet" href="css/fontawesome.css">
 		<link rel="stylesheet" href="css/web.css">
-	</head>
-	<body>
+  </head>
+  <body>
 		<div id="container">
 			<div id="blockly_l">
 				<div id="header">
-					<div id="btn_left" class="btn-toolbar">
-						<input type="file" id="loadText" accept=".www, .html" style="display:none">
-						<div class="btn-group">
-							<button id="btn_new" class="btn btn-default"><i class="fa fa-file fa-1_5x btn_color"></i></button>
-							<div class="btn-group">
-								<button id="btn_example" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-									<i class="fa fa-file-text fa-1_5x btn_color"></i>
-								</button>
-								<ul class="dropdown-menu">
-									<li class="dropdown-header">EXEMPLES</li>
-									<li class="divider"></li>
-									<li><a href="#" id="lien1"><i class="fa fa-html5 fa-fw"></i> Titre et paragraphe</a></li>
-									<li><a href="#" id="lien2"><i class="fa fa-image fa-fw"></i> page simple avec image</a></li>
-									<li><a href="#" id="lien3"><i class="fa fa-css3 fa-fw"></i> Classe et CSS</a></li>
-									<li><a href="#" id="lien4"><i class="fa fa-fa fa-fw"></i> utilisation de Bootstrap et FontAwesome</a></li>
-									<li><a href="#" id="lien5"><i class="fa fa-cogs fa-fw"></i> Mon premier script</a></li>
-								</ul>
+					<nav class="navbar is-primary">
+						<div class="navbar-brand">
+							<a class="navbar-item" href="#">
+								<img src="media/logo.png">
+							</a>
+						</div>
+						<div class="navbar-menu">
+							<div class="navbar-start">
+								<a class="navbar-item" id="btn_new">
+									<span class="icon is-medium"><i class="fa fa-lg fa-file"></i></span>
+								</a>
+								<div class="navbar-item has-dropdown is-hoverable">
+									<a class="navbar-link is-arrowless">
+										<span class="icon is-medium"><i class="fa fa-lg fa-file-text"></i></span>
+									</a>
+									<div class="navbar-dropdown">
+										<a class="navbar-item" id="lien1">Page simple</a>
+										<a class="navbar-item" id="lien2">Page complète</a>
+										<a class="navbar-item" id="lien3">Class et Id</a>
+										<hr class="navbar-divider">
+										<a class="navbar-item" id="lien4">Bulma</a>
+										<a class="navbar-item" id="lien5">JavaScript</a>
+									</div>
+								</div>
+								<a class="navbar-item" id="btn_open">
+									<span class="icon is-medium"><i class="fa fa-lg fa-folder-open"></i></span>
+								</a>
+								<input type="file" id="loadText" accept=".www, .xml">
+								<a class="navbar-item" id="btn_save">
+									<span class="icon is-medium"><i class="fa fa-lg fa-cloud-download"></i></span>
+								</a>
+								<div class="navbar-item has-dropdown is-hoverable">
+									<a class="navbar-link is-arrowless">
+										<span class="icon is-medium"><i class="fa fa-lg fa-image"></i></span>
+									</a>
+									<div class="navbar-dropdown">
+										<a class="navbar-item" id="btn_media2">allume.png</a>
+										<a class="navbar-item" id="btn_media4">beige.gif</a>
+										<a class="navbar-item" id="btn_media5">college.jpg</a>
+										<a class="navbar-item" id="btn_media6">earth.jpg</a>
+										<a class="navbar-item" id="btn_media7">eteint.jpg</a>
+										<a class="navbar-item" id="btn_media8">neuronne.jpg</a>
+										<a class="navbar-item" id="btn_media9">ordinateur.png</a>
+										<a class="navbar-item" id="btn_media10">portable.png</a>
+										<a class="navbar-item" id="btn_media11">zen.jpg</a>
+										<hr class="navbar-divider">
+										<a class="navbar-item" id="btn_media1">acqua.mp3</a>
+										<a class="navbar-item" id="btn_media3">aube.mp4</a>
+									</div>
+								</div>
 							</div>
-							<button id="btn_open" class="btn btn-default"><i class="fa fa-folder-open fa-1_5x btn_color"></i></button>
-							<button id="btn_save" class="btn btn-default"><i class="fa fa-cloud-download fa-1_5x btn_color"></i></button>
+							<div class="navbar-end">
+								<a class="navbar-item" id="btn_undo">
+									<span class="icon is-medium"><i class="fa fa-lg fa-undo"></i></span>
+								</a>
+								<a class="navbar-item" id="btn_redo">
+									<span class="icon is-medium"><i class="fa fa-lg fa-repeat"></i></span>
+								</a>
+								<a class="navbar-item" id="modal" >
+									<span class="icon is-medium"><i class="fa fa-lg fa-code"></i></span>
+								</a>
+							</div>
 						</div>
-						<div class="btn-group">
-								<button id="btn_media" class="btn btn-default dropdown-toggle" data-toggle="dropdown" rel="tooltip" data-placement="bottom" title="Média">
-									<i class="fa fa-image fa-1_5x btn_color"></i>
-								</button>
-								<ul class="dropdown-menu" id="menu_media">
-									<li class="dropdown-header">MEDIA</li>
-									<li class="divider"></li>
-									<li><a href="#" id="btn_media1"><i class="fa fa-music fa-fw"></i> acqua.mp3</a></li>
-									<li><a href="#" id="btn_media2"><i class="fa fa-file-image-o fa-fw"></i> allume.png</a></li>
-									<li><a href="#" id="btn_media3"><i class="fa fa-video-camera fa-fw"></i> aube.mp4</a></li>
-									<li><a href="#" id="btn_media4"><i class="fa fa-file-image-o fa-fw"></i> beige.gif</a></li>
-									<li><a href="#" id="btn_media5"><i class="fa fa-file-image-o fa-fw"></i> college.jpg</a></li>
-									<li><a href="#" id="btn_media6"><i class="fa fa-file-image-o fa-fw"></i> earth.jpg</a></li>
-									<li><a href="#" id="btn_media7"><i class="fa fa-file-image-o fa-fw"></i> eteint.jpg</a></li>
-									<li><a href="#" id="btn_media8"><i class="fa fa-file-image-o fa-fw"></i> neuronne.jpg</a></li>
-									<li><a href="#" id="btn_media9"><i class="fa fa-file-image-o fa-fw"></i> ordinateur.png</a></li>
-									<li><a href="#" id="btn_media10"><i class="fa fa-file-image-o fa-fw"></i> portable.png</a></li>
-									<li><a href="#" id="btn_media11"><i class="fa fa-file-image-o fa-fw"></i> zen.jpg</a></li>
-								</ul>
-						</div>
-					</div>
-					<div id="btn_right" class="btn-toolbar">
-						<div class="btn-group">
-							<button id="btn_undo" class="btn btn-default"><i class="fa fa-undo fa-1_5x btn_color"></i></button>
-							<button id="btn_redo" class="btn btn-default"><i class="fa fa-repeat fa-1_5x btn_color"></i></button>
-							<button id="btn_preview" class="btn btn-default"><i class="fa fa-code fa-1_5x btn_color"></i></button>
-						</div>
-					</div>
+					</nav>
 				</div>
-				<div id="blocklyDiv">
-					<div id="toggle" class="modal-content" style="display:none">
-					<pre id="code_html"></pre>
-					<div id="btn_right_right" class="btn-group">
-						<button id="btn_saveHTML" class="btn btn-default btn_color">
-							<i class="fa fa-floppy-o"></i>
-						</button>
-						<button id="btn_copy" class="btn btn-default btn_color">
-							<i class="fa fa-files-o"></i>
-						</button>
-					</div>
-				</div>
-				</div>
+				<div id="blocklyDiv"></div>
 			</div>
-			<iframe id="blockly_r">
-			</iframe>
+			<iframe id="blockly_r"></iframe>
 		</div>
+		<!-- modal code html -->
+		<div class="modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Code HTML</p>
+					<button class="delete" aria-label="close"></button>
+				</header>
+				<section class="modal-card-body">
+					<pre></pre>
+				</section>
+				<footer class="modal-card-foot">
+					<div class="buttons are-small">
+						<button class="button" id="btn_saveHTML">
+							<span class="icon"><i class="fa fa-floppy-o color_black" ></i></span>
+							<span>enregistrer</span>
+						</button>
+						<button class="button" id="btn_copy">
+							<span class="icon"><i class="fa fa-files-o color_black"></i></span>
+							<span>copier</span>
+						</button>
+					</div>
+				</footer>
+			</div>
+		</div>	
 		<!-- toolbox config modal -->
 		<xml id="toolbox">
 			<category colour="#4a235a" name="Structure">
@@ -149,7 +176,7 @@
 				<block type="orderedlist"></block>
 				<block type="listitem"></block>
 			</category>
-			<category colour="#804000" name="Table">
+			<category colour="#804000" name="Tableau">
 				<block type="table"></block>
 				<block type="tablerow"></block>
 				<block type="tableheading"></block>
@@ -212,16 +239,15 @@
 					<block type="padding"></block>
 					<block type="widthheightnum"></block>
 				</category>
-				<category colour="#FFA500" name="Bootstrap">
+				<category colour="#FFA500" name="Bulma">
 					<block type="B_color"></block>
 					<block type="B_text"></block>
-					<block type="B_class_alert"></block>
-					<block type="B_class_btn"></block>
-					<block type="B_class_img"></block>
-					<block type="B_table"></block>
-					<block type="B_class_modal"></block>
-					<block type="B_tab"></block>
+					<block type="B_class_type"></block>
 					<block type="B_class_dropdown"></block>
+					<block type="B_type"></block>
+					<block type="B_table"></block>
+					<block type="B_size"></block>
+					<block type="B_aria"></block>
 				</category>
 			<sep></sep>
 			<category colour="#FF0000" name="JS">
@@ -285,6 +311,6 @@
 				<block type="ctx_text"></block>
 			</category>
 			<category colour="#FFA500" custom="VARIABLE" name="Variable"></category>
-		</xml>
-	</body>
+		</xml>	
+  </body>
 </html>
