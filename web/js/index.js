@@ -1,36 +1,36 @@
 ﻿var ffau = new Ffau()
 var theme = "light"
 
-window.addEventListener('load', function load(event) {
+document.addEventListener('DOMContentLoaded', () => {
 	ffau.renderBlockly(document.getElementById('blocklyDiv'),document.getElementById('toolbox'))
 	ffau.addEvent()
 	ffau.ffauWorkspace.clear()
 	ffau.ffauWorkspace.render()
-	$('#btn_copy').on("click", function() {
+	document.querySelector('#btn_copy').addEventListener("click", function() {
 		navigator.clipboard.writeText(Blockly.html.workspaceToCode(ffau.ffauWorkspace))
 		document.querySelector('.modal').classList.remove('is-active')
 	})
-	$('#btn_redo').on('click', function(){
+	document.querySelector('#btn_redo').addEventListener('click', function(){
 		ffau.redo()
 	})
-	$('#btn_undo').on('click', function(){
+	document.querySelector('#btn_undo').addEventListener('click', function(){
 		ffau.undo()
 	})
-	$('#btn_save').on('click', function(){
+	document.querySelector('#btn_save').addEventListener('click', function(){
 		ffau.downloadXML()
 	})
-	$('#btn_saveHTML').on('click', function(){
+	document.querySelector('#btn_saveHTML').addEventListener('click', function(){
 		ffau.downloadHTML()
 		document.querySelector('.modal').classList.remove('is-active')
 	})
-	$('#btn_new').on('click', function(){
+	document.querySelector('#btn_new').addEventListener('click', function(){
 		ffau.ffauWorkspace.clear()
 		ffau.ffauWorkspace.render()
 	})	
-	$('#btn_open').on('click', function(){
-		$('#loadText').click()
+	document.querySelector('#btn_open').addEventListener('click', function(){
+		document.querySelector('#loadText').click()
 	})
-	$('#loadText').on('change', function(){
+	document.querySelector('#loadText').addEventListener('change', function(){
 		var input = document.getElementById('loadText')
 		var fileReader = new FileReader()
 		fileReader.onload = () => {
@@ -39,112 +39,137 @@ window.addEventListener('load', function load(event) {
 		}
 		fileReader.readAsText(input.files[0])
 	})
-	$('#lien1').on('click', function(){
+	document.querySelector('#lien1').addEventListener('click', function(){
 		ffau.clearWorkspace()
-		$.get("./examples/hello.www", function(data) { 
-			if (data) {
-				var xml = Blockly.utils.xml.textToDom(data);
-				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
-			}
-		}, 'text')
+		fetch("examples/hello.www")
+			.then(response => response.text())
+			.then(data => { 
+				if (data) {
+					var xml = Blockly.utils.xml.textToDom(data);
+					Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
+				}
+			})
+			.catch( error => { 
+				console.log(error)
+		  })
 	})
-	$('#lien2').on('click', function(){
+	document.querySelector('#lien2').addEventListener('click', function(){
 		ffau.clearWorkspace()
-		$.get("./examples/ia.www", function(data) { 
-			if (data) {
-				var xml = Blockly.utils.xml.textToDom(data);
-				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
-			}
-		}, 'text')
+		fetch("examples/ia.www")
+			.then(response => response.text())
+			.then(data => { 
+				if (data) {
+					var xml = Blockly.utils.xml.textToDom(data);
+					Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
+				}
+			})
+			.catch( error => { 
+				console.log(error)
+		  })
 	})
-	$('#lien3').on('click', function(){
+	document.querySelector('#lien3').addEventListener('click', function(){
 		ffau.clearWorkspace()
-		$.get("./examples/gafam.www", function(data) { 
-			if (data) {
-				var xml = Blockly.utils.xml.textToDom(data);
-				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
-			}
-		}, 'text')
+		fetch("examples/gafam.www")
+			.then(response => response.text())
+			.then(data => { 
+				if (data) {
+					var xml = Blockly.utils.xml.textToDom(data);
+					Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
+				}
+			})
+			.catch( error => { 
+				console.log(error)
+		  })
 	})
-	$('#lien4').on('click', function(){
+	document.querySelector('#lien4').addEventListener('click', function(){
 		ffau.clearWorkspace()
-		$.get("./examples/zen.www", function(data) { 
-			if (data) {
-				var xml = Blockly.utils.xml.textToDom(data);
-				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
-			}
-		}, 'text')
+		fetch("examples/zen.www")
+			.then(response => response.text())
+			.then(data => { 
+				if (data) {
+					var xml = Blockly.utils.xml.textToDom(data);
+					Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
+				}
+			})
+			.catch( error => { 
+				console.log(error)
+		  })
 	})
-	$('#lien5').on('click', function(){
+	document.querySelector('#lien5').addEventListener('click', function(){
 		ffau.clearWorkspace()
-		$.get("./examples/complexe.www", function(data) { 
-			if (data) {
-				var xml = Blockly.utils.xml.textToDom(data);
-				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
-			}
-		}, 'text')
+		fetch("examples/complexe.www")
+			.then(response => response.text())
+			.then(data => { 
+				if (data) {
+					var xml = Blockly.utils.xml.textToDom(data);
+					Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
+				}
+			})
+			.catch( error => { 
+				console.log(error)
+		  })
 	})
-	$('#btn_media1').on('click', function(){
+	document.querySelector('#btn_media1').addEventListener('click', function(){
 		var rootBlock = ffau.ffauWorkspace.newBlock('audios')
 		rootBlock.setFieldValue("acqua.mp3", 'source')
 		rootBlock.initSvg()
 		rootBlock.render()
 	})
-	$('#btn_media2').on('click', function(){
+	document.querySelector('#btn_media2').addEventListener('click', function(){
 		var rootBlock = ffau.ffauWorkspace.newBlock('image')
 		rootBlock.setFieldValue("allume.png", 'source')
 		rootBlock.initSvg()
 		rootBlock.render()
 	})
-	$('#btn_media3').on('click', function(){
+	document.querySelector('#btn_media3').addEventListener('click', function(){
 		var rootBlock = ffau.ffauWorkspace.newBlock('video_file')
 		rootBlock.setFieldValue("aube.mp4", 'source')
 		rootBlock.initSvg()
 		rootBlock.render()
 	})
-	$('#btn_media4').on('click', function(){
+	document.querySelector('#btn_media4').addEventListener('click', function(){
 		var rootBlock = ffau.ffauWorkspace.newBlock('image')
 		rootBlock.setFieldValue("beige.gif", 'source')
 		rootBlock.initSvg()
 		rootBlock.render()
 	})
-	$('#btn_media5').on('click', function(){
+	document.querySelector('#btn_media5').addEventListener('click', function(){
 		var rootBlock = ffau.ffauWorkspace.newBlock('image')
 		rootBlock.setFieldValue("college.jpg", 'source')
 		rootBlock.initSvg()
 		rootBlock.render()
 	})
-	$('#btn_media6').on('click', function(){
+	document.querySelector('#btn_media6').addEventListener('click', function(){
 		var rootBlock = ffau.ffauWorkspace.newBlock('image')
 		rootBlock.setFieldValue("earth.jpg", 'source')
 		rootBlock.initSvg()
 		rootBlock.render()
 	})
-	$('#btn_media7').on('click', function(){
+	document.querySelector('#btn_media7').addEventListener('click', function(){
 		var rootBlock = ffau.ffauWorkspace.newBlock('image')
 		rootBlock.setFieldValue("eteint.png", 'source')
 		rootBlock.initSvg()
 		rootBlock.render()
 	})
-	$('#btn_media8').on('click', function(){
+	document.querySelector('#btn_media8').addEventListener('click', function(){
 		var rootBlock = ffau.ffauWorkspace.newBlock('image')
 		rootBlock.setFieldValue("neuronne.jpg", 'source')
 		rootBlock.initSvg()
 		rootBlock.render()
 	})
-	$('#btn_media9').on('click', function(){
+	document.querySelector('#btn_media9').addEventListener('click', function(){
 		var rootBlock = ffau.ffauWorkspace.newBlock('image')
 		rootBlock.setFieldValue("ordinateur.png", 'source')
 		rootBlock.initSvg()
 		rootBlock.render()
 	})
-	$('#btn_media10').on('click', function(){
+	document.querySelector('#btn_media10').addEventListener('click', function(){
 		var rootBlock = ffau.ffauWorkspace.newBlock('image')
 		rootBlock.setFieldValue("portable.png", 'source')
 		rootBlock.initSvg()
 		rootBlock.render()
 	})
-	$('#btn_media11').on('click', function(){
+	document.querySelector('#btn_media11').addEventListener('click', function(){
 		var rootBlock = ffau.ffauWorkspace.newBlock('image')
 		rootBlock.setFieldValue("zen.jpg", 'source')
 		rootBlock.initSvg()

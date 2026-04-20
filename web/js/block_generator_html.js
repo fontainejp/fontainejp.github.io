@@ -1105,7 +1105,7 @@ Blockly.html.forBlock['balise_get'] = function (block) {
 }
 Blockly.html.forBlock['html'] = function (block) {
     var statements_content = Blockly.html.statementToCode(block, 'content');
-    var code = '<!DOCTYPE html>\n<html lang="fr">\n' + statements_content + '</html>';
+    var code = '<!DOCTYPE html>\n<html>\n' + statements_content + '</html>';
     return code
 }
 Blockly.html.forBlock['head'] = function (block) {
