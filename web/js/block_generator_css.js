@@ -785,18 +785,22 @@ Blockly.defineBlocksWithJsonArray([
             "nextStatement": "stylecontent",
             "colour": "#00929F"
 	},
-	{	type:'B_tab',
+	{	type:'B_size',
             "message0": '%1 %2',
             "args0": [
                 {
                     "type": "field_dropdown",
                     "name": "content",
                     "options": [
-                        ["tab-nav", "nav nav-tabs"],
-                        ["tab-active", "active"],
-                        ["tab-content", "tab-content"],
-                        ["tab-pane", "tab-pane"],
-                        ["tab-pane-active", "tab-pane active"]
+                        ["is-small", "is-small"],
+                        ["is-medium", "is-medium"],
+                        ["is-large", "is-large"],
+                        ["is-1", "is-1"],
+                        ["is-2", "is-2"],
+                        ["is-3", "is-3"],
+                        ["is-4", "is-4"],
+                        ["is-5", "is-5"],
+                        ["is-6", "is-6"]
                     ]
                 },
 				{
@@ -814,11 +818,11 @@ Blockly.defineBlocksWithJsonArray([
                     "type": "field_dropdown",
                     "name": "content",
                     "options": [
-                        ["table-bordered", "table table-bordered"],
-                        ["table-striped", "table table-striped"],
-                        ["table-hover", "table table-hover"],
-                        ["table-basic", "table"],
-                        ["table-condensed", "table table-condensed"]
+                        ["table", "table"],
+                        ["table is-bordered", "table is-bordered"],
+                        ["table is-striped", "table is-striped"],
+                        ["table is-hoverable", "table is-hoverable"],
+                        ["table is-fullwidth", "table is-fullwidth"]
                     ]
                 },
 				{
@@ -829,68 +833,24 @@ Blockly.defineBlocksWithJsonArray([
             "colour": "#FFA500",
             "output": "attributes"
 	},
-	{	type:'B_class_modal',
+	{	type:'B_type',
             "message0": '%1 %2',
             "args0": [
                 {
                     "type": "field_dropdown",
                     "name": "content",
                     "options": [
-                        ["modal", "modal"],
-                        ["modal fade", "modal fade"],
-                        ["modal-dialog", "modal-dialog"],
-                        ["modal-content", "modal-content"],
-                        ["modal-body", "modal-body"],
-                        ["modal-title", "modal-title"],
-                        ["modal-header", "modal-header"],
-                        ["modal-footer", "modal-footer"],
-                        ["modal-sm", "modal-sm"],
-                        ["modal-md", "modal-md"],
-                        ["modal-lg", "modal-lg"]
-                    ]
-                },
-				{
-				  "type": "input_value",
-				  "name": "in"
-				}
-            ],
-            "colour": "#FFA500",
-            "output": "attributes"
-	},
-	{	type:'B_class_img',
-            "message0": '%1 %2',
-            "args0": [
-                {
-                    "type": "field_dropdown",
-                    "name": "content",
-                    "options": [
-                        ["img-circle", "img-circle"],
-                        ["img-rounded", "img-rounded"],
-                        ["img-thumbnail", "img-thumbnail"]
-                    ]
-                },
-				{
-				  "type": "input_value",
-				  "name": "in"
-				}
-            ],
-            "colour": "#FFA500",
-            "output": "attributes"
-	},
-	{	type:'B_class_btn',
-            "message0": '%1 %2',
-            "args0": [
-                {
-                    "type": "field_dropdown",
-                    "name": "content",
-                    "options": [
-                        ["btn-default", "btn btn-default"],
-                        ["btn-info", "btn btn-info"],
-                        ["btn-success", "btn btn-success"],
-                        ["btn-warning", "btn btn-warning"],
-                        ["btn-danger", "btn btn-danger"],
-                        ["btn-group-vertical", "btn-group-vertical"],
-                        ["btn-group", "btn-group"]
+                        ["block", "block"],
+                        ["box", "box"],
+                        ["button", "button"],
+                        ["buttons", "buttons"],
+                        ["content", "content"],
+                        ["field", "field"],
+                        ["has-addons", "has-addons"],
+                        ["icon", "icon"],
+                        ["icon-text", "icon-text"],
+                        ["title", "title"],
+                        ["subtitle", "subtitle"]
                     ]
                 },
 				{
@@ -908,10 +868,13 @@ Blockly.defineBlocksWithJsonArray([
                     "type": "field_dropdown",
                     "name": "content",
                     "options": [
-                        ["dropdown-toggle", "dropdown-toggle"],
+                        ["dropdown", "dropdown"],
+                        ["dropdown-content", "dropdown-content"],
+                        ["dropdown-item", "dropdown-item"],
                         ["dropdown-menu", "dropdown-menu"],
-                        ["dropdown-header", "dropdown-header"],
-                        ["divider", "divider"]
+                        ["dropdown-trigger", "dropdown-trigger"],
+												["is-hoverable", "is-hoverable"],
+												["is-up", "is-up"]
                     ]
                 },
 				{
@@ -922,18 +885,18 @@ Blockly.defineBlocksWithJsonArray([
             "colour": "#FFA500",
             "output": "attributes"
 	},
-	{	type:'B_class_alert',
+	{	type:'B_class_type',
             "message0": '%1 %2',
             "args0": [
                 {
                     "type": "field_dropdown",
                     "name": "content",
                     "options": [
-                        ["background-info", "alert alert-info"],
-                        ["background-primary", "alert alert-primary"],
-                        ["background-success", "alert alert-success"],
-                        ["background-warning", "alert alert-warning"],
-                        ["background-danger", "alert alert-danger"]
+                        ["is-disabled", "is-disabled"],
+                        ["is-inverted", "is-inverted"],
+                        ["is-loading", "is-loading"],
+                        ["is-outlined", "is-outlined"],
+												["is-rounded", "is-rounded"],
                     ]
                 },
 				{
@@ -951,11 +914,14 @@ Blockly.defineBlocksWithJsonArray([
                     "type": "field_dropdown",
                     "name": "content",
                     "options": [
-                        ["color-info", "#5bc0de"],
-                        ["color-primary", "#337ab7"],
-                        ["color-success", "#5cb85c"],
-                        ["color-warning", "#f0ad4e"],
-                        ["color-danger", "#d9534f"]
+                        ["is-black", "is-black"],
+                        ["is-danger", "is-danger"],
+                        ["is-info", "is-info"],
+                        ["is-light", "is-light"],
+                        ["is-link", "is-link"],
+                        ["is-primary", "is-primary"],
+                        ["is-success", "is-success"],
+                        ["is-warning", "is-warning"]
                     ]
                 },
 				{
@@ -973,13 +939,19 @@ Blockly.defineBlocksWithJsonArray([
                     "type": "field_dropdown",
                     "name": "content",
                     "options": [
-                        ["text-left", "text-left"],
-                        ["text-center", "text-center"],
-                        ["text-right", "text-right"],
-                        ["text-justify", "text-justify"],
-                        ["text-lowercase", "text-lowercase"],
-                        ["text-uppercase", "text-uppercase"],
-                        ["text-capitalize", "text-capitalize"]
+                        ["has-text-left", "has-text-left"],
+                        ["has-text-centered", "has-text-centered"],
+                        ["has-text-right", "has-text-right"],
+                        ["has-text-justified", "has-text-justified"],
+                        ["has-text-weight-light", "has-text-weight-light"],
+                        ["is-italic", "is-italic"],
+                        ["has-text-weight-bold", "has-text-weight-bold"],
+                        ["has-text-danger", "has-text-danger"],
+                        ["has-text-info", "has-text-info"],
+                        ["has-text-link", "has-text-link"],
+                        ["has-text-primary", "has-text-primary"],
+                        ["has-text-succes", "has-text-succes"],
+                        ["has-text-warning", "has-text-warning"]
                     ]
                 },
 				{
@@ -990,33 +962,21 @@ Blockly.defineBlocksWithJsonArray([
             "colour": "#FFA500",
             "output": "attributes"
 	},
-	{	type: 'B_data',
-            "message0": 'data-toggle=%1 %2',
+	{	"type": 'B_aria',
+            "message0": '%1=%2 %3',
             "args0": [
                 {
                     "type": "field_dropdown",
                     "name": "content",
                     "options": [
-                        ["collapse", "collapse"],
-                        ["modal", "modal"],
-                        ["tab", "tab"]
+                        ["aria-haspopup", "aria-haspopup"],
+                        ["aria-controls", "aria-controls"]
                     ]
                 },
-				{
-				  "type": "input_value",
-				  "name": "in"
-				}
-            ],
-            "colour": "#FFA500",
-            "output": "attributes"
-	},
-	{	type: 'B_data_target',
-            "message0": 'data-target=%1 %2',
-            "args0": [
                 {
                     "type": "field_input",
                     "name": "value",
-                    "text": ""
+                    "text": "true"
                 },
 				{
 				  "type": "input_value",
@@ -1190,22 +1150,16 @@ Blockly.html.forBlock['bordercollapse'] = function (block) {
 Blockly.html.forBlock['B_text'] = function (block) {
     return block.getFieldValue('content')+' '+Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE)
 }
-Blockly.html.forBlock['B_class_modal'] = function (block) {
-    return block.getFieldValue('content')+' '+Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE)
-}
-Blockly.html.forBlock['B_class_img'] = function (block) {
-   return block.getFieldValue('content')+' '+Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE)
-}
-Blockly.html.forBlock['B_class_btn'] = function (block) {
+Blockly.html.forBlock['B_class_type'] = function (block) {
     return block.getFieldValue('content')+' '+Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE)
 }
 Blockly.html.forBlock['B_class_dropdown'] = function (block) {
     return block.getFieldValue('content')+' '+Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE)
 }
-Blockly.html.forBlock['B_class_alert'] = function (block) {
+Blockly.html.forBlock['B_type'] = function (block) {
     return block.getFieldValue('content')+' '+Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE)
 }
-Blockly.html.forBlock['B_tab'] = function (block) {
+Blockly.html.forBlock['B_size'] = function (block) {
     return block.getFieldValue('content')+' '+Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE)
 }
 Blockly.html.forBlock['B_table'] = function (block) {
@@ -1214,13 +1168,6 @@ Blockly.html.forBlock['B_table'] = function (block) {
 Blockly.html.forBlock['B_color'] = function (block) {
     return block.getFieldValue('content')+' '+Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE)
 }
-Blockly.html.forBlock['B_data'] = function (block) {
-    var text_value = block.getFieldValue('content');
-    var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE);
-    return 'data-toggle="' + text_value + '"' + argument ;
-}
-Blockly.html.forBlock['B_data_target'] = function (block) {
-    var text_value = block.getFieldValue('value');
-    var argument = Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE);
-    return 'data-target="' + text_value + '"' + argument ;
+Blockly.html.forBlock['B_aria'] = function (block) {
+    return block.getFieldValue('content')+'="'+block.getFieldValue('value')+'" '+Blockly.html.statementToCode(block, "in", Blockly.html.ORDER_NONE)
 }

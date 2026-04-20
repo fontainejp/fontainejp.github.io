@@ -36,7 +36,7 @@ class Ffau {
         // generate a random ID for the frame to avoid duplication
         frame.id = Ffau.generateID(frame, 'blockly');
         let editorOptions = {
-			//renderer: "zelos",
+						//renderer: "zelos",
             toolbox: toolbox,
         }
         if (options) {
@@ -63,38 +63,7 @@ class Ffau {
         // Return workspace info
         return this.ffauWorkspace
     }
-    /**
-     *
-     * Checks if a theme name is a valid Ffau theme, using the CSS-based checking mechanics automatically added by `dist/compile_styles.py`.
-     *
-     * @param {string} className - The name of the theme
-     * @param {boolean} appendPrefix - Specifies the format of the theme name: if true, then a theme in a format like `panda` or `dark` is expected. If false, a full classname, like `blocklyThemePanda` or `blocklyThemeDark` is expected.
-     * @returns {boolean} - Whether or not the input refers to a real Ffau theme.
-     
-    isFfauTheme(className, appendPrefix) {
-        if (!appendPrefix) {
-            if (className.split("blocklyTheme").length > 1) {
-                className = className.split("blocklyTheme")[1].toLowerCase();
-            } else {
-                return false;
-            }
-        }
-
-        let testObj = document.createElement("p");
-        testObj.className = "verifyBlocklyTheme" + className[0].toUpperCase() + className.slice(1).toLowerCase();
-        testObj.style.display = "none";
-
-        document.body.appendChild(testObj);
-        const computedText = getComputedStyle(testObj, ':before')
-            .getPropertyValue('content');
-
-        const isGood = computedText.substr(1, computedText.length - 2)
-            === 'verify-' + className.toLowerCase();
-
-        testObj.parentNode.removeChild(testObj);
-
-        return isGood;
-    }
+    
     /**
      * Render the iframe preview
      *
@@ -120,7 +89,7 @@ class Ffau {
         this.ffauWorkspace.addChangeListener(function () {
             // generate the code using Blockly.html from generator.js
 			var code = Blockly.html.workspaceToCode(this.ffauWorkspace);
-			$('#code_html').text(code)
+			$('pre').text(code)
 			document.getElementById('blockly_r').srcdoc = code;
         }.bind(this) /* bind parent scope */);
     }

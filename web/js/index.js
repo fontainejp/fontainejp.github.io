@@ -1,18 +1,14 @@
 ﻿var ffau = new Ffau()
+var theme = "light"
 
 window.addEventListener('load', function load(event) {
 	ffau.renderBlockly(document.getElementById('blocklyDiv'),document.getElementById('toolbox'))
 	ffau.addEvent()
 	ffau.ffauWorkspace.clear()
 	ffau.ffauWorkspace.render()
-	$('#btn_preview').on("click", function() {
-		$("#toggle").toggle("slide")
-	})
 	$('#btn_copy').on("click", function() {
-		var range = document.createRange();  
-		range.selectNode(document.getElementById('code_html'));  
-		window.getSelection().addRange(range);
-		document.execCommand("copy")
+		navigator.clipboard.writeText(Blockly.html.workspaceToCode(ffau.ffauWorkspace))
+		document.querySelector('.modal').classList.remove('is-active')
 	})
 	$('#btn_redo').on('click', function(){
 		ffau.redo()
@@ -25,6 +21,7 @@ window.addEventListener('load', function load(event) {
 	})
 	$('#btn_saveHTML').on('click', function(){
 		ffau.downloadHTML()
+		document.querySelector('.modal').classList.remove('is-active')
 	})
 	$('#btn_new').on('click', function(){
 		ffau.ffauWorkspace.clear()
@@ -44,7 +41,7 @@ window.addEventListener('load', function load(event) {
 	})
 	$('#lien1').on('click', function(){
 		ffau.clearWorkspace()
-		$.get("examples/hello.www", function(data) { 
+		$.get("./examples/hello.www", function(data) { 
 			if (data) {
 				var xml = Blockly.utils.xml.textToDom(data);
 				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
@@ -53,7 +50,7 @@ window.addEventListener('load', function load(event) {
 	})
 	$('#lien2').on('click', function(){
 		ffau.clearWorkspace()
-		$.get("examples/ia.www", function(data) { 
+		$.get("./examples/ia.www", function(data) { 
 			if (data) {
 				var xml = Blockly.utils.xml.textToDom(data);
 				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
@@ -62,7 +59,7 @@ window.addEventListener('load', function load(event) {
 	})
 	$('#lien3').on('click', function(){
 		ffau.clearWorkspace()
-		$.get("examples/gafam.www", function(data) { 
+		$.get("./examples/gafam.www", function(data) { 
 			if (data) {
 				var xml = Blockly.utils.xml.textToDom(data);
 				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
@@ -71,7 +68,7 @@ window.addEventListener('load', function load(event) {
 	})
 	$('#lien4').on('click', function(){
 		ffau.clearWorkspace()
-		$.get("examples/zen.www", function(data) { 
+		$.get("./examples/zen.www", function(data) { 
 			if (data) {
 				var xml = Blockly.utils.xml.textToDom(data);
 				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);
@@ -80,7 +77,7 @@ window.addEventListener('load', function load(event) {
 	})
 	$('#lien5').on('click', function(){
 		ffau.clearWorkspace()
-		$.get("examples/complexe.www", function(data) { 
+		$.get("./examples/complexe.www", function(data) { 
 			if (data) {
 				var xml = Blockly.utils.xml.textToDom(data);
 				Blockly.Xml.domToWorkspace(xml,ffau.ffauWorkspace);

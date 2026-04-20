@@ -17,8 +17,8 @@ Blockly.defineBlocksWithJsonArray([
 							"css/fontawesome.css"
                         ],
                         [
-                            "Bootstrap",
-                            "css/bootstrap.min.3.3.6.css"
+                            "Bulma",
+                            "css/bulma.min.1.0.4.css"
 						]
                     ]
                 }
@@ -320,7 +320,7 @@ Blockly.defineBlocksWithJsonArray([
             "nextStatement": "textcontainer",
             "colour": "#BBBBBB"		
 	},
-	{   "type": "text",
+	{ "type": "text",
         message0: "%1 %2 %3",
         args0: [{
 			"type": "field_image",
@@ -353,10 +353,6 @@ Blockly.defineBlocksWithJsonArray([
                         [
                             "jQuery",
                             '<script src="js/jquery.min.2.2.4.js"></script>\n'
-                        ],
-                        [
-                            "Bootstrap",
-                            '<script src="js/bootstrap.min.3.3.6.js"></script>\n'
                         ],
                         [
                             'openStreetMap',
@@ -548,7 +544,7 @@ Blockly.defineBlocksWithJsonArray([
             "output": "attributes",
             "colour": "#727272"
 	},
-	{	"type":'image',
+	{	"type": 'image',
             "message0": '<img src=%1> %2',
             "args0": [
                 {
