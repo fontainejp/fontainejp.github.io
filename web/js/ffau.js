@@ -89,7 +89,7 @@ class Ffau {
         this.ffauWorkspace.addChangeListener(function () {
             // generate the code using Blockly.html from generator.js
 			var code = Blockly.html.workspaceToCode(this.ffauWorkspace);
-			$('pre').text(code)
+			document.querySelector('pre').textContent = code;
 			document.getElementById('blockly_r').srcdoc = code;
         }.bind(this) /* bind parent scope */);
     }
